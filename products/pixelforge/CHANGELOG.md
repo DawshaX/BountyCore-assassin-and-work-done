@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.3 — 2026-09-30
+
+### Added
+- Enabling **SET PIVOT** now auto-pauses playback so the pivot is placed on
+  the exact frame the user sees (no more "vanishing crosshair" confusion).
+- Full buyer-journey E2E test (test/buyer_journey.js): downloads the ZIP from
+  GitHub, extracts it, opens file:// in real Chromium, clicks every control,
+  validates every exported file.
+
+
 ## 1.1.2 — 2026-09-30
 
 ### Added

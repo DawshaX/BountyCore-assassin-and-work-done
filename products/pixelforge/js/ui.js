@@ -449,9 +449,14 @@
     $("btn-pivot").onclick = () => {
       state.params.preview.pivotMode = !state.params.preview.pivotMode;
       $("btn-pivot").classList.toggle("toggled", state.params.preview.pivotMode);
-      showToast(state.params.preview.pivotMode
-        ? "Pivot mode ON — click on the sprite to place the pivot point"
-        : "Pivot mode OFF");
+      if (state.params.preview.pivotMode) {
+        // pause so the user edits the exact frame they see
+        state.params.preview.playing = false;
+        syncPlayBtn();
+        showToast("Pivot mode ON — click on the sprite to place the pivot point");
+      } else {
+        showToast("Pivot mode OFF");
+      }
     };
     $("preview-canvas").addEventListener("click", (e) => {
       if (!state.params.preview.pivotMode || !state.frames.length) return;
