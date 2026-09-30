@@ -7,10 +7,10 @@ PixelForge — Sprite Sheet Maker & Pixel Art Studio
 Drop images → pixel art → packed sprite sheet → animated preview → engine-ready JSON. 100% offline in your browser.
 
 ## Tags
-`tool` · `sprite-sheet` · `pixel-art` · `game-dev` · `editor` · `no-code` · `utility` · `open-world`? NO — use: tool, sprite sheet, pixel art, game development, editor, assets, 2d, animation
+tool, sprite sheet, pixel art, game development, editor, utility, 2d, animation
 
 ## Price
-$6.99 (launch: $4.99) — or PWYW $3.99+ during first week
+$5.99 (launch: $3.99 during the first week)
 
 ## Description (markdown)
 
@@ -52,7 +52,7 @@ Yes. Outputs are yours, royalty-free, forever. See the EULA.
 Yes — export the matching atlas format (Aseprite JSON, Phaser 3 JSON, or Generic JSON which most engines accept).
 
 **Q: GIF support?**
-GIF imports use the first frame. For GIF *export*, pack frames here and use your engine's GIF encoder or a site of your choice.
+Animated GIF imports bring in **every frame with its timing**. You can also export an animated GIF of your packed sheet directly.
 
 **Q: Refunds?**
 Digital goods — if it doesn't open or you're unhappy, message me and I'll sort it out.

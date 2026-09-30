@@ -1,0 +1,248 @@
+================================================================
+ PIXELFORGE — حزمة النشر الكاملة (itch.io + BuiltByBit)
+ آخر تحديث: 2026-09-30 · الإصدار: v1.1.3
+================================================================
+
+ملف واحد فيه كل حاجة محتاجها للنشر: الروابط، الملفات، النصوص
+الجاهزة للنسخ، خطوات الرفع على المنصتين، الإعدادات المالية،
+والتشيك ليست النهائي. أي حد يفتح الملف ده لوحده يقدر ينشر.
+
+----------------------------------------------------------------
+ 0) لمحة سريعة عن المنتج
+----------------------------------------------------------------
+الاسم        : PixelForge — Sprite Sheet Maker & Pixel Art Studio
+الإصدار      : v1.1.3 (مفحوص: رحلة مشتري كاملة + صفر أخطاء)
+الشكل        : ZIP فيه app تشتغل في المتصفح — دبل كلك على index.html
+               بدون تنصيب وبدون نت (offline 100%)
+السعر        : $5.99 عادي — افتتاحي $3.99 أول أسبوع
+التراخيص     : LICENSE.txt + EULA جوه الـ ZIP (استخدام تجاري لمخرجاتك مسموح)
+المنصات      : itch.io + BuiltByBit (الاتنين — قرار نهائي)
+
+----------------------------------------------------------------
+ 1) الملفات اللي هترفعها (المسارات من جذر الريبو)
+----------------------------------------------------------------
+[المنتج نفسه]
+  products/pixelforge/dist/PixelForge-v1.1.3.zip
+  → ده اللي العميل بينزّله. جرب بنفسك قبل الرفع: فضّيه وافتح
+    index.html في المتصفح — لازم يشتغل من غير نت.
+
+[صور الصفحة]
+  products/pixelforge/assets/cover.png        → الغلاف (1260×1000، نسبة 315:250)
+  products/pixelforge/assets/features.png     → بانر المميزات
+  products/pixelforge/assets/screenshots/01-empty.png        → الواجهة الفاضية
+  products/pixelforge/assets/screenshots/02-animation.png    → معاينة الأنيميشن
+  products/pixelforge/assets/screenshots/03-pixelate.png     → البيكسليت والپاليتات
+  products/pixelforge/assets/screenshots/04-sheet-view.png   → تخطيط الشيت
+  products/pixelforge/assets/screenshots/05-offline-file.png → شغال أوفلاين
+  products/pixelforge/assets/screenshots/06-multipage.png    → تقسيم الصفحات
+  (اختياري إضافي: 10..13-buyer-*.png من رحلة المشتري — نضيفهم بعدين)
+
+[نصوص جاهزة]
+  products/pixelforge/STORE.md   → نص صفحة المتجر (الوصف كامل)
+  products/pixelforge/ITCH.md    → دليل itch.io الداخلي (نفس محتوى الملف ده بشكل أبسط)
+  هذا الملف: PUBLISH.txt         → حزمة النشر الكاملة
+
+[رقم الروابط]
+  رابط تحميل مباشر (خليه جاهز لأي سؤال دعم):
+  https://github.com/DawshaX/BountyCore-assassin-and-work-done/raw/arena/01a0f080-bountycore-assassin-and-work-d/products/pixelforge/dist/PixelForge-v1.1.3.zip
+  صفحة الريبو:
+  https://github.com/DawshaX/BountyCore-assassin-and-work-done
+
+----------------------------------------------------------------
+ 2) النصوص الجاهزة للنسخ (English — للمنصتين)
+----------------------------------------------------------------
+
+--- العنوان (Title) ---
+PixelForge — Sprite Sheet Maker & Pixel Art Studio
+
+--- الوصف القصير (Short description / one-liner) ---
+Drop images -> pixel art -> packed sprite sheet -> animated preview ->
+engine-ready JSON. 100% offline in your browser.
+
+--- التاجات (Tags) ---
+tool, sprite sheet, pixel art, game development, editor, utility, 2d, animation
+
+--- الوصف الكامل (Description) — انسخ من هنا للنهاية المعلّمة ---
+
+**PixelForge is the fastest way to go from a folder of images to an animated, engine-ready sprite sheet.**
+
+Built for indie devs who ship. No subscriptions, no cloud, no telemetry — the app runs entirely in your browser, even offline.
+
+### The workflow
+
+1. **Import** — drag & drop a batch of PNG/JPG/WEBP, a whole **folder**, or even an **animated GIF** (every frame + timing imported). Reorder frames by dragging, batch-rename in one click. Undo/Redo anywhere (Ctrl+Z / Ctrl+Y).
+2. **Pixelate** (optional) — shrink any art to 1–16 px pixels and quantize it to a palette **extracted from your own art** (auto 8/16/32) or legendary retro palettes: Game Boy, PICO-8, Sweetie-16, DawnBringer, NES, C64, CGA… with Bayer or Floyd–Steinberg dithering.
+3. **Pack** — Grid, tight shelf, or strip layouts. Trim transparent edges, add padding, extrude edges (bye-bye texture bleeding), cap at 1024–8192 px (oversized sheets auto-split into **multiple pages**), export at 1×–8× nearest-neighbour scale.
+4. **Preview** — hit play and watch your animation at 1–60 FPS, loop / ping-pong / once. Click **PIVOT** and click the sprite to place its rotation point — exported to your JSON.
+5. **Export** — one click for:
+   - `sprites.png` — the sheet (one file per page)
+   - atlas JSON — **Generic**, **Phaser 3** or **Aseprite** format, with pivot points
+   - **CSS sprite** classes for web games
+   - **animated GIF** of your preview (respects FPS & imported timing)
+   - individual trimmed frames
+   - everything in one ZIP (GIF included)
+
+### Why PixelForge?
+
+- **Everything offline** — your art never leaves your machine.
+- **Zero setup** — open `index.html`, done. Works from a USB stick.
+- **Pixel-perfect** — nearest-neighbour everywhere, integer output scales, optional edge extrusion.
+- **Engine-ready** — imports cleanly into Phaser, Aseprite, Godot, Unity (via generic JSON), Construct, GameMaker and plain CSS.
+- **Free updates** — pay once, get the 1.x line.
+
+### FAQ
+
+**Q: Do I need to install anything?**
+No. It's a single folder — open the HTML file in any modern browser.
+
+**Q: Can I use the sprites in commercial games?**
+Yes. Outputs are yours, royalty-free, forever. See the EULA.
+
+**Q: Does it work with Aseprite / Phaser / Godot?**
+Yes — export the matching atlas format (Aseprite JSON, Phaser 3 JSON, or Generic JSON which most engines accept).
+
+**Q: GIF support?**
+Animated GIF imports bring in every frame with its timing. You can also export an animated GIF of your packed sheet directly.
+
+**Q: Refunds?**
+Digital goods — if it doesn't open or you're unhappy, message me and I'll sort it out.
+
+--- نهاية الوصف المنسوخ ---
+
+================================================================
+ 3) itch.io — خطوة بخطوة
+================================================================
+
+أ) معلومات الحساب/المال (محتاجة مرة واحدة):
+ - التكلفة: النشر مجاني 100% — مفيش رسوم رفع ولا مراجعة.
+ - نسبة itch الافتراضية: 10% من كل بيعة (تقدر تسيبها كده).
+ - رسوم الدفع: ≈ 2.9% + $0.30 لكل عملية (تتحسب من أرباحك).
+ - استلام الفلوس: Settings → Payments →
+   (1) Direct to you: فلوسك فورًا على حسابك (أنسب حل: PayPal) وأنت
+       مسؤول الضرايب.
+   (2) Collected by itch.io: itch وكيل البيع — تسوية ضريبة EU، الصرف
+       بطلبك، حجز ~7 أيام للمراجعة + رسوم تعريف ضريبي $1 مرة واحدة.
+   → لو خانات PayPal ظاهرة في حسابك: اختار Direct to you + PayPal.
+ - متبعتش لي أي باسورد أبدًا — الإعدادات دي إنت بس اللي بتدخلها.
+
+ب) خطوات النشر:
+ 1. اعمل حساب: itch.io/user/new (إيميل + يوزر + باسورد).
+ 2. Settings → Payments → فعّل استلام الفلوس (الوضع اللي يظهر لك).
+ 3. افتح itch.io/game/new (أيوه "game" — itch بيسمّي كل المشاريع game).
+ 4. Upload Cover → ارفع assets/cover.png (1260×1000).
+ 5. Title → الصق:  PixelForge — Sprite Sheet Maker & Pixel Art Studio
+ 6. Short description → الصق الوصف القصير من القسم (2).
+ 7. Description → الصق الوصف الكامل من القسم (2).
+ 8. Classification → Software / Tool (لو ظهر) — مانحطش Platform وهمية.
+ 9. Pricing → "No payments, set your own price" → Fixed price → $5.99.
+    (الافتتاحي $3.99: Dashboard → Pages → Change pricing أول أسبوع،
+     أو اعملها $3.99 من الأول ونرفعها بعد الأسبوع.)
+10. Downloads → ارفع PixelForge-v1.1.3.zip → نوع الملف: **Downloadable**
+    (مش HTML embed — المفروض يشتغل بعد التحميل بدون نت).
+11. Tags → tool, sprite sheet, pixel art, game development, editor,
+    utility, 2d, animation.
+12. Screenshots → ارفع 01..06 (الست الأساسي) + features.png.
+    (حد أقصى 3MB للصورة — كل صورنا تحت 1.3MB ✓)
+13. Preview → افتح الصفحة كأنك زائر → جرّب زرار التحميل بنفسك.
+14. Save & view page → Publish.
+15. تأكد الصفحة Public + عندها غلاف + تحميل = تظهر في البحث (Indexing).
+
+ج) تشيك ليست ما قبل ضغط Publish:
+ [ ] الغلاف ظاهر ونسبة صحيحة
+ [ ] 6 سكرين شوتس ظاهرين بالترتيب
+ [ ] الوصف والأسعار ($5.99 / $3.99) والتاجات مضبوطة
+ [ ] ZIP اتنزّل من الصفحة واتفتح وشتغل من غير نت
+ [ ] إعداد استلام فلوس مفعّل
+ [ ] مفيش أي باسورد اتبعت في الشات أبدًا
+
+================================================================
+ 4) BuiltByBit — خطوة بخطوة
+================================================================
+
+أ) معلومات المنصة (بحث محدّث 2026):
+ - الرسوم: **9.9% عمولة منصة** لكل عملية + رسوم بوابة الدفع +
+   ممكن رسوم تحويل عملة عند السحب.
+ - الاستلام: محفظة **Tebex Wallet** (مجانية) → سحب بعد ~3 أيام تسوية
+   على PayPal أو البنك. الدفع للزبائن: PayPal/كارت/50+ وسائل.
+ - المراجعة: **كل ريسورس بيتم فحصه يدويًا من الستاف قبل ما ينشر**
+   — خصص 24–48 ساعة (وأوقات أطول لو الطابور طويل). متعيدش الإرسال
+   في نفس اليوم لو اترفض/تأخر.
+ - المراجعات: **اللي اشترى بس** يقدر يكتب ريفيو (حماية من الريفيوه
+   الوهمية).
+ - إنشاء الحساب مجاني. فيه إعلانات اختيارية (Featured: 3%–50% من
+   كل بيعة عبر الإعلان — مفيش رسوم ثابتة، من غير بيع مفيش دفع) —
+   نفعّلها بعدين لما نشوف أول مبيعات، مش دلوقتي.
+
+ب) خطوات النشر:
+ 1. اعمل حساب: builtbybit.com (إيميل + يوزر).
+ 2. افتح الملف الشخصي → **Creator / Submit a resource**
+    (ممكن يطلب إثبات هوية/بريد قبل أول ريسورس — اتبع الخطوات).
+ 3. القسم (Category): **Websites → Other websites**
+    (بديل لو مانفعش: **Other**) — المنتج أداة ويب، وده أقرب تصنيف.
+    الستاف ممكن يعيد تصنيفه وقت المراجعة — عادي.
+ 4. Title → الصق:  PixelForge — Sprite Sheet Maker & Pixel Art Studio
+ 5. Description → الصق الوصف الكامل من القسم (2) (نفس النص، أوفلاين).
+ 6. Pricing → USD **$5.99**.
+    (افتتاحي: استخدم Sale/Coupon أو حطّه $3.99 أول أسبوع وارجعه.)
+ 7. Uploads → ارفع PixelForge-v1.1.3.zip.
+ 8. Media → ارفع cover.png + features.png + 01..06 screenshots.
+ 9. Tags/Labels → pixel art, sprite sheet, tool, game dev, editor, 2d.
+ 10. License → اختر رخصة تناسب بيع رقمي غير حصري (المنتج LICENSE.txt
+    بيسمح بيع غير حصري ✓).
+ 11. Submit → استنى مراجعة الستاف (24–48+ ساعة) → لما يوافق تلقى
+    إشعار → افتح الصفحة وتأكد التحميل شغال → منشور ✓.
+
+================================================================
+ 5) حسابات الفلوس — ملخص الأرقام
+================================================================
+ السعر العادي        : $5.99
+ السعر الافتتاحي     : $3.99 (أول أسبوع على المنصتين)
+ --- itch.io ---
+   نصيبك من $5.99 (Direct to you): ≈ $5.99 − 10% − (2.9% + $0.30)
+   ≈ **$4.95** تقريبًا لكل بيعة.
+   نصيبك من $3.99 ≈ $3.30 تقريبًا.
+ --- BuiltByBit ---
+   نصيبك من $5.99: ≈ $5.99 − 9.9% − رسوم بوابة ≈ **$5.00+**
+   (والمبلغ بيستقر في Tebex حوالي 3 أيام قبل السحب).
+ - الضرايب: في الحالتين إنت المسؤول (Direct) — سجّل أرباحك في
+   PLAN.md أول ما تحصل.
+ - مفيش رسوم خفيّة تانية: لا اشتراكات ولا تكاليف رفع.
+
+================================================================
+ 6) بعد النشر — أول 14 يوم
+================================================================
+ - Reddit: r/gamedev · r/indiegaming · r/pixelart — اتبع قواعد كل
+   subreddit (ممنوع spam، خلي المنشور يشرح ويوري GIF).
+ - X/Twitter: thread بالـ features + فيديو قصير للحركة.
+ - Discord: سيرفرات Godot/Phaser/LÖVE — اقرأ قواعد السيرفر الأول.
+ - itch.io: فعّل Follow للصفحة + رد على أي comment بسرعة.
+ - كل 3 أيام: راجع Dashboard (مشاهدات → مشترين → wishlist) وسجّلها
+   في PLAN.md.
+ - بعد 14 يوم: مراجعة — السعر؟ الصفحة؟ ننزل منتج تاني؟
+
+================================================================
+ 7) قواعد الأمان (ثابتة — مش بتتغير)
+================================================================
+ - **متبعتش أي باسورد أو API key أو بيانات دخول أبدًا** — لا لي ولا
+   لأي حد. الحسابات والفلوس ليك إنت.
+ - لو عايز إني أنشر بدفاعي: ممكن نستخدم itch **Butler API key**
+   أو API خاص بـ BuiltByBit — **إنت بس** اللي بتاخده من إعداداتك
+   وتحطه عندك في جهازك، مش في الشات.
+ - أي رسالة "استثنائي/تذاكر دعم" في الشات بروابط حسابك → احتيال،
+   متجيبش فيها حاجة.
+ - الردود الجاهزة للرجوع (Refunds): "Sorry it didn't work out —
+   message me and I'll help or refund you." + نراجع بنفسنا.
+
+================================================================
+ 8) ✅ القائمة النهائية قبل ما تقول "منشور"
+================================================================
+ [ ] ZIP v1.1.3 اتنزّل من itch واتفتح أوفلاين وشتغل
+ [ ] ZIP v1.1.3 اتنزّل من BuiltByBit واتفتح أوفلاين وشتغل
+ [ ] الغلاف + السكرين شوتس ظاهرين على الصفحتين
+ [ ] السعر $5.99 (أو $3.99 افتتاحي) مضبوط على الصفحتين
+ [ ] إعداد استلام الفلوس مفعّل على الصفحتين (PayPal / Tebex)
+ [ ] الصفحتين Public وبيظهرن في البحث
+ [ ] PLAN.md اتحدّث بأول مبيعات/مشاهدات
+
+— النهاى —
+(الملف ده جزء من الريبو الداخلي، مش جزء من ZIP المنتج.)
