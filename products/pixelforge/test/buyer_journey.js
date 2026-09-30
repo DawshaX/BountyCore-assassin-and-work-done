@@ -16,7 +16,7 @@ const chromium = require("@sparticuz/chromium").default;
 
 const REPO = "DawshaX/BountyCore-assassin-and-work-done";
 const BRANCH = "arena/01a0f080-bountycore-assassin-and-work-d";
-const ZIP_PATH = "products/pixelforge/dist/PixelForge-v1.1.2.zip";
+const ZIP_PATH = "products/pixelforge/dist/PixelForge-v1.1.3.zip";
 const BUYER = "/tmp/buyer";
 const DL = "/tmp/buyer-downloads";
 const ASSETS = "/tmp/pfassets";
