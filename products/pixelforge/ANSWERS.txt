@@ -1,0 +1,158 @@
+================================================================
+ PIXELFORGE — إجابات الفورم حقل بحقل (itch.io — Create a new project)
+ الإصدار: v1.1.3 · آخر تحديث: 2026-09-30
+ ده الملف اللي بتفتحه جنب الفورم وبتنسخ منه. كل إجابة مكتوبة
+ بالظبط قدام اسم الحقل اللي في الصفحة.
+================================================================
+
+
+★ STEP 0 — أول حاجة قبل أي حاجة (التحذير اللي فوق في الصفحة)
+----------------------------------------------------------------
+المربع الأحمر: "You don't have payment configured — If you set a
+minimum price above 0 no one will be able to download your project."
+→ اضغط **Edit account** → تبويب **Payments** → فعّل استلام الفلوس
+  (اختار اللي يظهر لك: غالبًا PayPal — "Direct to you").
+من غير الخطوة دي السعر $5.99 مش هيشتغل والتحميل هيتقفل.
+
+
+■ الرئيسي (Top section)
+----------------------------------------------------------------
+Title
+  PixelForge — Sprite Sheet Maker & Pixel Art Studio
+
+Project URL
+  pixelforge          ← يبقى الرابط: xdaw.itch.io/pixelforge
+  (لو اتحجز: جرّب pixelforge-maker بعدها pixelforge-studio)
+
+Short description or tagline
+  Turn any images into pixel art, pack sprite sheets, preview
+  animations and export engine-ready JSON/GIF — 100% offline.
+
+Classification — What are you uploading?
+  Games  (لو ظهر خيار Tool/Software جدّاه اختاره، غير كده Games
+          عادي — أغلب أدوات المطورين على itch متسجلة Games)
+
+Kind of project
+  Downloadable — You only have files to be downloaded
+
+Release status
+  Released — Project is complete, but might receive some updates
+
+Pricing
+  ● Paid
+  Fixed price: 5.99        ← (افتتاحي ممكن 3.99 أول أسبوع، غيره
+                              بعدين من Dashboard → Change pricing)
+  (مختارش "$0 or donate" ومش "No payments")
+
+
+■ Uploads
+----------------------------------------------------------------
+ارفع ملف واحد بس من داخل الـ ZIP المرفق:
+  upload/PixelForge-v1.1.3.zip     (≈40 KB)
+ده المنتج كله — العميل بينزّله ويفتح index.html. مفيش ملفات تانية.
+
+
+■ Details
+----------------------------------------------------------------
+Description
+  → انسخ النص الكامل من PUBLISH.txt القسم (2) "الوصف الكامل"
+    (من سطر **PixelForge is the fastest way** لحد سؤال Refunds)
+    و الصقه هنا زي ما هو (يقبل Markdown).
+
+Genre
+  No genre
+
+Tags (مسموح 10 بالظبط — منظومة زي ما هم كده):
+  1 pixel art
+  2 sprite sheet
+  3 tool
+  4 game development
+  5 editor
+  6 animation
+  7 2d
+  8 utility
+  9 sprites
+  10 assets
+
+AI generation disclosure
+  ● Yes — This project contains the output of Generative AI
+    (الصراحة الإجابة الصحيحة: الكود والغلاف بمساعدة AI. itch
+     بيسمح بالمحتوى ده ومش فيه أي عقوبة — الإخفاء هو المخاطرة.)
+
+App store links
+  → فاضي (مفيش)
+
+Custom noun
+  → فاضي (سيبه 'game') — اختياري: تكتب tool لو حبيت تغيّر ألفاظ
+    الصفحة ("Download 1 tool")
+
+
+■ Community
+----------------------------------------------------------------
+Comments          → **Enabled**  (فعّل — أسئلة الزبائن = مبيعات)
+Discussion board  → Disabled     (نشغّله بعدين لو كبرنا)
+
+
+■ Visibility & access
+----------------------------------------------------------------
+Visibility
+  ● Draft  أولًا → فراجع الصفحة Preview → بعدين **Public**
+  (متنشرش مباشرة — شوف تشيك ليست ما قبل Publish تحت)
+
+Cover image  (مطلوب، الحد الأدنى 315×250)
+  images/cover.png        (1260×1000 — نفس النسبة المطلوبة ✓)
+
+Gameplay video or trailer
+  → فاضي (مفيش فيديو)
+
+Screenshots (ينصحوا 3 لـ 5 — ارفعهم بالترتيب ده بالظبط):
+  1 images/02-animation.png     ← أول صورة = معاينة الأنيميشن (أقوى صورة)
+  2 images/03-pixelate.png      البيكسليت والپاليتات
+  3 images/04-sheet-view.png    تخطيط الشيت
+  4 images/06-multipage.png     تقسيم الصفحات الكبيرة
+  5 images/05-offline-file.png  شغال أوفلاين من غير نت
+  (اختياري بعدين: 01-empty + صور 10..13 من رحلة المشتري — مش
+   ضروري في البداية)
+
+
+■ بروفايلك (Profile — The content of your profile page)
+----------------------------------------------------------------
+Display name
+  xDaw
+
+Avatar / Player icon
+  images/avatar.png       (512×512 — شعار التطبيق الرسمي)
+
+Bio (الصقه في حقل المحتوى/الوصف):
+  Hey, I'm xDaw — I build small, sharp tools for game devs.
+  My first release: PixelForge, a sprite sheet maker & pixel art
+  studio that runs 100% offline in your browser. No installs,
+  no subscriptions, no telemetry. More tools coming.
+
+Website (لو عندك): تحط رابط صفحة itch بتاعة المنتج بعدين أو الريبو:
+  https://github.com/DawshaX/BountyCore-assassin-and-work-done
+
+الصورة الشخصية/الغلاف: استخدم images/avatar.png
+
+
+■ بعد الحفظ — خطوات الإنهاء
+----------------------------------------------------------------
+ 1. Save → افتح Preview كأنك زائر.
+ 2. جرّب زرار التحميل بنفسك (لازم ينزّل ويفتح أوفلاين).
+ 3. راجع الترتيب: الغلاف، الوصف، الـ 5 سكرين شوتس، السعر.
+ 4. Visibility → **Public**.
+ 5. تأكد الصفحة بتظهر في البحث (itch.io?q=PixelForge).
+ 6. سجّل النشر في PLAN.md.
+
+================================================================
+ تشيك ليست ما قبل Publish (30 ثانية)
+================================================================
+ [ ] STEP 0 اتعمل (الدفع مفعّل)
+ [ ] السعر 5.99 (أو 3.99 افتتاحي)
+ [ ] ZIP اتنزّل من الصفحة واتفتح أوفلاين
+ [ ] الغلاف + 5 سكرين شوتس ظاهرين
+ [ ] 10 تاجات + الوصف + AI=Yes مضبوطين
+ [ ] Visibility: Public
+
+— النهاى —
+(الملف ده داخلي، مش جزء من ZIP المنتج.)
