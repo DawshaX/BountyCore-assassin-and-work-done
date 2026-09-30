@@ -1,0 +1,40 @@
+# Publish PixelForge to itch.io via butler.
+# The itch API key lives in the ITCH_BUTLER_KEY repo secret — never in code.
+# Run manually: gh workflow run publish-itch.yml
+# NOTE: butler can only push to an EXISTING project page (create it first).
+name: Publish to itch.io (butler)
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "itch project as user/slug"
+        required: true
+        default: "xDaw/pixelforge"
+      channel:
+        description: "butler channel name"
+        required: true
+        default: "default"
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install butler
+        run: |
+          curl -fsSL -o butler.zip "https://broth.itch.so/butler/linux-amd64/LATEST/archive/default"
+          unzip -o butler.zip
+          chmod +x butler
+          ./butler version
+
+      - name: Push PixelForge to itch.io
+        env:
+          BUTLER_API_KEY: ${{ secrets.ITCH_BUTLER_KEY }}
+        run: |
+          ./butler push "products/pixelforge/dist/PixelForge-v1.1.3.zip" \
+            "${{ inputs.target }}:${{ inputs.channel }}" \
+            --userversion "v1.1.3" \
+            --userversion-note "PixelForge v1.1.3 — buyer-journey verified"
