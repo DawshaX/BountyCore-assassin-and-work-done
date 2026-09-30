@@ -22,7 +22,7 @@ Title
   PixelForge — Sprite Sheet Maker & Pixel Art Studio
 
 Project URL
-  pixelforge          → becomes  xdaw.itch.io/pixelforge
+  pixelforge          → becomes  dawshax.itch.io/pixelforge
   (if taken: pixelforge-maker, then pixelforge-studio)
 
 Short description or tagline
@@ -35,17 +35,23 @@ Classification — What are you uploading?
            on itch are listed as Games)
 
 Kind of project
-  Downloadable — You only have files to be downloaded
+  ● Downloadable — You only have files to be downloaded
+  (IMPORTANT: switch away from "HTML" if it is pre-selected —
+   our product is a ZIP the buyer downloads and opens offline.
+   Choosing HTML also makes the embed freely usable without
+   paying. After you switch, the Embed options section should
+   disappear.)
 
 Release status
   Released — Project is complete, but might receive some updates
 
 Pricing
   ● Paid
-  Fixed price:  5.99
-  (Launch option: 3.99 for the first week — change it later in
-   Dashboard → Change pricing. Do NOT pick "$0 or donate" and
-   do NOT pick "No payments".)
+  Minimum price:  5.99
+  (Leave "Suggest an alternate default price" UNCHECKED so the
+   price is a fixed $5.99. Launch option: 3.99 for the first
+   week — change later in Dashboard. Do NOT pick "$0 or donate"
+   and do NOT pick "No payments".)
 
 
 --- UPLOADS -------------------------------------------------------
