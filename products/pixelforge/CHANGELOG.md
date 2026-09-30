@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.2 — 2026-09-30
+
+### Added
+- Defensive guards: empty GIF palette (fully-transparent edge case),
+  empty batch-rename pattern ignored with toast.
+
 ## 1.1.1 — 2026-09-30
 
 ### Fixed

@@ -128,6 +128,12 @@
     throw new Error("unknown format " + fmt);
   }
 
+  /** gifenc can return an empty palette for degenerate input — always give the encoder something. */
+  function guardPalette(pal) {
+    if (!pal || !pal.length) return [[0, 0, 0, 0]];
+    return pal;
+  }
+
   /* ---------- downloads ---------- */
 
   function saveBlob(name, blob) {
@@ -348,7 +354,7 @@ Generated offline by PixelForge
       let o = 0;
       for (const im of datas) { sample.set(im, o); o += im.length; }
     }
-    const palette = PFGif.quantize(sample, 255, { format: "rgba4444", oneBitAlpha: true });
+    const palette = guardPalette(PFGif.quantize(sample, 255, { format: "rgba4444", oneBitAlpha: true }));
     const transparentIndex = palette.findIndex((c) => c.length > 3 && c[3] === 0);
     const hasTransparency = transparentIndex >= 0;
     const gif = PFGif.GIFEncoder();

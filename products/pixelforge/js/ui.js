@@ -393,6 +393,7 @@
     $("btn-rename").onclick = async () => {
       const tpl = await askText("BATCH RENAME", "{name}");
       if (tpl === null) return;
+      if (!tpl.trim()) { showToast("Rename cancelled — empty pattern."); return; }
       const final = tpl.includes("{name}") || tpl.includes("{n}") ? tpl : tpl.replace(/\s*$/, "") + "_{n}";
       PF.renameAll(final);
       renderFrames();
