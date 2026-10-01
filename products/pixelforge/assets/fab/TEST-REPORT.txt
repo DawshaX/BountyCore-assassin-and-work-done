@@ -1,7 +1,7 @@
 PixelForge — Fab evidence shoot (real-browser, real images)
 ===========================================================
 == PIXELFORGE FAB EVIDENCE SHOOT ==
-date: 2026-10-01T01:44:11.747Z
+date: 2026-10-01T02:23:18.112Z
 viewport: 1920x1080 (Fab min for media: 1920x1080)
 opened: file:///home/user/BountyCore-assassin-and-work-done/products/pixelforge/index.html
   ok - runs from file:// (fully offline)
@@ -23,10 +23,15 @@ sheet: sheet 706×356 · 2 frames · 1×
   ok - export GIF: sprites.gif
   ok - export atlas JSON: sprites.json
   ok - export master ZIP: sprites_pixelforge.zip
-maxTex: 1024
+  ok - warning fires when frame exceeds texture (got: "⚠ Frame too wide for 1024px texture — reduce scale/padding.")
+at maxTex=1024: {"pages":2,"maxTex":1024}
+  ok - no false warning at maxTex=2048 (toast cleared)
+maxTex: 2048
   ok - screenshot s5-multipage-split.png
-sheet before export: {"pages":2,"pagesCount":2,"dims":["1024x1388","1024x1388"],"dirty":false,"maxTex":1024}
-status after multipage export: "Exported 2 sheet PNGs (1024×1388)"
+sheet before export: {"pages":2,"pagesCount":2,"dims":["1382x1388","1382x1388"],"allFramesFit":true,"dirty":false,"maxTex":2048}
+  ok - split into 2 pages
+  ok - every frame fits inside its page (no clipping)
+status after multipage export: "Exported 2 sheet PNGs (1382×1388)"
 download events: begin:sprites_p1.png | inProgress | inProgress | inProgress | inProgress | inProgress | completed | begin:sprites_p2.png | inProgress | inProgress | inProgress | inProgress | inProgress | completed
   ok - export multi-page PNGs: sprites_p1.png, sprites_p2.png
   ok - zero console/page errors (got 0: )
@@ -36,6 +41,6 @@ download events: begin:sprites_p1.png | inProgress | inProgress | inProgress | i
   ok - gallery fab-gallery-04-sheet-packed.png
   ok - gallery fab-gallery-05-animation-preview.png
   ok - gallery fab-gallery-06-multipage.png
-== SUMMARY: 26 ok, 0 FAIL, 228913ms ==
+== SUMMARY: 30 ok, 0 FAIL, 241325ms ==
 
 Downloaded exports: sprites.gif, sprites.json, sprites.png, sprites_p1.png, sprites_p2.png, sprites_pixelforge.zip

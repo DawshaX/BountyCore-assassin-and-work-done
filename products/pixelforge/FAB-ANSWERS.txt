@@ -1,0 +1,249 @@
+===============================================================================
+PIXELFORGE — FAB LISTING ANSWERS (field-by-field, copy-paste ready)
+Source: dev.epicgames.com Fab documentation (Product Details, Tags, Publishing
+Assets for Sale, Publisher Get Started) — researched 2026-10-01.
+Everything below is in English for direct pasting into the Fab form.
+===============================================================================
+
+RESEARCHED FACTS YOU SHOULD KNOW (not form fields)
+- Fab pays creators 88% / keeps 12%. Payout ~30 days after month end,
+  $100 minimum (rolling). No discount promos until listing is 30 days live.
+- Workflow: Draft -> Submit for review (Fab team, decision by email) ->
+  Automatic activation recommended -> Live. Typical review ~24h.
+- Editing Title/Description/Thumbnail/Images after publish = requires review
+  again. Editing Category/Subcategory/Tags/Price/License = NO review.
+- Media images: min 1920x1080, max 3MB each, JPEG/PNG, all media <25MB total.
+  (Our kit: every image is exactly 1920x1080, largest 1.3MB, total ~4MB.)
+- Thumbnail is CRITICAL: Fab auto-generates search tags FROM the thumbnail
+  image, so it must clearly show the product (ours shows the app UI + title).
+- Fab has a FAQ section ("+ Add FAQ") and optional product-discussion forum
+  thread (Yes = automatic thread on Epic Developer Community; once linked it
+  CANNOT be removed — answer Yes, we want it for support).
+
+===============================================================================
+1. TITLE  (docs: "ideally 30 characters or less")
+===============================================================================
+PASTE:
+PixelForge Sprite Sheet Maker
+(29 characters. Brand first + the exact keyword buyers search for.)
+
+Fallback if a longer title field is offered: PixelForge - Sprite Sheet Maker
+& Pixel Art Studio  (do not exceed ~60 chars)
+
+===============================================================================
+2. SHORT DESCRIPTION  (only if the form shows one — official docs list none)
+===============================================================================
+PASTE:
+Offline sprite sheet maker and pixel art studio: pixelate any image, pack
+frames, preview animation, export PNG/GIF/atlas JSON. No install, no account.
+
+===============================================================================
+3. DESCRIPTION  (long, narrative — plain text, no markdown symbols)
+===============================================================================
+PASTE (whole block):
+
+PixelForge is an offline sprite sheet maker and pixel art studio. It runs
+straight from a single HTML file in any modern browser - double-click, done.
+No installation, no account, no internet, no telemetry.
+
+WHY IT EXISTS
+Building sprite sheets by hand is slow: align frames, add padding, prevent
+texture bleeding, resize for engine limits, export in the right format.
+PixelForge does all of it in one place, with a live animation preview before
+you export.
+
+WHAT IT DOES
+- Import PNG/JPG/WEBP/GIF images by drag & drop or file picker
+- One-click "Convert to pixel art": pixel size slider, 13 palettes
+  (including DawnBringer 16 and PICO-8), dithering (none/Floyd-Steinberg/
+  Bayer), auto palette from your own image
+- Sheet layouts: shelf (tight pack), horizontal strip, vertical strip,
+  uniform grid with manual column count
+- Padding, edge extrusion (prevents texture bleeding), transparent-edge
+  trimming, output scale 1x/2x/4x/8x
+- Max texture size (1024/2048/4096/8192) with automatic multi-page split -
+  every page verified to fit, with a warning if a single frame is too large
+- Live animation preview: FPS control, loop/ping-pong/once modes, zoom,
+  click-to-set sprite pivot points
+- Undo/redo everywhere, batch frame rename, frame reorder
+
+EXPORT FORMATS
+- Sprite sheet as PNG (splits into page files when over the max texture)
+- Animated GIF
+- Atlas JSON in 4 formats: Generic JSON, Phaser 3, Aseprite, CSS sprite
+- Frames ZIP and an ALL-in-ZIP bundle (sheet + GIF + JSON + README)
+
+HOW TO USE (3 steps)
+1. Open index.html in your browser
+2. Drop your images in, adjust pixelate/layout settings
+3. Press PNG, GIF, ATLAS or ALL (ZIP) - files download instantly
+
+FILES INCLUDED IN THE DOWNLOAD
+index.html, style.css, js/ sources, README.md, LICENSE.txt, CHANGELOG.md,
+THIRD-PARTY.txt (open-source GIF libraries licenses). Total under 50 KB.
+Everything runs locally from your disk.
+
+REQUIREMENTS
+Any current browser (Chrome, Edge, Firefox, Safari). Works from file:// with
+no server. 100% offline.
+
+LICENSE
+Proprietary EULA (LICENSE.txt): personal and commercial use in your games
+and projects, no resale or redistribution of the source itself.
+
+Link to documentation and future updates:
+https://github.com/DawshaX/BountyCore-assassin-and-work-done/releases/tag/pixelforge-v1.1.3
+
+AI TRANSPARENCY
+Listing images include AI-generated demonstration photos. The application
+itself is deterministic code with no AI, no accounts and no network calls
+at runtime.
+
+===============================================================================
+4. CATEGORY / PRODUCT TYPE / SUBCATEGORY
+===============================================================================
+Category:            Tools & Plugins
+Product type:        Tools & Plugins (or "Tools" if a sub-list appears)
+Subcategory:         pick the closest to: "2D" / "Art Tools" / "Utilities"
+                     (official options vary - if nothing clearly fits,
+                     choose "Utilities" and send me a screenshot)
+Channel/engines:     if asked for engines: UEFN / Unreal Engine / Unity /
+                     "Other" -> choose "Other" (PixelForge is engine-agnostic;
+                     its PNG/JSON output works everywhere)
+
+===============================================================================
+5. TAGS  (searchable multi-select from a FIXED list - type to search)
+===============================================================================
+MUST select (confirmed present in Fab's official tag list):
+  1. Pixel          (rendering style - the core match)
+  2. Retro          (period/theme)
+  3. Animated       (technical feature - GIF + animation preview)
+
+Select additionally IF visible in the dropdown (in this priority order):
+  4. TexturePacked  (technical feature - atlas/packing output)
+  5. Stylized       (rendering style - pixel-art output is stylized)
+  6. Scripts        (technical feature - it is a scripted JS tool)
+
+Do NOT invent free-text tags; the field only accepts listed tags.
+(Fab also auto-tags from our thumbnail: it shows the app UI + title text.)
+
+===============================================================================
+6. LICENSE TYPE AND PRICE
+===============================================================================
+License:     Standard license  (required if we also want the NoAI option)
+Tiers:       enable BOTH tiers:
+               - Personal  (buyers with <= $100K annual revenue)
+               - Professional  (buyers above $100K annual revenue)
+NoAI:        enable the NoAI option (Standard license supports it; it means
+             buyers may not use our content to train AI models)
+Price:       5.99 USD   (prices come from a preset list ending .99; $5.99
+             matches our itch.io and BuiltByBit pricing - single price
+             applies to the Standard license)
+Currency:    USD
+Promotional content / sale: leave default (no discount; Fab blocks discounts
+             until the listing is 30 days old)
+
+===============================================================================
+7. THUMBNAIL IMAGE  (required, also drives auto-generated search tags)
+===============================================================================
+Upload: assets/fab/fab-thumbnail-1920x1080.png
+(1920x1080, 1.3 MB - shows the PixelForge UI with its title bar. Clear,
+representative, contains the product name for tag accuracy.)
+
+===============================================================================
+8. MEDIA GALLERY / IMAGES  (>=1 required; upload in this order)
+===============================================================================
+1. fab-gallery-03-pixelated.png        (177 KB) - photo transformed to pixel art
+2. fab-features-1920x1080.png          ( 84 KB) - feature overview graphic
+3. fab-gallery-04-sheet-packed.png     (206 KB) - packed sheet view
+4. fab-gallery-06-multipage.png        (858 KB) - page 1/2 split at max texture
+5. fab-gallery-05-animation-preview.png(177 KB) - live animation preview
+6. fab-gallery-02-import-real-photos.png(1.4 MB)- real photos imported
+7. fab-gallery-01-first-open.png       (114 KB) - clean first-open UI
+All exactly 1920x1080, all < 3 MB, total ~4 MB (well under 25 MB).
+No 3D preview or video needed (image gallery requirement satisfied).
+
+===============================================================================
+9. FILES / FORMATS  (the actual product download)
+===============================================================================
+"Add new format" -> choose the generic/"Additional files" type if asked
+(the exact label varies; for tools it is NOT an engine package) ->
+Upload: dist/PixelForge-v1.1.3.zip  (~40 KB)
+It contains the complete offline app + README + LICENSE + CHANGELOG.
+Max 3 additional files allowed, each up to 6 GB - we need just this one.
+
+===============================================================================
+10. FAQ  (section header: click "+ Add FAQ")
+===============================================================================
+Q: Does PixelForge need internet or an account?
+A: No. It runs 100% offline from a local HTML file. No login, no install,
+   no telemetry, no AI at runtime.
+
+Q: What file formats can I export?
+A: PNG sprite sheet (auto split into multiple pages when over the max
+   texture size), animated GIF, atlas JSON (Generic, Phaser 3, Aseprite),
+   CSS sprite sheet, frames ZIP, and an all-in-one ZIP bundle.
+
+Q: Will the output work in Unity, Unreal, or Godot?
+A: Yes. Exports are standard PNG/GIF/JSON files. The Generic JSON contains
+   frame rectangles, sizes and pivots; the CSS format works directly on
+   web projects. Engine-agnostic by design.
+
+Q: Do I need to be a pixel artist to use it?
+A: No. Import any photo or artwork and use one-click conversion with 13
+   color palettes, dithering and edge extrusion. Or use it purely as a
+   sheet packer for sprites you already made.
+
+Q: Is this a subscription?
+A: No. One-time purchase, lifetime use, free updates within the version
+   line.
+
+Q: What is included in the download?
+A: A single ZIP under 50 KB containing the full application
+   (index.html + style.css + js/), README.md, LICENSE.txt, CHANGELOG.md
+   and THIRD-PARTY.txt. Open index.html and start working.
+
+===============================================================================
+11. PRODUCT DISCUSSION / SUPPORT
+===============================================================================
+Enable product discussion thread:  YES
+(Requires a linked Epic/Epics Developer Community account. "Yes" creates an
+official discussion thread for support - we want it. WARNING: once created
+it cannot be removed from the listing.)
+
+Support contact / links:  https://github.com/DawshaX/BountyCore-assassin-and-work-done
+(no itch.io link on the Fab listing - avoids external-store link risk)
+
+===============================================================================
+12. VERSION / RELEASE / MATURE / OTHER FIELDS IF SHOWN
+===============================================================================
+Version:            1.1.3
+Release date:       2026-10-01
+Mature content:     No
+AI usage / generative AI declaration:  YES - describe exactly:
+   "Product code is hand-written deterministic JavaScript with no AI at
+    runtime. Development used AI assistance. Listing media includes
+    AI-generated demonstration photographs clearly used as demo input."
+(Consistent with our BuiltByBit disclosure: Yes / significant.)
+Open-text technical details (if shown):
+   "Standalone HTML5/JavaScript tool. No engine version required. Runs
+    offline in any modern browser from file://. Output: PNG, GIF, JSON."
+Promotional content declaration (if shown): our own product media only,
+   no third-party promotion -> select the "No"/"not sponsored" option.
+
+===============================================================================
+13. FINAL CHECKLIST BEFORE "SUBMIT FOR REVIEW"
+===============================================================================
+[ ] Title = PixelForge Sprite Sheet Maker
+[ ] Description pasted (plain text block)
+[ ] Category = Tools & Plugins + closest subcategory
+[ ] Tags = Pixel, Retro, Animated (+ TexturePacked/Stylized/Scripts if listed)
+[ ] Price = 5.99 USD, Standard license, Personal + Professional, NoAI on
+[ ] Thumbnail uploaded (fab-thumbnail-1920x1080.png)
+[ ] 7 gallery images uploaded in the order above
+[ ] Product zip attached via "Add new format"
+[ ] 6 FAQs added
+[ ] Product discussion = Yes
+[ ] AI declaration = Yes (text above)
+[ ] Save draft -> Submit for review -> keep "automatic activation" when live
+===============================================================================
