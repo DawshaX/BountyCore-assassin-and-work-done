@@ -363,13 +363,19 @@
     const maxW = P.maxTex;
     const n = items.length;
 
+    const cw = Math.max(1, ...items.map((i) => i.w));
+    const ch = Math.max(1, ...items.map((i) => i.h));
+
+    /* Warn only when a single frame cannot fit inside ONE page
+       (multi-page split handles wider grids without data loss). */
+    if (cw + pad * 2 > maxW || ch + pad * 2 > maxW) {
+      toast(`⚠ Frame too wide for ${maxW}px texture — reduce scale/padding.`);
+    }
+
     let positions = [];
     let sheetW = 0, sheetH = 0;
 
     if (P.layout === "grid" || P.layout === "hstrip" || P.layout === "vstrip") {
-      const cw = Math.max(1, ...items.map((i) => i.w));
-      const ch = Math.max(1, ...items.map((i) => i.h));
-
       let cols;
       if (P.layout === "hstrip") cols = n;
       else if (P.layout === "vstrip") cols = 1;
@@ -386,7 +392,6 @@
           rows = Math.ceil(n / cols);
           need = cols * (cw + pad) + pad;
         }
-        if (need > maxW) toast(`⚠ Frame too wide for ${maxW}px texture — reduce scale/padding.`);
       }
 
       positions = items.map((_, i) => {
