@@ -78,6 +78,14 @@ HOW TO USE (3 steps)
 2. Drop your images in, adjust pixelate/layout settings
 3. Press PNG, GIF, ATLAS or ALL (ZIP) - files download instantly
 
+UNITY EDITOR INTEGRATION (included as a separate Unity format)
+Install the Unity package and a new menu appears:
+Tools > PixelForge > Open Sprite Sheet Maker - it launches the bundled
+offline app in your default browser. The tool is editor/user space only:
+it never modifies scenes or assets and requires no render pipeline.
+Dragging an exported PNG into the Assets folder imports it as a normal
+Texture2D you can slice with the Sprite Editor.
+
 FILES INCLUDED IN THE DOWNLOAD
 index.html, style.css, js/ sources, README.md, LICENSE.txt, CHANGELOG.md,
 THIRD-PARTY.txt (open-source GIF libraries licenses). Total under 50 KB.
@@ -181,13 +189,31 @@ All exactly 1920x1080, all < 3 MB, total ~4 MB (well under 25 MB).
 No 3D preview or video needed (image gallery requirement satisfied).
 
 ===============================================================================
-9. FILES / FORMATS  (the actual product download)
+9. FILES / FORMATS  (the actual product download — TWO formats)
 ===============================================================================
-"Add new format" -> choose the generic/"Additional files" type if asked
-(the exact label varies; for tools it is NOT an engine package) ->
-Upload: dist/PixelForge-v1.1.3.zip  (~40 KB)
-It contains the complete offline app + README + LICENSE + CHANGELOG.
-Max 3 additional files allowed, each up to 6 GB - we need just this one.
+Fab requires at least one ENGINE format before "Submit for review"
+(the error "Listing promotion requires at least one asset format" means
+Additional Files alone do not count). Add BOTH:
+
+FORMAT 1 (REQUIRED - satisfies the gate):
+  "Add new format" -> choose **Unity**
+  Upload: dist/PixelForge-Unity-v1.1.3.unitypackage  (39 KB)
+  If asked for technical details:
+    Unity version: 2021.3 or newer   (compatible with all versions >= 2021.3)
+    Render pipeline: Any / Universal / Built-in — the tool is editor-only,
+      it works with every pipeline (choose "All" or "Any" if offered)
+    Dependencies: none (pure C# Editor script, no third-party DLLs)
+  What it contains: Assets/PixelForge/ with Editor/PixelForgeLauncher.cs
+  (menu Tools > PixelForge), the complete offline WebApp, README,
+  LICENSE, CHANGELOG. Buyers without Unity can use the Additional Files ZIP.
+
+FORMAT 2 (already uploaded by you - keep it):
+  "Additional files" -> PixelForge-v1.1.3.zip  (~40 KB, standalone app)
+
+Note: Accepted Fab formats (official docs, for reference):
+Unity, Unreal Engine, UEFN Source, FBX, GLB, GLTF, OBJ, USD, USDZ,
+Blender, 3ds Max, Cinema 4D, Maya, MetaHuman (.mhpkg), Additional files.
+No .yml/.yaml format exists on Fab - do not look for one.
 
 ===============================================================================
 10. FAQ  (section header: click "+ Add FAQ")
@@ -219,6 +245,12 @@ Q: What is included in the download?
 A: A single ZIP under 50 KB containing the full application
    (index.html + style.css + js/), README.md, LICENSE.txt, CHANGELOG.md
    and THIRD-PARTY.txt. Open index.html and start working.
+
+Q: Do I need Unity (or Unreal) to use PixelForge?
+A: No. The standalone ZIP in Additional Files runs in any modern browser
+   with no engine at all. The Unity format is an optional editor
+   integration (Tools > PixelForge menu) that bundles the same offline
+   app inside your project.
 
 ===============================================================================
 11. PRODUCT DISCUSSION / SUPPORT
@@ -259,8 +291,9 @@ Promotional content declaration (if shown): our own product media only,
 [ ] Price = 5.99 USD, Standard license, Personal + Professional, NoAI on
 [ ] Thumbnail uploaded (fab-thumbnail-1920x1080.png)
 [ ] 7 gallery images uploaded in the order above
-[ ] Product zip attached via "Add new format"
-[ ] 6 FAQs added
+[ ] FORMAT 1: Add new format -> Unity -> PixelForge-Unity-v1.1.3.unitypackage
+[ ] FORMAT 2: Additional files -> PixelForge-v1.1.3.zip (already uploaded)
+[ ] 7 FAQs added
 [ ] Product discussion = Yes
 [ ] AI declaration = Yes (text above)
 [ ] Save draft -> Submit for review -> keep "automatic activation" when live
