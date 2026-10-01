@@ -112,20 +112,37 @@ Channel/engines:     if asked for engines: UEFN / Unreal Engine / Unity /
                      its PNG/JSON output works everywhere)
 
 ===============================================================================
-5. TAGS  (searchable multi-select from a FIXED list - type to search)
+5. TAGS  (searchable multi-select — HARD LIMIT: 15 tags per listing)
 ===============================================================================
-MUST select (confirmed present in Fab's official tag list):
-  1. Pixel          (rendering style - the core match)
-  2. Retro          (period/theme)
-  3. Animated       (technical feature - GIF + animation preview)
+All 15 below were verified present on live Fab listings (harvested from
+comparable products) and are suitable for PixelForge. Type each one in the
+tag search box; if it does not autocomplete, skip it and use a backup.
 
-Select additionally IF visible in the dropdown (in this priority order):
-  4. TexturePacked  (technical feature - atlas/packing output)
-  5. Stylized       (rendering style - pixel-art output is stylized)
-  6. Scripts        (technical feature - it is a scripted JS tool)
+PASTE list (one per slot, order does not matter):
+  1. Pixelart        (ONE WORD — the exact term buyers search)
+  2. Pixel
+  3. Retro
+  4. 8bit
+  5. Sprite
+  6. 2DAsset         (ONE WORD)
+  7. Tool
+  8. Editor
+  9. Utility
+ 10. Workflow
+ 11. Texture
+ 12. Animated
+ 13. Stylized
+ 14. Art
+ 15. Maker
 
-Do NOT invent free-text tags; the field only accepts listed tags.
-(Fab also auto-tags from our thumbnail: it shows the app UI + title text.)
+Backups (also verified live) if any above does not autocomplete:
+  Animation · TexturePacked · Scripts · Design · Videogame · Topdown
+
+Why these: 1-6 catch "pixel art / sprite sheet" searches; 7-10 place the
+listing in the tool/workflow filters (what comparable tools use);
+11-15 cover texture/animation/style filters. Do NOT invent free-text tags -
+the field only accepts tags that exist on Fab. Fab also auto-tags from our
+thumbnail (it shows the app UI + product name).
 
 ===============================================================================
 6. LICENSE TYPE AND PRICE
@@ -236,8 +253,9 @@ Promotional content declaration (if shown): our own product media only,
 ===============================================================================
 [ ] Title = PixelForge Sprite Sheet Maker
 [ ] Description pasted (plain text block)
-[ ] Category = Tools & Plugins + closest subcategory
-[ ] Tags = Pixel, Retro, Animated (+ TexturePacked/Stylized/Scripts if listed)
+[ ] Product type = tools · Category = engine tools
+[ ] Tags = 15 from section 5 (Pixelart, Pixel, Retro, 8bit, Sprite, 2DAsset,
+     Tool, Editor, Utility, Workflow, Texture, Animated, Stylized, Art, Maker)
 [ ] Price = 5.99 USD, Standard license, Personal + Professional, NoAI on
 [ ] Thumbnail uploaded (fab-thumbnail-1920x1080.png)
 [ ] 7 gallery images uploaded in the order above
