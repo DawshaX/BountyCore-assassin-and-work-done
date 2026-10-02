@@ -1248,3 +1248,169 @@ try:
             ICON_NAMES.append(_n)
 except ImportError:  # pragma: no cover
     pass
+
+
+# ------------------------------------------------- HUD overlay widgets ---
+def minimap(size, theme_key, label="MINIMAP"):
+    """Minimap frame: title band, grid, terrain blobs, blips, player, N marker."""
+    t = THEMES[theme_key]
+    style = t["style"]
+    g = GEO[style]
+    u = _uid()
+    th = 42
+    x0, y0, x1, y1 = 16, th + 14, size - 16, size - 16
+    parts = []
+    if style == "pixel":
+        parts.append(f'<rect x="9" y="9" width="{size-4}" height="{size-4}" '
+                     f'fill="#000000" opacity="0.55"/>')
+    else:
+        parts.append(_shadow(style, size, size, g["r"], dy=5, op=0.38))
+    parts.append(f'<defs><clipPath id="mm{u}">{_path_for(style, size, size, g["r"])}</clipPath></defs>')
+    parts.append(f'<g fill="{t["panel"]}" stroke="{t["stroke"]}" '
+                 f'stroke-width="{g["stroke"]}">{_path_for(style, size, size, g["r"])}</g>')
+    # title band
+    parts.append(f'<g clip-path="url(#mm{u})">'
+                 f'<rect x="0" y="0" width="{size}" height="{th}" '
+                 f'fill="{t["accent"]}" opacity="{0.20 if style != "pixel" else 0.30}"/>'
+                 f'<rect x="0" y="{th}" width="{size}" height="2.5" '
+                 f'fill="{t["accent2"]}" opacity="0.95"/></g>')
+    if label:
+        fam = MONO if style == "pixel" else FAM
+        parts.append(f'<text x="20" y="{th/2+1}" fill="{t["ink"]}" font-family="{fam}" '
+                     f'font-size="17" font-weight="700" letter-spacing="1.6" '
+                     f'dominant-baseline="central">{label}</text>')
+    # content clip: grid
+    cw = x1 - x0
+    step = max(18, cw // 4)
+    parts.append(f'<g clip-path="url(#mm{u})">')
+    parts.append(f'<rect x="{x0}" y="{y0}" width="{cw}" height="{y1-y0}" '
+                 f'fill="{t["bg"]}" opacity="0.55"/>')
+    for i in range(1, 5):
+        parts.append(f'<line x1="{x0+i*step}" y1="{y0}" x2="{x0+i*step}" y2="{y1}" '
+                     f'stroke="{t["muted"]}" stroke-width="1" opacity="0.35"/>')
+        parts.append(f'<line x1="{x0}" y1="{y0+i*step}" x2="{x1}" y2="{y0+i*step}" '
+                     f'stroke="{t["muted"]}" stroke-width="1" opacity="0.35"/>')
+    # terrain blobs + path
+    parts.append(f'<ellipse cx="{x0+cw*0.34}" cy="{y0+cw*0.30}" rx="{cw*0.24}" ry="{cw*0.17}" '
+                 f'fill="{t["good"]}" opacity="0.28"/>')
+    parts.append(f'<ellipse cx="{x0+cw*0.70}" cy="{y0+cw*0.68}" rx="{cw*0.20}" ry="{cw*0.14}" '
+                 f'fill="{t["good"]}" opacity="0.22"/>')
+    parts.append(f'<path d="M{x0+cw*0.1} {y1-8} q {cw*0.35} -{cw*0.3} {cw*0.5} -{cw*0.45} '
+                 f't {cw*0.32} -{cw*0.28}" fill="none" stroke="{t["mana"]}" '
+                 f'stroke-width="6" opacity="0.45" stroke-linecap="round"/>')
+    # blips: enemies / loot / quest
+    for bx, by, col in ((0.62, 0.30, t["danger"]), (0.74, 0.46, t["danger"]),
+                        (0.28, 0.68, "#F5C542"), (0.55, 0.78, t["accent2"])):
+        px, py = x0 + cw * bx, y0 + (y1 - y0) * by
+        parts.append(f'<circle cx="{px}" cy="{py}" r="4.5" fill="{col}" '
+                     f'stroke="#000000" stroke-width="1.5"/>')
+    # player arrow (center)
+    cx, cy = x0 + cw * 0.48, y0 + (y1 - y0) * 0.52
+    parts.append(f'<path d="M{cx} {cy-9} L{cx+7} {cy+7} L{cx} {cy+3} L{cx-7} {cy+7} Z" '
+                 f'fill="{t["accent2"]}" stroke="{t["bg"]}" stroke-width="1.6"/>')
+    # N marker + crosshair ring
+    parts.append(f'<text x="{x0+cw/2}" y="{y0+16}" fill="{t["ink"]}" font-family="{FAM}" '
+                 f'font-size="13" font-weight="700" text-anchor="middle">N</text>')
+    parts.append(f'<circle cx="{cx}" cy="{cy}" r="16" fill="none" stroke="{t["accent2"]}" '
+                 f'stroke-width="1.5" opacity="0.7"/>')
+    parts.append('</g>')
+    # outer corner ticks
+    parts.append(f'<g fill="none" stroke="{t["accent2"]}" stroke-width="2" opacity="0.85">'
+                 f'<path d="M10 {th+10} v-0 M{x0-6} {y0-6} h10 M{x1-4} {y0-6} h-10 '
+                 f'M{x0-6} {y1+4} h10 M{x1-4} {y1+4} h-10"/></g>')
+    return _svg(size, size, "".join(parts))
+
+
+def compass(w, h, theme_key):
+    """Horizontal compass strip: ticks, cardinals, needle, degrees."""
+    t = THEMES[theme_key]
+    style = t["style"]
+    g = GEO[style]
+    u = _uid()
+    r = h / 2 - 1 if style != "pixel" else g["r"]
+    parts = [_shadow(style, w, h, r, dy=3, op=0.35)]
+    parts.append(f'<defs><clipPath id="cp{u}">{_path_for(style, w, h, r)}</clipPath></defs>')
+    parts.append(f'<g fill="{t["panel"]}" stroke="{t["stroke"]}" '
+                 f'stroke-width="{g["stroke"]}">{_path_for(style, w, h, r)}</g>')
+    parts.append(f'<g clip-path="url(#cp{u})">')
+    fam = MONO if style == "pixel" else FAM
+    cards = [("N", 0.0), ("NE", 0.125), ("E", 0.25), ("SE", 0.375),
+             ("S", 0.5), ("SW", 0.625), ("W", 0.75), ("NW", 0.875)]
+    # strip window with wrap illusion: show window around center 72deg
+    wx0, wx1 = 10, w - 10
+    parts.append(f'<rect x="{wx0}" y="6" width="{wx1-wx0}" height="{h-12}" '
+                 f'fill="{t["bg"]}" opacity="0.5"/>')
+    for name, frac in cards:
+        tx = wx0 + (wx1 - wx0) * frac
+        is_card = len(name) == 1
+        col = t["accent2"] if name == "N" else (t["ink"] if is_card else t["muted"])
+        parts.append(f'<text x="{tx}" y="{h*0.40}" fill="{col}" font-family="{fam}" '
+                     f'font-size="{16 if is_card else 11}" font-weight="700" '
+                     f'text-anchor="middle" dominant-baseline="central">{name}</text>')
+        parts.append(f'<line x1="{tx}" y1="{h*0.58}" x2="{tx}" y2="{h*0.80}" '
+                     f'stroke="{col}" stroke-width="{2.5 if is_card else 1.5}" opacity="{0.95 if is_card else 0.6}"/>')
+    # minor ticks
+    for i in range(0, 17):
+        tx = wx0 + (wx1 - wx0) * (i / 16.0)
+        parts.append(f'<line x1="{tx}" y1="{h*0.62}" x2="{tx}" y2="{h*0.70}" '
+                     f'stroke="{t["muted"]}" stroke-width="1" opacity="0.4"/>')
+    parts.append('</g>')
+    # center needle
+    cx = w / 2
+    parts.append(f'<path d="M{cx} 4 L{cx+7} 14 L{cx-7} 14 Z" fill="{t["danger"]}" '
+                 f'stroke="{t["bg"]}" stroke-width="1.2"/>')
+    parts.append(f'<rect x="{cx-1}" y="6" width="2" height="{h-12}" fill="{t["danger"]}" '
+                 f'opacity="0.8"/>')
+    # degrees label
+    parts.append(f'<rect x="{cx-30}" y="{h-16}" width="60" height="15" rx="{7 if style!="pixel" else 0}" '
+                 f'fill="{t["panel2"]}" stroke="{t["stroke"]}" stroke-width="1"/>')
+    parts.append(f'<text x="{cx}" y="{h-8}" fill="{t["accent2"]}" font-family="{MONO}" '
+                 f'font-size="11" font-weight="700" text-anchor="middle" '
+                 f'dominant-baseline="central">072°</text>')
+    return _svg(w, h, "".join(parts))
+
+
+def currency(theme_key, kind="gold", amount="12,450", h=52, with_plus=True):
+    """Currency counter: icon + amount + optional purchase (+) button."""
+    t = THEMES[theme_key]
+    style = t["style"]
+    g = GEO[style]
+    u = _uid()
+    col_map = {"gold": t["accent2"] if style in ("fantasy", "royal") else "#F5C542",
+               "gem": t["mana"], "gem2": "#B455E6", "energy": t["good"]}
+    col = col_map.get(kind, col_map["gold"])
+    ico = {"gold": "coin", "gem": "gem", "gem2": "star", "energy": "bolt"}.get(kind, "coin")
+    plus_w = h if with_plus else 0
+    w = int(h * 2.9) + plus_w
+    r = h / 2 - 1 if style != "pixel" else g["r"]
+    parts = [_shadow(style, w, h, r, dy=3, op=0.35)]
+    parts.append(f'<defs><clipPath id="cu{u}">{_path_for(style, w, h, r)}</clipPath></defs>')
+    parts.append(f'<g fill="{t["panel"]}" stroke="{col}" stroke-width="2.5">'
+                 f'{_path_for(style, w, h, r)}</g>')
+    parts.append(f'<g clip-path="url(#cu{u})">'
+                 f'<rect x="0" y="0" width="{w}" height="{h*0.42}" fill="#ffffff" opacity="0.06"/></g>')
+    # icon
+    parts.append(f'<g transform="translate({h*0.18},{h*0.18}) scale({h*0.64/24})">'
+                 f'{icon_body(ico, col)}</g>')
+    # amount
+    tx = h * 0.18 + h * 0.64 + 10
+    parts.append(f'<text x="{tx + (w - plus_w - tx)/2}" y="{h/2}" fill="{t["ink"]}" '
+                 f'font-family="{FAM if style!="pixel" else MONO}" '
+                 f'font-size="{int(h*0.40)}" font-weight="700" text-anchor="middle" '
+                 f'dominant-baseline="central">{amount}</text>')
+    # plus button
+    if with_plus:
+        px0 = w - h
+        parts.append(f'<g clip-path="url(#cu{u})">'
+                     f'<rect x="{px0}" y="0" width="{h}" height="{h}" fill="{col}" '
+                     f'opacity="{0.92 if state_ok(style) else 0.92}"/>'
+                     f'<rect x="{px0}" y="0" width="2" height="{h}" fill="#000000" opacity="0.35"/></g>')
+        cxx, cyy = px0 + h / 2, h / 2
+        arm = h * 0.22
+        parts.append(f'<path d="M{cxx-arm} {cyy} H{cxx+arm} M{cxx} {cyy-arm} V{cyy+arm}" '
+                     f'stroke="{t["bg"]}" stroke-width="3.4" stroke-linecap="round"/>')
+    return _svg(w, h, "".join(parts))
+
+
+def state_ok(style):
+    return True

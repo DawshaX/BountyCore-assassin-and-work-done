@@ -156,6 +156,15 @@ def build_theme(theme):
         put("leaderboard", f"row-{rk}",
             K.leaderboard(440, 64, theme, rk, nm, f"{20000 - rk*1731:,}"))
 
+    # ---- HUD overlay widgets (minimap / compass / currency)
+    put("hud", "minimap-220", K.minimap(220, theme, "MINIMAP"))
+    put("hud", "minimap-180", K.minimap(180, theme, "ZONE 4"))
+    for ww in (240, 320, 420):
+        put("hud", f"compass-{ww}", K.compass(ww, 54, theme))
+    for kn in ("gold", "gem", "gem2", "energy"):
+        put("hud", f"currency-{kn}-plus", K.currency(theme, kn, "12,450", with_plus=True))
+        put("hud", f"currency-{kn}", K.currency(theme, kn, "386", h=44, with_plus=False))
+
     # ---- icons (theme-tinted)
     for name in K.ICON_NAMES:
         put("icons", name, K.icon(name, theme, 96))

@@ -1,0 +1,28 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="settings-root" class="mega-root" style="padding:40px;">
+        <ui:Label text="SETTINGS" class="mega-title"/>
+        <ui:VisualElement class="mega-panel" style="margin-top:18px;padding:24px;">
+            <ui:VisualElement style="flex-direction:row;justify-content:space-between;">
+                <ui:Label text="Master volume"/>
+                <ui:Slider low-value="0" high-value="100" value="80" style="width:320px;"/>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-direction:row;justify-content:space-between;margin-top:18px;">
+                <ui:Label text="Brightness"/>
+                <ui:Slider low-value="0" high-value="100" value="55" style="width:320px;"/>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-direction:row;justify-content:space-between;margin-top:18px;">
+                <ui:Label text="Fullscreen"/>
+                <ui:Toggle value="true"/>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-direction:row;justify-content:space-between;margin-top:18px;">
+                <ui:Label text="Quality"/>
+                <ui:DropdownField choices="{'Low','Medium','High','Ultra'}" value="High"
+                    style="width:220px;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction:row;margin-top:22px;">
+            <ui:Button text="APPLY" class="mega-btn" style="margin-right:12px;"/>
+            <ui:Button text="CANCEL" class="mega-btn mega-btn--ghost"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

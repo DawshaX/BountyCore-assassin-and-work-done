@@ -149,88 +149,13 @@ TextureImporter:
   assetBundleVariant: 
 """
 
-USS = """/* MegaUI design tokens — UI Toolkit USS (variables + starter classes) */
-:root {
-    --mega-bg: #14100c;
-    --mega-panel: #1e1813;
-    --mega-panel2: #271f17;
-    --mega-ink: #f0e6d2;
-    --mega-muted: #a8987c;
-    --mega-accent: #d4a94e;
-    --mega-accent2: #f2cc7a;
-    --mega-stroke: #7a5c2c;
-    --mega-danger: #c0392b;
-    --mega-good: #4e9a51;
-    --mega-mana: #4f7bd8;
-    --mega-radius: 8px;
-    --mega-stroke-width: 2px;
-}
+def _load_uss():
+    p = os.path.join(ROOT, "unity", "UI", "MegaUI.uss")
+    if os.path.isfile(p):
+        return open(p).read()
+    return "/* missing unity/UI/MegaUI.uss */"
 
-.mega-root {
-    background-color: var(--mega-bg);
-    color: var(--mega-ink);
-    font-size: 16px;
-}
-
-.mega-btn {
-    background-color: var(--mega-accent);
-    color: var(--mega-bg);
-    border-width: var(--mega-stroke-width);
-    border-color: var(--mega-accent);
-    border-radius: var(--mega-radius);
-    padding: 10px 28px;
-    -unity-font-style: bold;
-    letter-spacing: 2.4px;
-    transition-property: background-color;
-    transition-duration: 0.1s;
-}
-
-.mega-btn:hover { background-color: var(--mega-accent2); }
-.mega-btn:active { background-color: var(--mega-stroke); }
-.mega-btn:disabled { opacity: 0.45; }
-
-.mega-btn--ghost {
-    background-color: rgba(0, 0, 0, 0);
-    color: var(--mega-ink);
-    border-color: var(--mega-accent);
-}
-
-.mega-panel {
-    background-color: var(--mega-panel);
-    border-width: var(--mega-stroke-width);
-    border-color: var(--mega-stroke);
-    border-radius: var(--mega-radius);
-    padding: 18px;
-}
-
-.mega-title {
-    font-size: 22px;
-    -unity-font-style: bold;
-    letter-spacing: 2px;
-    color: var(--mega-accent);
-    margin-bottom: 8px;
-}
-
-.mega-chip {
-    background-color: var(--mega-panel);
-    border-width: 2px;
-    border-color: var(--mega-accent2);
-    border-radius: 999px;
-    padding: 6px 16px;
-    -unity-font-style: bold;
-}
-
-.mega-bar-track {
-    background-color: var(--mega-panel2);
-    border-radius: 4px;
-    height: 24px;
-}
-.mega-bar-fill {
-    background-color: var(--mega-danger);
-    border-radius: 4px;
-    height: 24px;
-}
-"""
+USS = _load_uss()
 
 UXML = """<ui:UXML xmlns:ui="UnityEngine.UIElements">
     <ui:VisualElement name="mega-root" class="mega-root mega-panel" style="padding:40px;">
@@ -341,6 +266,16 @@ def collect():
     files.append((None, "Assets/MegaUI/UI/MegaUI.uss", USS))
     files.append((None, "Assets/MegaUI/UI/Sample.uxml", UXML))
     files.append((None, "Assets/MegaUI/Editor/MegaUIWindow.cs", EDITOR_CS))
+    # runtime C# (motion + theming)
+    udir = os.path.join(ROOT, "unity")
+    for fn in sorted(os.listdir(udir)):
+        if fn.endswith(".cs"):
+            files.append((os.path.join(udir, fn), f"Assets/MegaUI/Runtime/{fn}", None))
+    # extra UXML screens
+    xdir = os.path.join(udir, "UXML")
+    if os.path.isdir(xdir):
+        for fn in sorted(os.listdir(xdir)):
+            files.append((os.path.join(xdir, fn), f"Assets/MegaUI/UI/{fn}", None))
     tok = os.path.join(KIT, "tokens", "design-tokens.json")
     if os.path.isfile(tok):
         files.append((tok, "Assets/MegaUI/design-tokens.json", None))

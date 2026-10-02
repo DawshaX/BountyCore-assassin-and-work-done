@@ -1,0 +1,37 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="hud-root" class="mega-root" style="flex-direction:column;">
+        <!-- Top: quest + currency -->
+        <ui:VisualElement style="flex-direction:row;justify-content:space-between;">
+            <ui:Label text="▸ Slay 10 Ghouls (2/10)" class="mega-chip"/>
+            <ui:VisualElement style="flex-direction:row;">
+                <ui:Label text="12,450" class="mega-chip" style="margin-right:10px;"/>
+                <ui:Label text="386" class="mega-chip"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <!-- Boss bar -->
+        <ui:VisualElement style="margin-top:16px;">
+            <ui:Label text="BOSS · VOID TITAN" style="letter-spacing:2px;opacity:.8;"/>
+            <ui:VisualElement class="mega-bar-track" style="margin-top:6px;width:760px;">
+                <ui:VisualElement class="mega-bar-fill" style="width:62%;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <!-- Bottom: player bars + action row -->
+        <ui:VisualElement style="flex:1;justify-content:flex-end;">
+            <ui:VisualElement style="width:420px;">
+                <ui:VisualElement class="mega-bar-track">
+                    <ui:VisualElement class="mega-bar-fill" style="width:82%;"/>
+                </ui:VisualElement>
+                <ui:VisualElement class="mega-bar-track" style="margin-top:6px;">
+                    <ui:VisualElement class="mega-bar-fill"
+                        style="width:54%;background-color:var(--mega-mana);"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-direction:row;margin-top:14px;">
+                <ui:Label text="1" class="mega-chip" style="margin-right:8px;min-width:44px;"/>
+                <ui:Label text="2" class="mega-chip" style="margin-right:8px;min-width:44px;"/>
+                <ui:Label text="3" class="mega-chip" style="margin-right:8px;min-width:44px;"/>
+                <ui:Label text="4" class="mega-chip" style="margin-right:8px;min-width:44px;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

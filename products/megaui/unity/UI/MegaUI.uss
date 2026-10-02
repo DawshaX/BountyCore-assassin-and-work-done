@@ -1,0 +1,190 @@
+/* MegaUI design tokens — UI Toolkit USS (variables + widget classes)
+   Values match design-tokens.json / MegaUIThemes.cs exactly. */
+
+:root {
+    /* Dark Fantasy (default) */
+    --mega-bg: #14100c;
+    --mega-panel: #1e1813;
+    --mega-panel2: #271f17;
+    --mega-ink: #f0e6d2;
+    --mega-muted: #a8987c;
+    --mega-accent: #d4a94e;
+    --mega-accent2: #f2cc7a;
+    --mega-stroke: #7a5c2c;
+    --mega-danger: #c0392b;
+    --mega-good: #4e9a51;
+    --mega-mana: #4f7bd8;
+    --mega-radius: 8px;
+    --mega-stroke-width: 2px;
+}
+
+/* ---- one-line theme swap: add class on the root element ---- */
+.mega-theme-scifi {
+    --mega-bg: #070b14; --mega-panel: #0d1526; --mega-panel2: #12203a;
+    --mega-ink: #e6f4ff; --mega-muted: #6e8ba8; --mega-accent: #38e8ff;
+    --mega-accent2: #ff4fd8; --mega-stroke: #1e3a5f; --mega-danger: #ff4464;
+    --mega-good: #3dffb5; --mega-mana: #7a5cff;
+}
+.mega-theme-royal {
+    --mega-bg: #f4efe4; --mega-panel: #ffffff; --mega-panel2: #f7f3ea;
+    --mega-ink: #1c2333; --mega-muted: #6b7386; --mega-accent: #1f3a6e;
+    --mega-accent2: #c9a227; --mega-stroke: #d8d0be; --mega-danger: #b23a3a;
+    --mega-good: #2f7d4f; --mega-mana: #3f6fd8;
+}
+.mega-theme-pixel {
+    --mega-bg: #1a1c2c; --mega-panel: #2e2e48; --mega-panel2: #3d3d5c;
+    --mega-ink: #f4f4f4; --mega-muted: #9b9bb5; --mega-accent: #ffcd75;
+    --mega-accent2: #41a6f6; --mega-stroke: #0d0d1a; --mega-danger: #ef7d57;
+    --mega-good: #4bc95f; --mega-mana: #41a6f6;
+}
+
+/* ---- base ---- */
+.mega-root {
+    background-color: var(--mega-bg);
+    color: var(--mega-ink);
+    font-size: 16px;
+}
+
+/* ---- buttons ---- */
+.mega-btn {
+    background-color: var(--mega-accent);
+    color: var(--mega-bg);
+    border-width: var(--mega-stroke-width);
+    border-color: var(--mega-accent);
+    border-radius: var(--mega-radius);
+    padding: 10px 28px;
+    -unity-font-style: bold;
+    letter-spacing: 2.4px;
+    transition-property: background-color;
+    transition-duration: 0.1s;
+}
+.mega-btn:hover { background-color: var(--mega-accent2); }
+.mega-btn:active { background-color: var(--mega-stroke); }
+.mega-btn:disabled { opacity: 0.45; }
+.mega-btn--ghost {
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--mega-ink);
+    border-color: var(--mega-accent);
+}
+.mega-btn--danger {
+    background-color: var(--mega-danger);
+    border-color: var(--mega-danger);
+    color: #ffffff;
+}
+
+/* ---- panels / titles ---- */
+.mega-panel {
+    background-color: var(--mega-panel);
+    border-width: var(--mega-stroke-width);
+    border-color: var(--mega-stroke);
+    border-radius: var(--mega-radius);
+    padding: 18px;
+}
+.mega-title {
+    font-size: 22px;
+    -unity-font-style: bold;
+    letter-spacing: 2px;
+    color: var(--mega-accent);
+    margin-bottom: 8px;
+}
+.mega-chip {
+    background-color: var(--mega-panel);
+    border-width: 2px;
+    border-color: var(--mega-accent2);
+    border-radius: 999px;
+    padding: 6px 16px;
+    -unity-font-style: bold;
+}
+.mega-lbl {
+    font-size: 12px;
+    letter-spacing: 1.6px;
+    color: var(--mega-muted);
+    -unity-font-style: bold;
+}
+
+/* ---- bars ---- */
+.mega-bar-track {
+    background-color: var(--mega-panel2);
+    border-radius: 4px;
+    height: 24px;
+}
+.mega-bar-fill {
+    background-color: var(--mega-danger);
+    border-radius: 4px;
+    height: 24px;
+}
+.mega-bar-fill--mana { background-color: var(--mega-mana); }
+.mega-bar-fill--good { background-color: var(--mega-good); }
+.mega-bar-fill--accent { background-color: var(--mega-accent); }
+
+/* ---- form widgets ---- */
+.mega-slider { width: 320px; }
+.mega-toggle { color: var(--mega-ink); }
+.mega-check {
+    background-color: var(--mega-panel2);
+    border-width: 2px;
+    border-color: var(--mega-accent);
+    border-radius: 4px;
+    width: 24px;
+    height: 24px;
+}
+.mega-input {
+    background-color: var(--mega-panel2);
+    border-width: var(--mega-stroke-width);
+    border-color: var(--mega-stroke);
+    border-radius: var(--mega-radius);
+    padding: 8px 14px;
+    color: var(--mega-ink);
+}
+.mega-input:focus { border-color: var(--mega-accent); }
+.mega-dropdown {
+    background-color: var(--mega-panel2);
+    border-color: var(--mega-stroke);
+    border-radius: var(--mega-radius);
+    padding: 8px 14px;
+}
+.mega-scroll {
+    background-color: var(--mega-panel2);
+    border-radius: 999px;
+}
+.mega-scrollthumb { background-color: var(--mega-accent); border-radius: 999px; }
+
+/* ---- slots & rarities ---- */
+.mega-slot {
+    background-color: var(--mega-panel2);
+    border-width: 2px;
+    border-color: var(--mega-stroke);
+    border-radius: 6px;
+    width: 64px;
+    height: 64px;
+}
+.mega-slot--common { border-color: var(--mega-muted); }
+.mega-slot--rare { border-color: var(--mega-mana); }
+.mega-slot--epic { border-color: var(--mega-accent2); }
+.mega-slot--legendary {
+    border-color: var(--mega-accent);
+    background-color: var(--mega-panel);
+}
+
+/* ---- toast ---- */
+.mega-toast {
+    background-color: var(--mega-panel);
+    border-width: 2px;
+    border-color: var(--mega-good);
+    border-radius: var(--mega-radius);
+    padding: 12px 20px;
+}
+.mega-toast--error { border-color: var(--mega-danger); }
+.mega-toast--warn { border-color: var(--mega-accent2); }
+
+/* ---- keycap ---- */
+.mega-keycap {
+    background-color: var(--mega-panel2);
+    border-width: 2px;
+    border-color: var(--mega-stroke);
+    border-bottom-width: 4px;
+    border-radius: 6px;
+    padding: 4px 12px;
+    -unity-font-style: bold;
+    color: var(--mega-ink);
+}

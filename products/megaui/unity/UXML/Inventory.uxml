@@ -1,0 +1,27 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="inventory-root" class="mega-root" style="flex-direction:row;padding:24px;">
+        <!-- Grid -->
+        <ui:VisualElement class="mega-panel" style="flex:1;padding:20px;">
+            <ui:Label text="INVENTORY" class="mega-title"/>
+            <ui:VisualElement style="flex-direction:row;flex-wrap:wrap;margin-top:12px;">
+                <ui:VisualElement class="mega-slot" style="margin:4px;"/>
+                <ui:VisualElement class="mega-slot mega-slot--rare" style="margin:4px;"/>
+                <ui:VisualElement class="mega-slot mega-slot--epic" style="margin:4px;"/>
+                <ui:VisualElement class="mega-slot mega-slot--legendary" style="margin:4px;"/>
+                <ui:VisualElement class="mega-slot" style="margin:4px;"/>
+                <ui:VisualElement class="mega-slot" style="margin:4px;"/>
+                <ui:VisualElement class="mega-slot" style="margin:4px;"/>
+                <ui:VisualElement class="mega-slot" style="margin:4px;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <!-- Detail -->
+        <ui:VisualElement class="mega-panel" style="width:360px;margin-left:20px;padding:20px;">
+            <ui:Label text="IRON SWORD" class="mega-title"/>
+            <ui:Label text="DMG 12-18 · COMMON" style="opacity:.65;margin-top:6px;"/>
+            <ui:Label text="A reliable blade forged in the old keep."
+                style="margin-top:14px;white-space:normal;"/>
+            <ui:Button text="EQUIP" class="mega-btn" style="margin-top:22px;"/>
+            <ui:Button text="DROP" class="mega-btn mega-btn--ghost" style="margin-top:10px;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

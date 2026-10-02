@@ -380,4 +380,35 @@ ICONS_EXTRA["medal"] = ('<circle cx="12" cy="15" r="5"/>'
                         '<path d="M8.5 10.5 L6 3.5 h4 l2 4.5 2 -4.5 h4 L15.5 10.5"/>'
                         + _star(5, 3.4, 1.5, 12, 15, -90))
 
+# ---- batch 3: checklist gap-fill (2026-10-03 audit) ----
+ICONS_EXTRA.update({
+    "arrow_r": _arrow(0),
+    "users": ('<circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19 c0 -3 2.5 -5 5.5 -5 s5.5 2 5.5 5"/>'
+              '<circle cx="16.5" cy="9.5" r="2.6"/><path d="M15.5 14.3 c3 -0.4 5.5 1.7 5.5 4.7"/>'),
+    "chest_open": ('<rect x="4" y="11" width="16" height="9" rx="1"/>'
+                   '<rect x="10.5" y="13" width="3" height="4"/>'
+                   '<path d="M5 11 L7 4.5 h10 L19 11"/><path d="M9 8.5 h6" stroke-opacity="0.6"/>'),
+    "key_silver": ('<circle cx="8" cy="12" r="4.2"/><circle cx="8" cy="12" r="1.4" fill="HOLE" stroke="none"/>'
+                   '<path d="M12.2 12 H20"/><path d="M17 12 v3.4 M19.7 12 v2.6"/>'),
+    "key_rust": ('<circle cx="8" cy="12" r="4.2"/><circle cx="8" cy="12" r="1.4" fill="HOLE" stroke="none"/>'
+                 '<path d="M12.2 12 H20"/><path d="M16 12 v4.2 M19 12 v3"/>'),
+    "potion_s": ('<rect x="10.4" y="4" width="3.2" height="3" rx="0.8"/>'
+                 '<path d="M10.6 7 L10.6 10 C8.6 10.8 7 12.8 7 15.4 a5 5 0 0 0 10 0 C17 12.8 15.4 10.8 13.4 10 V7"/>'
+                 '<path d="M8.4 15.5 a3.8 3 0 0 0 3.8 3.8" stroke-opacity="0.55"/>'),
+    "potion_l": ('<rect x="10" y="3.5" width="4" height="3.2" rx="0.8"/>'
+                 '<path d="M10.2 6.7 V10 C7.4 11 5.5 13.4 5.5 16.2 a6.5 6.5 0 0 0 13 0 C18.5 13.4 16.6 11 13.8 10 V6.7"/>'
+                 '<path d="M7.6 16.6 a4.6 3.4 0 0 0 4.7 4.6" stroke-opacity="0.55"/>'),
+    "podium": ('<rect x="4" y="13.5" width="5" height="7"/><rect x="9.5" y="9" width="5" height="11.5"/>'
+               '<rect x="15" y="11.5" width="5" height="8.5"/>'
+               + _star(5, 2.7, 1.2, 12, 6, -90)),
+    "mute": ('<path d="M4 9.5 h3 L12 5.5 v13 L7 14.5 H4 Z"/>'
+             '<path d="M15.5 9.5 l5 5 M20.5 9.5 l-5 5"/>'),
+    "fullscreen": ('<path d="M4 9 V4 h5 M15 4 h5 v5 M20 15 v5 h-5 M9 20 H4 v-5"/>'),
+    "exit": ('<path d="M13 4 H5 v16 h8"/><path d="M10 12 H20"/><path d="M16.5 8.5 L20 12 L16.5 15.5"/>'),
+    "location": ('<path d="M12 21 C12 21 5.5 14.8 5.5 10 a6.5 6.5 0 0 1 13 0 C18.5 14.8 12 21 12 21 Z"/>'
+                 '<circle cx="12" cy="10" r="2.4"/>'),
+    "help": ('<circle cx="12" cy="12" r="8.5"/><path d="M9.4 9.3 a2.7 2.7 0 1 1 3.4 3.4 c-0.8 0.4 -0.8 1.1 -0.8 1.9"/>'
+             '<circle cx="12" cy="17.2" r="0.6" fill="HOLE"/>'),
+})
+
 EXTRA_NAMES = list(ICONS_EXTRA.keys())

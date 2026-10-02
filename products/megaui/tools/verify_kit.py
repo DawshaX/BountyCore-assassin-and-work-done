@@ -48,7 +48,7 @@ def main():
         svg_files += [os.path.join(dp, f) for f in fns if f.endswith(".svg")]
     check("manifest total == fs count", man["total"] == len(svg_files),
           f'{man["total"]} vs {len(svg_files)}')
-    check(">= 2000 svg components", len(svg_files) >= 2000, str(len(svg_files)))
+    check(">= 2400 svg components", len(svg_files) >= 2400, str(len(svg_files)))
     for th in THEMES:
         n = len([f for f in svg_files if f"/{th}/" in f])
         check(f"{th}: >=500 svgs", n >= 500, str(n))
@@ -73,7 +73,7 @@ def main():
 
     print("== icons ==")
     import svgkit as K
-    check(">=200 base icons", len(K.ICON_NAMES) >= 200, str(len(K.ICON_NAMES)))
+    check(">=210 base icons", len(K.ICON_NAMES) >= 210, str(len(K.ICON_NAMES)))
     check("icon names unique", len(set(K.ICON_NAMES)) == len(K.ICON_NAMES))
 
     print("== buttons matrix ==")
@@ -91,14 +91,14 @@ def main():
         ps = [f for f in os.listdir(d) if f.endswith(".png")]
         n_html += len(hs)
         n_png += len(ps)
-        check(f"{th}: 12 screens", len(hs) == 12 and len(ps) == 12,
+        check(f"{th}: 17 screens", len(hs) == 17 and len(ps) == 17,
               f"{len(hs)} html / {len(ps)} png")
         if ps:
             im = Image.open(os.path.join(d, ps[0]))
             if im.size != (3840, 2160):
                 dims_ok = False
     check("screen pngs are 4K (3840x2160)", dims_ok)
-    check("48 screens total", n_html == 48 and n_png == 48)
+    check("68 screens total", n_html == 68 and n_png == 68)
 
     print("== tokens ==")
     tjson = os.path.join(KIT, "tokens", "design-tokens.json")

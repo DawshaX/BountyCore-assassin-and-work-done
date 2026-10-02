@@ -38,24 +38,27 @@ sample review + user sign-off before mass production (PLAN.md §5 rule).
 
 0. ✅ direction approved (this file)
 1. ✅ Core generator + first samples — **user approved samples (v1 ZIP)**
-2. ✅ Mass production COMPLETE (2026-10-03):
+2. ✅ Mass production COMPLETE (2026-10-03) + completeness pass #2 (user checklist audit):
    - ✅ 9 button shapes × 4 states × 4 kinds × 4 themes
-   - ✅ full kit tree: **2,392 SVGs** (598 × 4 themes) + **2,392 PNG @4x**
-   - ✅ families: portrait, skillcard+cooldown, toast, scrollbar, radio, leaderboard, 8-tab views…
-   - ✅ **203 icons** base (51 + 152 batch 2), all 4 themes tinted — `icons_extra.py`
+   - ✅ full kit tree: **2,496 SVGs** (624 × 4 themes) + **2,496 PNG @4x**
+   - ✅ families: portrait, skillcard+cooldown, toast, scrollbar, radio, leaderboard…
+   - ✅ **HUD overlay widgets (new):** minimap frame, compass strip, currency counter (+ buy)
+   - ✅ **216 icons** base (51 + 152 batch2 + 13 gap-fill incl. missing `arrow_r` bugfix)
    - ✅ tokens (JSON+CSS) + retheme.py + RECLOUR.md (designer-editable)
-   - ✅ 48 screens (12 layouts × 4 themes) **4K 3840×2160** (HUD bar/actionbar bugs fixed)
-   - ✅ sample sheets re-rendered with 203 icons; spot-checked 48 new icons + 9 shapes
+   - ✅ **68 screens** (17 layouts × 4 themes) **4K 3840×2160** — added Loading,
+     Character Select, Skill Tree, Defeat, Confirm; fixed HUD actionbar/boss-bar bugs
+   - ✅ sample sheets + spot-checks (new icons, 9 shapes, 5 screens, HUD widgets)
 3. (merged into 2) ✅
-4. ✅ Unity package **MegaUI-Unity-v1.0.0.unitypackage** (2,402 files:
-   2,392 sprites w/ TextureImporter 9-slice + USS/UXML + Editor script) +
-   OFL fonts (Inter/Montserrat) + kit README/RECLOUR docs
+4. ✅ Unity package **MegaUI-Unity-v1.0.0.unitypackage** (2,517 files:
+   2,496 sprites w/ TextureImporter 9-slice + expanded USS with 4 theme classes +
+   5 UXML screens + **runtime C#: MegaUIThemeSwitcher, MegaUIPopup,
+   MegaUIButtonFx, MegaUIBar** + Editor script) + OFL fonts + docs
 5. ✅ Listing kit drafts: `listing/{DESCRIPTION-plain.txt,TAGS.txt,
    FAB-ANSWERS.txt,PRICE-AND-MEDIA.md}` + `docs/TEST-REPORT.txt`
    → **QA: `verify_kit.py` 34/34 PASSED** → submission = user (phone)
 6. Post-live: tags/price fast edits, 14-day review
 
 **Downloadables (raw links):**
-- `dist/MegaUI-review-v1.zip` (31.8 MB — 4 sheets + 48 screens + docs + tokens)
+- `dist/MegaUI-review-v1.zip` (44.7 MB — 4 sheets + 68 screens + docs + tokens)
 - `dist/MegaUI-Unity-v1.0.0.unitypackage` (19.1 MB)
 - `dist/MegaUI-samples-v1.zip` (v1 sheets)

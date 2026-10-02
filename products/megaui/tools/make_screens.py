@@ -1,4 +1,4 @@
-"""MegaUI screens generator — 12 screen layouts x 4 themes = 48 screens.
+"""MegaUI screens generator — 17 screen layouts x 4 themes = 68 screens.
 
 Writes dist/kit/screens/<theme>/<name>.html (1920x1080), rendered to 4K PNG
 by tools/render4k.js.
@@ -104,7 +104,7 @@ def screen_mainmenu(th):
 {E(174, 235, f'<div class="sub">A MEGAUI DEMO BUILD</div>')}
 {E(176, 270, K.divider(460, th))}
 {btns}
-{E(180, 960, '<div class="lbl">v1.0 · 4 themes · 1784 components</div>')}
+{E(180, 960, '<div class="lbl">v1.0 · 4 themes · 2400+ components</div>')}
 {E(1500, 60, f'<div class="row">{K.chip(180,48,th,"12,450","gold")}{K.chip(150,48,th,"386","gem")}</div>')}
 {E(1520, 860, K.stars(300, 40, th, 5, 5))}
 ''')
@@ -360,6 +360,8 @@ def screen_login(th):
 ''')
 
 
+from screens_extra import build as _build_extra  # noqa: E402
+
 SCREENS = [
     ("01-main-menu", screen_mainmenu),
     ("02-hud", screen_hud),
@@ -373,7 +375,7 @@ SCREENS = [
     ("10-character", screen_character),
     ("11-results", screen_results),
     ("12-login", screen_login),
-]
+] + _build_extra(COPY, SHAPES_BY_THEME, E, wrap, K, THEMES)
 
 
 def main():
