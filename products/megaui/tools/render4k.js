@@ -32,7 +32,8 @@ async function launch(dsf, width, height) {
 }
 
 async function renderComponents() {
-  const files = walk(SVG).filter((f) => f.endsWith(".svg"));
+  const filter = process.argv[3] || "";
+  const files = walk(SVG).filter((f) => f.endsWith(".svg") && f.includes(filter));
   console.log("components:", files.length);
   const browser = await launch(4, 3200, 1200);
   const page = await browser.newPage();

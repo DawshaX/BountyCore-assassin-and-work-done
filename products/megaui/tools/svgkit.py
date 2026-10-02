@@ -1220,7 +1220,7 @@ def icon(name, theme_key, size=48, color=None, stroke_width=2):
     if name == "gear":
         body = f'<path d="{_gear_path(12,12)}"/><circle cx="12" cy="12" r="3.2"/>'
     else:
-        body = ICONS[name].replace("HOLE", f'fill="{c}"')
+        body = ICONS[name].replace("HOLE", c)
     inner = (f'<g fill="none" stroke="{c}" stroke-width="{stroke_width}" '
              f'stroke-linejoin="round" stroke-linecap="round">{body}</g>')
     return _svg(24, 24, inner, viewbox="0 0 24 24").replace(
@@ -1236,3 +1236,15 @@ ICON_NAMES = [
     "eye", "hammer", "axe", "wand", "bag", "arrow_up", "arrow_down",
     "arrow_left", "close", "check", "plus", "minus", "question",
 ]
+
+
+# ---- batch 2: extended icon library (icons_extra) ----
+try:
+    from icons_extra import ICONS_EXTRA, EXTRA_NAMES  # noqa: E402
+    for _n, _body in ICONS_EXTRA.items():
+        ICONS[_n] = _body
+    for _n in EXTRA_NAMES:
+        if _n not in ICON_NAMES:
+            ICON_NAMES.append(_n)
+except ImportError:  # pragma: no cover
+    pass

@@ -113,7 +113,7 @@ def screen_mainmenu(th):
 def screen_hud(th):
     c = COPY[th]
     slots = "".join(
-        f'<div class="el">{K.skillcard(110, 110, th, ic, (0, .45, .7, 0, .25, 0)[i], ["rare","epic","rare","legendary","rare","common"][i], label=str(i+1))}</div>'
+        f'<div>{K.skillcard(110, 110, th, ic, (0, .45, .7, 0, .25, 0)[i], ["rare","epic","rare","legendary","rare","common"][i], label=str(i+1))}</div>'
         for i, ic in enumerate(c["skills"]))
     quests = "".join(
         f'<div class="card row" style="gap:12px">{K.icon("check" if d else "question", th, 30, color=(THEMES[th]["good"] if d else THEMES[th]["muted"]))}<div><b style="font-size:18px">{q}</b><div class="lbl">{"Completed" if d else "In progress"}</div></div></div>'
@@ -125,7 +125,7 @@ def screen_hud(th):
 {E(50, 40, f'<div class="row" style="gap:14px">{K.chip(190,50,th,"12,450","gold")}{K.chip(150,50,th,"386","gem")}</div>')}
 {E(50, 130, bars)}
 {E(810, 36, K.ribbon(420, 80, th, label=c["ribbon"]))}
-{E(940, 150, f'<div class="lbl" style="text-align:center">BOSS · VOID TITAN</div>{K.bar(760, 40, th, "hp", 0.62, True)}')}
+{E(940, 150, f'<div class="lbl" style="text-align:center">BOSS · VOID TITAN</div>{K.bar(480, 40, th, "hp", 0.62, True)}')}
 {E(1450, 40, "".join(f'<div class="el" style="left:{i*74}px">{K.slot(64, th, icon_name=n)}</div>' for i, n in enumerate(("gear", "search", "user"))))}
 {E(1460, 140, f'<div style="position:relative;width:400px">{K.panel(400, 320, th, label="QUESTS")}<div style="position:absolute;top:64px;left:14px;right:14px;display:flex;flex-direction:column;gap:10px">{quests}</div></div>')}
 {E(600, 700, f'<div class="row" style="gap:12px;padding:14px 18px;background:rgba(0,0,0,.4);border:1px solid {THEMES[th]["stroke"]};border-radius:8px">{slots}</div>')}

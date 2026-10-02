@@ -1,0 +1,46 @@
+MegaUI - Game UI Design System :: Fab listing answers (English)
+===============================================================
+
+Q: Which engines is this product designed for?
+A: Engine-agnostic. The primary formats are SVG (masters), transparent PNG at
+4x resolution, HTML/CSS screen sources, and JSON/CSS design tokens - usable in
+Unity, Unreal, Godot, web/HTML5 and any pipeline that accepts PNG/SVG. A full
+Unity .unitypackage is included: 2392 PNGs import as Sprites with 9-slice
+borders, plus a UI Toolkit USS/UXML starter and an editor menu helper.
+
+Q: What file formats are included?
+A: SVG, PNG (3840x2160-class 4x exports), HTML, CSS, JSON, TTF (OFL-1.1
+fonts), .unitypackage.
+
+Q: How is the content structured?
+A: /svg/<theme>/<group> mirrors /png4k/<theme>/<group> one-to-one (598 files
+per theme, 4 themes). /screens/<theme> holds 12 ready screens per theme as
+HTML source + 4K PNG. /tokens, /fonts, /docs and manifest.json complete the
+kit.
+
+Q: Is any of the content AI-generated?
+A: The product is flagged "Created with AI" on Fab as required by policy.
+All vector geometry is original parametric code written and reviewed for this
+product - no traced stock art and no third-party artwork is included.
+
+Q: Can buyers customize or re-brand the kit?
+A: Yes - it is built for that. Every color lives in one token table
+(tools/tokens.py, tokens/design-tokens.json, tokens/megaui.css). The included
+retheme tool recolors a whole theme (598 files) in one command without a
+vector editor. See docs/RECLOUR.md.
+
+Q: Fonts licensing?
+A: Inter and Montserrat, both SIL Open Font License 1.1; full OFL texts are
+bundled in /fonts and in the Unity package.
+
+Q: What licenses do buyers get?
+A: Personal (non-commercial) and Professional (commercial) per Fab's standard
+license options, NoAI tag available. MegaUI artwork and code are original.
+
+Q: Minimum Unity version?
+A: Unity 2021.3 LTS or newer recommended for the .unitypackage (Sprite and
+UI Toolkit import paths used are supported since 2019.4).
+
+Q: Is there documentation?
+A: Yes: kit README (structure + quick start), RECLOUR.md (customization
+workflow), Unity README inside the package, TEST-REPORT.txt (automated QA).
