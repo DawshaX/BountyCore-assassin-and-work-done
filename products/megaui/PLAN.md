@@ -38,15 +38,24 @@ sample review + user sign-off before mass production (PLAN.md §5 rule).
 
 0. ✅ direction approved (this file)
 1. ✅ Core generator + first samples — **user approved samples (v1 ZIP)**
-2. Mass production [IN PROGRESS]:
+2. ✅ Mass production COMPLETE (2026-10-03):
    - ✅ 9 button shapes × 4 states × 4 kinds × 4 themes
-   - ✅ full kit tree: **1,784 SVGs** (manifest.json) + **1,784 PNG @4x**
-   - ✅ new families: portrait, skillcard+cooldown, toast, scrollbar, radio, leaderboard
+   - ✅ full kit tree: **2,392 SVGs** (598 × 4 themes) + **2,392 PNG @4x**
+   - ✅ families: portrait, skillcard+cooldown, toast, scrollbar, radio, leaderboard, 8-tab views…
+   - ✅ **203 icons** base (51 + 152 batch 2), all 4 themes tinted — `icons_extra.py`
    - ✅ tokens (JSON+CSS) + retheme.py + RECLOUR.md (designer-editable)
-   - ✅ 48 screens (12 layouts × 4 themes) rendered **4K 3840×2160**
-   - ⬜ icons 51 → 200+ base (batch 2 next)
-   - ⬜ sample sheets update + user review
-3. (merged into 2) screens -> review together
-4. Unity package (gate) + fonts + docs -> review
-5. Listing kit (answers/media/test-report like PixelForge) -> submit by user
+   - ✅ 48 screens (12 layouts × 4 themes) **4K 3840×2160** (HUD bar/actionbar bugs fixed)
+   - ✅ sample sheets re-rendered with 203 icons; spot-checked 48 new icons + 9 shapes
+3. (merged into 2) ✅
+4. ✅ Unity package **MegaUI-Unity-v1.0.0.unitypackage** (2,402 files:
+   2,392 sprites w/ TextureImporter 9-slice + USS/UXML + Editor script) +
+   OFL fonts (Inter/Montserrat) + kit README/RECLOUR docs
+5. ✅ Listing kit drafts: `listing/{DESCRIPTION-plain.txt,TAGS.txt,
+   FAB-ANSWERS.txt,PRICE-AND-MEDIA.md}` + `docs/TEST-REPORT.txt`
+   → **QA: `verify_kit.py` 34/34 PASSED** → submission = user (phone)
 6. Post-live: tags/price fast edits, 14-day review
+
+**Downloadables (raw links):**
+- `dist/MegaUI-review-v1.zip` (31.8 MB — 4 sheets + 48 screens + docs + tokens)
+- `dist/MegaUI-Unity-v1.0.0.unitypackage` (19.1 MB)
+- `dist/MegaUI-samples-v1.zip` (v1 sheets)
