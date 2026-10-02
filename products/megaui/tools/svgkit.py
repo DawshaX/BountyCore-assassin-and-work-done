@@ -76,16 +76,105 @@ def _path_for(style, w, h, r, inset=0, corners="tb"):
     return f'<rect x="{x0}" y="{y0}" width="{x1-x0}" height="{y1-y0}"/>'
 
 
-def _shadow(style, w, h, r, dx=0, dy=4, op=0.45, inset=0):
+def _shape_for(style, w, h, r, shape="standard", inset=0):
+    """Nine-shape button geometry: standard pill square chamfer bracket
+    bevel tab arrow notch. inset shrinks the path (for inner hairlines)."""
+    x0, y0, x1, y1 = inset, inset, w - inset, h - inset
+    W, H = x1 - x0, y1 - y0
+    if shape in (None, "", "standard"):
+        return _path_for(style, w, h, r, inset=inset)
+    if shape == "square":
+        return f'<rect x="{x0}" y="{y0}" width="{W}" height="{H}"/>'
+    if shape == "pill":
+        rr = max(1, H / 2)
+        return (f'<rect x="{x0}" y="{y0}" width="{W}" height="{H}" '
+                f'rx="{rr}" ry="{rr}"/>')
+    if shape == "chamfer":
+        if style == "pixel":
+            return _pixel_chamfer(x0, y0, x1, y1, 16, ("tl", "br"))
+        c = 14
+        return (f'<path d="M{x0+c} {y0} L{x1} {y0} L{x1} {y1-c} '
+                f'L{x1-c} {y1} L{x0} {y1} L{x0} {y0+c} Z"/>')
+    if shape == "bracket":
+        if style == "pixel":
+            return _pixel_chamfer(x0, y0, x1, y1, 16, ("tr", "bl"))
+        c = 14
+        return (f'<path d="M{x0} {y0} L{x1-c} {y0} L{x1} {y0+c} '
+                f'L{x1} {y1} L{x0+c} {y1} L{x0} {y1-c} Z"/>')
+    if shape == "bevel":
+        b = min(16, H * 0.30)
+        if style == "pixel":
+            b = int(b // 4) * 4
+            return _pixel_chamfer(x0, y0, x1, y1, b, ("tl", "tr", "br", "bl"))
+        return (f'<path d="M{x0+b} {y0} L{x1-b} {y0} L{x1} {y0+b} '
+                f'L{x1} {y1-b} L{x1-b} {y1} L{x0+b} {y1} L{x0} {y1-b} '
+                f'L{x0} {y0+b} Z"/>')
+    if shape == "tab":
+        rt = max(6, r * 2)
+        if style == "pixel":
+            return f'<rect x="{x0}" y="{y0}" width="{W}" height="{H}"/>'
+        return (f'<path d="M{x0} {y1} L{x0} {y0+rt} '
+                f'A{rt} {rt} 0 0 1 {x0+rt} {y0} L{x1-rt} {y0} '
+                f'A{rt} {rt} 0 0 1 {x1} {y0+rt} L{x1} {y1} Z"/>')
+    if shape == "arrow":
+        s = min(26, W * 0.18)
+        return (f'<path d="M{x0} {y0} L{x1-s} {y0} L{x1} {(y0+y1)/2} '
+                f'L{x1-s} {y1} L{x0} {y1} Z"/>')
+    if shape == "notch":
+        b = min(14, H * 0.30)
+        if style == "pixel":
+            b = int(b // 4) * 4
+            return _pixel_chamfer(x0, y0, x1, y1, b,
+                                  ("tl", "tr", "br", "bl"))
+        return (f'<path d="M{x0} {y0+b} Q{x0+b} {y0+b} {x0+b} {y0} '
+                f'L{x1-b} {y0} Q{x1-b} {y0+b} {x1} {y0+b} '
+                f'L{x1} {y1-b} Q{x1-b} {y1-b} {x1-b} {y1} '
+                f'L{x0+b} {y1} Q{x0+b} {y1-b} {x0} {y1-b} Z"/>')
+    return _path_for(style, w, h, r, inset=inset)
+
+
+def _pixel_chamfer(x0, y0, x1, y1, cut, corners):
+    """Stair-step corner cuts for pixel style (4px steps, axis-aligned)."""
+    st, n = 4, max(1, int(cut // 4))
+    m = st * n
+    P = []
+
+    def stair(px, py, qx, qy):
+        """Staircase from point p to point q (equal steps both axes)."""
+        dx, dy = (qx - px) / n, (qy - py) / n
+        for i in range(n):
+            P.append((px + dx * i, py + dy * i))
+            P.append((px + dx * (i + 1), py + dy * i))
+
+    if "tl" in corners:
+        stair(x0, y0 + m, x0 + m, y0)
+    else:
+        P.append((x0, y0))
+    if "tr" in corners:
+        stair(x1 - m, y0, x1, y0 + m)
+    else:
+        P.append((x1, y0))
+    if "br" in corners:
+        stair(x1, y1 - m, x1 - m, y1)
+    else:
+        P.append((x1, y1))
+    if "bl" in corners:
+        stair(x0 + m, y1, x0, y1 - m)
+    else:
+        P.append((x0, y1))
+    d = "M" + " L".join(f"{px:.1f} {py:.1f}" for px, py in P) + " Z"
+    return f'<path d="{d}"/>'
+
+
+def _shadow(style, w, h, r, dx=0, dy=4, op=0.45, inset=0, shape="standard"):
     return (f'<g transform="translate({dx},{dy})" opacity="{op}">'
-            f'{_path_for(style, w, h, r, inset=inset, )}</g>').replace(
+            f'{_shape_for(style, w, h, r, shape, inset=inset)}</g>').replace(
         "/>", ' fill="#000000"/>', 1)
 
 
-# ---------------------------------------------------------------- buttons ---
 def button(w, h, theme_key, state="normal", kind="primary", label="",
            shape="standard"):
-    """shape: standard | pill | wide (CTA) — more shapes added in Phase 2."""
+    """Nine shapes: standard pill square chamfer bracket bevel tab arrow notch."""
     t = THEMES[theme_key]
     style = t["style"]
     g = GEO[style]
@@ -116,17 +205,17 @@ def button(w, h, theme_key, state="normal", kind="primary", label="",
     # ---- drop shadow (hard for pixel, soft-ish for others) — opaque faces only
     if dy and fill != "none":
         if style == "pixel":
-            parts.append(_shadow(style, w, h, r, dx=5, dy=5, op=1.0))
+            parts.append(_shadow(style, w, h, r, dx=5, dy=5, op=1.0, shape=shape))
         else:
-            parts.append(_shadow(style, w, h, r, dx=0, dy=dy, op=0.40))
+            parts.append(_shadow(style, w, h, r, dx=0, dy=dy, op=0.40, shape=shape))
 
     # ---- outer neon halo (sci)
     if style == "sci" and kind in ("primary", "danger") and state != "disabled":
         parts.append(f'<g fill="none" stroke="{stroke}" stroke-width="7" '
-                     f'opacity="0.30">{_path_for(style, w, h, r)}</g>')
+                     f'opacity="0.30">{_shape_for(style, w, h, r, shape)}</g>')
 
     # ---- face
-    body = _path_for(style, w, h, r)
+    body = _shape_for(style, w, h, r, shape)
     parts.append(f'<g fill="{fill}" stroke="{stroke}" stroke-width="{stroke_w}">'
                  f'{body}</g>')
 
@@ -140,7 +229,7 @@ def button(w, h, theme_key, state="normal", kind="primary", label="",
         parts.append(f'<defs>{_grad(gid, gloss)}</defs>')
         parts.append(f'<g transform="translate(0,{lift})"><g transform="translate('
                      f'{stroke_w/2},{stroke_w/2})">'
-                     f'<clipPath id="c{u}">{_path_for(style, w - stroke_w, h - stroke_w, r)}</clipPath>'
+                     f'<clipPath id="c{u}">{_shape_for(style, w - stroke_w, h - stroke_w, r, shape)}</clipPath>'
                      f'<g clip-path="url(#c{u})">'
                      f'<rect width="{w}" height="{h}" fill="url(#{gid})"/>')
         # bright top edge inside face
@@ -157,22 +246,22 @@ def button(w, h, theme_key, state="normal", kind="primary", label="",
         parts.append(f'<g fill="none" stroke="{t["ink"]}" stroke-opacity="0.20" '
                      f'stroke-width="1" transform="translate(0,{lift})">'
                      f'<g transform="translate({ins},{ins})">'
-                     f'{_path_for(style, w - 2 * ins, h - 2 * ins, max(2, r - 2))}'
+                     f'{_shape_for(style, w - 2 * ins, h - 2 * ins, max(2, r - 2), shape)}'
                      f'</g></g>')
 
     # ---- state overlays
     if state == "hover":
         parts.append(f'<g opacity="0.14" transform="translate(0,{lift})">'
-                     f'<g fill="{t["accent2"]}">{_path_for(style, w, h, r)}</g></g>')
+                     f'<g fill="{t["accent2"]}">{_shape_for(style, w, h, r, shape)}</g></g>')
     if state == "pressed":
         parts.append(f'<g opacity="0.24" transform="translate(0,{lift})">'
-                     f'<g fill="#000000">{_path_for(style, w, h, r)}</g></g>')
+                     f'<g fill="#000000">{_shape_for(style, w, h, r, shape)}</g></g>')
     if state == "disabled":
         parts.append(f'<g opacity="0.38"><g fill="#101018">'
-                     f'{_path_for(style, w, h, r)}</g></g>')
+                     f'{_shape_for(style, w, h, r, shape)}</g></g>')
 
     # ---- ornaments per style
-    if style == "sci":
+    if style == "sci" and shape != "arrow":
         c = GEO["sci"]["chamfer"]
         parts.append(f'<g transform="translate(0,{lift})">')
         parts.append(
@@ -193,7 +282,7 @@ def button(w, h, theme_key, state="normal", kind="primary", label="",
             parts.append(f'<rect x="{tx}" y="{h-8}" width="7" height="2" '
                          f'fill="{t["ink"]}" opacity="0.35"/>')
         parts.append("</g>")
-    if style == "fantasy":
+    if style == "fantasy" and shape not in ("arrow", "tab"):
         d = 7
         parts.append(f'<g transform="translate(0,{lift})">')
         for cx, cy in ((d, d), (w - d, d), (d, h - d), (w - d, h - d)):
@@ -205,7 +294,7 @@ def button(w, h, theme_key, state="normal", kind="primary", label="",
             parts.append(f'<path d="M{gx} {h/2} L{gx+5} {h/2-5} L{gx+10} {h/2} '
                          f'L{gx+5} {h/2+5} Z" fill="{_on(t["accent"], t)}" opacity="0.85"/>')
         parts.append("</g>")
-    if style == "royal":
+    if style == "royal" and shape not in ("arrow", "tab"):
         parts.append(f'<g transform="translate(0,{lift})">'
                      f'<rect x="10" y="{h-7}" width="{w-20}" height="2.5" '
                      f'fill="{t["accent2"]}" opacity="0.9"/>'
@@ -822,6 +911,179 @@ def item_card(w, h, theme_key, name="Iron Sword", sub="DMG 12-18",
                  + button(bw, bh, theme_key, "normal", "primary", label=price,
                           shape="standard")
                  + '</g>')
+    return _svg(w, h, "".join(parts))
+
+
+# ------------------------------------------------- phase-2 components ---
+def portrait(size, theme_key, shape="circle", ring=True):
+    """Avatar/portrait frame (circle or rounded square) with rarity ring."""
+    t = THEMES[theme_key]
+    style = t["style"]
+    u = _uid()
+    parts = []
+    r = size / 2 if shape == "circle" else size * 0.16
+    if style == "pixel":
+        r = 0
+    parts.append(f'<defs><clipPath id="pc{u}">{_path_for("royal" if shape=="circle" else style, size, size, r)}</clipPath></defs>')
+    base = _path_for("royal" if shape == "circle" else style, size, size, r)
+    if style == "pixel":
+        parts.append(f'<rect x="5" y="5" width="{size}" height="{size}" fill="#000000" opacity="0.5"/>')
+    else:
+        parts.append(_shadow(style, size, size, r, dy=4, op=0.4))
+    parts.append(f'<g fill="{t["panel2"]}" stroke="{t["stroke"]}" stroke-width="3">{base}</g>')
+    # silhouette placeholder
+    cx = size / 2
+    parts.append(f'<g clip-path="url(#pc{u})" fill="{t["accent"]}" opacity="0.35">'
+                 f'<circle cx="{cx}" cy="{size*0.38}" r="{size*0.18}"/>'
+                 f'<circle cx="{cx}" cy="{size*0.95}" r="{size*0.34}"/></g>')
+    if ring:
+        rc = t["accent2"] if style != "pixel" else t["accent"]
+        parts.append(f'<g fill="none" stroke="{rc}" stroke-width="4" '
+                     f'transform="translate({size/2},{size/2}) scale(0.94) '
+                     f'translate({-size/2},{-size/2})">{base}</g>')
+    if style == "sci":
+        c = 12
+        parts.append(f'<path d="M5 {c+5} L5 5 L{c+5} 5 M{size-5} {size-c-5} '
+                     f'L{size-5} {size-5} L{size-c-5} {size-5}" fill="none" '
+                     f'stroke="{t["accent2"]}" stroke-width="3"/>')
+    return _svg(size, size, "".join(parts))
+
+
+def skillcard(w, h, theme_key, icon_name="bolt", cooldown=0.45, rarity="rare",
+              label=""):
+    """Skill/action card: slot + icon + cooldown sweep + optional key label."""
+    t = THEMES[theme_key]
+    style = t["style"]
+    u = _uid()
+    parts = []
+    rc = {"common": t["muted"], "rare": t["mana"], "epic": "#B455E6",
+          "legendary": t["accent2"]}.get(rarity, t["mana"])
+    if style == "pixel":
+        parts.append(f'<rect x="6" y="6" width="{w}" height="{h}" fill="#000000" opacity="0.55"/>')
+    else:
+        parts.append(_shadow(style, w, h, 8, dy=4, op=0.4))
+    parts.append(f'<g fill="{t["panel"]}" stroke="{rc}" stroke-width="3">'
+                 f'{_path_for(style, w, h, 8)}</g>')
+    parts.append(f'<g fill="none" stroke="{t["accent"]}" stroke-opacity="0.5" '
+                 f'stroke-width="1.5" transform="translate(5,5)">'
+                 f'{_path_for(style, w-10, h-10, 5)}</g>')
+    # icon centered
+    s = min(w, h) * 0.52
+    parts.append(f'<g transform="translate({(w-s)/2},{(h-s)/2 - (6 if label else 0)}) '
+                 f'scale({s/24})">{icon_body(icon_name, t["accent"])}</g>')
+    # cooldown: dark overlay from bottom + percent
+    if 0 < cooldown < 1:
+        parts.append(f'<clipPath id="cc{u}">{_path_for(style, w, h, 8)}</clipPath>')
+        ch = (h - 8) * cooldown
+        parts.append(f'<g clip-path="url(#cc{u})" opacity="0.72">'
+                     f'<rect x="0" y="{h-ch}" width="{w}" height="{ch}" '
+                     f'fill="#05060C"/></g>')
+        if cooldown >= 0.18:
+            pct = int(cooldown * 100)
+            parts.append(_label(w, h - ch / 2 + 2, str(pct), "#FFFFFF",
+                                style, size=int(h * 0.22)))
+    if label:
+        parts.append(_label(w, h - 12, label, t["ink"], style,
+                            size=int(h * 0.16)))
+    return _svg(w, h, "".join(parts))
+
+
+def toast(w, h, theme_key, text="Achievement unlocked!", kind="info"):
+    """Toast / floating notification strip."""
+    t = THEMES[theme_key]
+    style = t["style"]
+    col = {"info": t["accent"], "success": t["good"], "warning": t["accent2"],
+           "error": t["danger"]}.get(kind, t["accent"])
+    r = 8 if style != "pixel" else 0
+    parts = [_shadow(style, w, h, r, dy=4, op=0.45)]
+    parts.append(f'<g fill="{t["panel2"]}" stroke="{col}" stroke-width="2.5">'
+                 f'{_path_for(style, w, h, r)}</g>')
+    parts.append(f'<rect x="0" y="0" width="7" height="{h}" fill="{col}"/>')
+    parts.append(f'<circle cx="26" cy="{h/2}" r="7" fill="{col}"/>')
+    parts.append(f'<text x="44" y="{h/2}" fill="{t["ink"]}" '
+                 f'font-family="{MONO if style=="pixel" else FAM}" '
+                 f'font-size="{min(15, int(h*0.36))}" dominant-baseline="central">'
+                 f'{text}</text>')
+    return _svg(w, h, "".join(parts))
+
+
+def scrollbar(w, h, theme_key, thumb=0.4):
+    """Vertical scrollbar: track + thumb + arrows."""
+    t = THEMES[theme_key]
+    style = t["style"]
+    tw = 14
+    x = (w - tw) / 2
+    parts = [f'<rect x="{x}" y="18" width="{tw}" height="{h-36}" '
+             f'fill="{t["panel2"]}" stroke="{t["stroke"]}" stroke-width="2" '
+             f'rx="{tw/2 if style!="pixel" else 0}"/>']
+    th = max(40, (h - 36) * thumb)
+    ty = 18 + (h - 36 - th) * 0.45
+    parts.append(f'<rect x="{x+1}" y="{ty}" width="{tw-2}" height="{th}" '
+                 f'fill="{t["accent"]}" rx="{tw/2-1 if style!="pixel" else 0}"/>')
+    for cy, up in ((9, True), (h - 9, False)):
+        d = (f'M{w/2} {cy-4} L{w/2-5} {cy+3} L{w/2+5} {cy+3} Z' if up else
+             f'M{w/2} {cy+4} L{w/2-5} {cy-3} L{w/2+5} {cy-3} Z')
+        parts.append(f'<path d="{d}" fill="{t["ink"]}" opacity="0.75"/>')
+    return _svg(w, h, "".join(parts))
+
+
+def radio(size, theme_key, on=True):
+    """Radio button (single-select)."""
+    t = THEMES[theme_key]
+    style = t["style"]
+    parts = []
+    if style == "pixel":
+        parts.append(f'<rect x="4" y="4" width="{size}" height="{size}" fill="#000000" opacity="0.5"/>')
+        parts.append(f'<rect x="0" y="0" width="{size}" height="{size}" '
+                     f'fill="{t["panel"]}" stroke="{t["stroke"]}" stroke-width="3"/>')
+        if on:
+            parts.append(f'<rect x="{size*0.28}" y="{size*0.28}" width="{size*0.44}" '
+                         f'height="{size*0.44}" fill="{t["accent"]}"/>')
+        return _svg(size, size, "".join(parts))
+    parts.append(f'<circle cx="{size/2}" cy="{size/2}" r="{size/2-2}" '
+                 f'fill="{t["panel"]}" stroke="{t["stroke"]}" stroke-width="2.5"/>')
+    if on:
+        parts.append(f'<circle cx="{size/2}" cy="{size/2}" r="{size/2-2}" '
+                     f'fill="none" stroke="{t["accent"]}" stroke-width="3"/>')
+        parts.append(f'<circle cx="{size/2}" cy="{size/2}" r="{size*0.26}" '
+                     f'fill="{t["accent"]}"/>')
+    return _svg(size, size, "".join(parts))
+
+
+def leaderboard(w, h, theme_key, rank=1, name="Player One", score="12,480",
+                icon_name="crown"):
+    """Leaderboard / score row."""
+    t = THEMES[theme_key]
+    style = t["style"]
+    r = 8 if style != "pixel" else 0
+    parts = []
+    if rank <= 3:
+        fill = t["accent"] if rank == 1 else t["panel2"]
+        op = 0.20 if rank == 1 else 0.10
+    else:
+        fill = t["panel2"]; op = 0.10
+    parts.append(f'<g fill="{t["panel"]}" stroke="{t["stroke"]}" stroke-width="2">'
+                 f'{_path_for(style, w, h, r)}</g>')
+    parts.append(f'<g fill="{fill}" opacity="{op}">{_path_for(style, w, h, r)}</g>')
+    fam = MONO if style == "pixel" else FAM
+    # rank chip
+    parts.append(f'<rect x="8" y="{h*0.16}" width="{h*0.68}" height="{h*0.68}" '
+                 f'fill="{t["accent"] if rank<=3 else t["panel2"]}" rx="4"/>')
+    parts.append(f'<text x="{8+h*0.34}" y="{h/2}" fill="{_on(t["accent"], t) if rank<=3 else t["ink"]}" '
+                 f'font-family="{fam}" font-size="{int(h*0.34)}" font-weight="700" '
+                 f'text-anchor="middle" dominant-baseline="central">{rank}</text>')
+    if rank <= 3 and icon_name:
+        parts.append(f'<g transform="translate({h*0.9},{h*0.22}) '
+                     f'scale({h*0.56/24})">{icon_body(icon_name, t["accent2"])}</g>')
+        nx = h * 1.6
+    else:
+        nx = h * 0.95
+    parts.append(f'<text x="{nx}" y="{h/2}" fill="{t["ink"]}" font-family="{fam}" '
+                 f'font-size="{int(h*0.30)}" font-weight="700" '
+                 f'dominant-baseline="central">{name}</text>')
+    parts.append(f'<text x="{w-14}" y="{h/2}" fill="{t["accent2"]}" '
+                 f'font-family="{fam}" font-size="{int(h*0.30)}" font-weight="700" '
+                 f'text-anchor="end" dominant-baseline="central">{score}</text>')
     return _svg(w, h, "".join(parts))
 
 

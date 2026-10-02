@@ -37,9 +37,16 @@ sample review + user sign-off before mass production (PLAN.md §5 rule).
 ## Phases (checkpoint = user sign-off)
 
 0. ✅ direction approved (this file)
-1. Core generator + first samples -> **user reviews visuals** [NOW]
-2. Mass production: all families x 4 themes -> sample sheets again
-3. Screens (48) -> review
-4. Unity package (gate) + tokens + fonts + docs -> review
+1. ✅ Core generator + first samples — **user approved samples (v1 ZIP)**
+2. Mass production [IN PROGRESS]:
+   - ✅ 9 button shapes × 4 states × 4 kinds × 4 themes
+   - ✅ full kit tree: **1,784 SVGs** (manifest.json) + **1,784 PNG @4x**
+   - ✅ new families: portrait, skillcard+cooldown, toast, scrollbar, radio, leaderboard
+   - ✅ tokens (JSON+CSS) + retheme.py + RECLOUR.md (designer-editable)
+   - ✅ 48 screens (12 layouts × 4 themes) rendered **4K 3840×2160**
+   - ⬜ icons 51 → 200+ base (batch 2 next)
+   - ⬜ sample sheets update + user review
+3. (merged into 2) screens -> review together
+4. Unity package (gate) + fonts + docs -> review
 5. Listing kit (answers/media/test-report like PixelForge) -> submit by user
 6. Post-live: tags/price fast edits, 14-day review
