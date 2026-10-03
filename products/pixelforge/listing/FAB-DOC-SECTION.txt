@@ -1,0 +1,52 @@
+===============================================================================
+PIXELFORGE — DOCUMENTATION SECTION
+Append this block at the END of the listing Description (the reviewer
+requires documentation on the Fab page + a demo scene).
+===============================================================================
+
+DOCUMENTATION & INSTALLATION
+----------------------------
+INSTALL (Unity package)
+1. In Unity: Assets > Import Package > Custom Package...
+2. Select PixelForge-Unity-v1.1.3.unitypackage and press Import.
+3. Menu: Tools > PixelForge > Open Sprite Sheet Maker — opens the
+   offline app in your default browser.
+4. Demo scene: open Assets/PixelForge/Scenes/PixelForge-Demo.unity —
+   it shows an example sprite produced by PixelForge, correctly scaled
+   (16 pixels per Unity unit) and facing Z-forward.
+
+INSTALL (standalone, no Unity needed)
+1. Unzip PixelForge-v1.1.3.zip anywhere.
+2. Double-click index.html — works offline from file:// (no server).
+
+QUICK START
+1. Drop images (PNG/JPG/WEBP/GIF) into the window.
+2. Optional: Convert to pixel art — pixel size, 13 palettes, dithering.
+3. Pick a layout (shelf / strip / grid), padding, edge extrusion and
+   max texture size (1024-8192, auto multi-page split).
+4. Export: PNG sheet, animated GIF, atlas JSON (Generic / Phaser 3 /
+   Aseprite), CSS sprites or a ZIP bundle. Preview the animation live
+   before exporting (FPS, loop/ping-pong/once, pivot points).
+
+TROUBLESHOOTING
+- "File not found" dialog in Unity: make sure Assets/PixelForge/ exists
+  (import the package into this project's Assets folder).
+- Browser blocks downloads: allow multiple downloads for file:// pages
+  (a multi-page split saves several PNGs at once).
+- Everything is re-exportable: change settings and export again —
+  nothing is baked.
+
+FILES IN THE PACKAGE
+  Assets/PixelForge/Editor/     PixelForgeLauncher.cs (Tools menu)
+  Assets/PixelForge/Scenes/     PixelForge-Demo.unity (demo scene)
+  Assets/PixelForge/Textures/   DemoSprite.png (demo sprite, 16 px/unit)
+  Assets/PixelForge/WebApp/     complete offline application
+  Assets/PixelForge/README.md   full documentation
+  Assets/PixelForge/LICENSE.txt, CHANGELOG.md, THIRD-PARTY.txt
+
+THIRD-PARTY SOFTWARE NOTICE
+The web app bundles gifenc and gifuct-js under the MIT license; see the
+THIRD-PARTY.txt file inside the package for details.
+
+EXAMPLE PROJECT
+https://github.com/DawshaX/BountyCore-assassin-and-work-done/raw/arena/01a0f080-bountycore-assassin-and-work-d/products/pixelforge/dist/PixelForge-Example-v1.1.3.zip

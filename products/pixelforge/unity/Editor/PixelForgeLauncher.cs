@@ -1,3 +1,6 @@
+// Copyright (c) 2026 DawshaX. All rights reserved.
+// PixelForge Sprite Sheet Maker - Unity editor integration.
+// SPDX-License-Identifier: Proprietary (see LICENSE.txt)
 using System.IO;
 using UnityEditor;
 using UnityEngine;
