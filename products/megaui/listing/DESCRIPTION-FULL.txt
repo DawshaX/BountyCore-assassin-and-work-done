@@ -103,6 +103,25 @@ WHAT'S INSIDE
    copy. manifest.json lists every file for scripting.
 
 
+ARCHIVE CONTENTS — WHAT THE FILES HOLD
+--------------------------------------
+MegaUI-complete-v1.0.0.zip (additional file, ~81 MB / 5,534 files):
+  svg/<theme>/<group>/     2,672 master SVGs (668 designs x 4 themes)
+  png4k/<theme>/<group>/   2,672 PNGs at 4x resolution, transparent
+  screens/<theme>/         84 screens — HTML/CSS source + 4K PNG each
+  sheets/                  4 full component sheets (4K PNG, one per theme)
+  fonts/                   Inter + Montserrat TTF with SIL OFL-1.1 texts
+  tokens/                  design-tokens.json + megaui.css (all 4 palettes)
+  docs/                    README, RECLOUR guide, TEST-REPORT (34/34),
+                           CONTENTS manifest
+  listing/                 store copy: description, tags, answers
+  index.html               offline interactive gallery (double-click)
+  manifest.json            machine-readable inventory of every file
+MegaUI-Unity-v1.0.0.unitypackage (main file, ~23 MB):
+  all 2,672 sprites with 9-slice borders + UI Toolkit USS/UXML (5 screens)
+  + 5 runtime C# scripts + OFL fonts + token files.
+
+
 HOW TO USE IT
 -------------
 1) Open index.html (offline gallery) and pick a theme.
