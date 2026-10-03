@@ -60,7 +60,11 @@ The complete game UI kit: 4 hand-crafted themes, 2,672 vector components
 (+4x PNG), 244 icons, 84 ready screens in 4K, Unity package with runtime
 C#, OFL fonts and a one-command recolor system.
 
---- FULL DESCRIPTION (paste as-is) ---
+--- FULL DESCRIPTION (USE THE NEW FILE!) ---
+الوصف الكامل الجديد (شمولي + FAQ): listing/DESCRIPTION-FULL.txt
+(يتجاهل القديم تحت — البست الجديد بدلّه)
+
+--- OLD FULL DESCRIPTION (kept for reference) ---
 MegaUI - Game UI Design System
 ================================
 
