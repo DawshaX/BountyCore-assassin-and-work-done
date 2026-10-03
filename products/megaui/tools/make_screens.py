@@ -1,4 +1,4 @@
-"""MegaUI screens generator — 17 screen layouts x 4 themes = 68 screens.
+"""MegaUI screens generator — 21 screen layouts x 4 themes = 84 screens.
 
 Writes dist/kit/screens/<theme>/<name>.html (1920x1080), rendered to 4K PNG
 by tools/render4k.js.
@@ -376,6 +376,8 @@ SCREENS = [
     ("11-results", screen_results),
     ("12-login", screen_login),
 ] + _build_extra(COPY, SHAPES_BY_THEME, E, wrap, K, THEMES)
+from screens_extra import build_batch3 as _build_batch3  # noqa: E402
+SCREENS = SCREENS + _build_batch3(COPY, SHAPES_BY_THEME, E, wrap, K, THEMES)
 
 
 def main():

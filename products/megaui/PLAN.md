@@ -40,17 +40,19 @@ sample review + user sign-off before mass production (PLAN.md §5 rule).
 1. ✅ Core generator + first samples — **user approved samples (v1 ZIP)**
 2. ✅ Mass production COMPLETE (2026-10-03) + completeness pass #2 (user checklist audit):
    - ✅ 9 button shapes × 4 states × 4 kinds × 4 themes
-   - ✅ full kit tree: **2,496 SVGs** (624 × 4 themes) + **2,496 PNG @4x**
+   - ✅ full kit tree: **2,672 SVGs** (668 × 4 themes) + **2,672 PNG @4x**
    - ✅ families: portrait, skillcard+cooldown, toast, scrollbar, radio, leaderboard…
    - ✅ **HUD overlay widgets (new):** minimap frame, compass strip, currency counter (+ buy)
-   - ✅ **216 icons** base (51 + 152 batch2 + 13 gap-fill incl. missing `arrow_r` bugfix)
+   - ✅ **244 icons** base (51 + 152 batch2 + 13 gap-fill incl. missing `arrow_r` bugfix)
    - ✅ tokens (JSON+CSS) + retheme.py + RECLOUR.md (designer-editable)
-   - ✅ **68 screens** (17 layouts × 4 themes) **4K 3840×2160** — added Loading,
-     Character Select, Skill Tree, Defeat, Confirm; fixed HUD actionbar/boss-bar bugs
+   - ✅ **84 screens** (21 layouts × 4 themes) **4K 3840×2160** — added Loading,
+     Character Select, Skill Tree, Defeat, Confirm, Achievements, Crafting,
+     Chat, Mobile HUD; + touch controls & meta overlays + offline HTML gallery;
+     fixed HUD actionbar/boss-bar bugs
    - ✅ sample sheets + spot-checks (new icons, 9 shapes, 5 screens, HUD widgets)
 3. (merged into 2) ✅
-4. ✅ Unity package **MegaUI-Unity-v1.0.0.unitypackage** (2,517 files:
-   2,496 sprites w/ TextureImporter 9-slice + expanded USS with 4 theme classes +
+4. ✅ Unity package **MegaUI-Unity-v1.0.0.unitypackage** (2,693 files:
+   2,672 sprites w/ TextureImporter 9-slice + expanded USS with 4 theme classes +
    5 UXML screens + **runtime C#: MegaUIThemeSwitcher, MegaUIPopup,
    MegaUIButtonFx, MegaUIBar** + Editor script) + OFL fonts + docs
 5. ✅ Listing kit drafts: `listing/{DESCRIPTION-plain.txt,TAGS.txt,

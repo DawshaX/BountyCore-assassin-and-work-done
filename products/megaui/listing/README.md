@@ -1,21 +1,22 @@
 # MegaUI — Game UI Design System
 
-**The complete, fully editable game UI kit: 4 themes, 2,496 vector
-components, 216 icons, 68 screens in 4K — every file original parametric
+**The complete, fully editable game UI kit: 4 themes, 2,672 vector
+components, 244 icons, 84 screens in 4K — every file original parametric
 artwork.**
 
 ## What's in this package
 
 | Folder | Contents |
 |---|---|
-| `svg/<theme>/<group>/` | **2,496 master SVGs** — buttons (9 shapes × 4 states × 4 kinds), bars, rings, slots, panels, windows, forms, decor, cards, leaderboard, **HUD widgets (minimap / compass / currency)**, icons |
-| `png4k/<theme>/<group>/` | The same **2,496 PNGs at 4× resolution**, transparent, ready for any engine |
-| `screens/<theme>/` | **68 full screens** (Menu, HUD, Inventory, Shop, Settings, Pause, Dialog, Map, Quests, Character, Results, Login, **Loading, Character Select, Skill Tree, Defeat, Confirm**) as HTML source + **4K PNG (3840×2160)** |
+| `svg/<theme>/<group>/` | **2,672 master SVGs** — buttons (9 shapes × 4 states × 4 kinds), bars, rings, slots, panels, windows, forms, decor, cards, leaderboard, HUD widgets (minimap / compass / currency), **touch controls (joystick, ABXY, crosshairs)**, **meta overlays (nameplate, killfeed, prompts, radial wheel, party frames, ammo, subtitles)**, icons |
+| `png4k/<theme>/<group>/` | The same **2,672 PNGs at 4× resolution**, transparent, ready for any engine |
+| `screens/<theme>/` | **84 full screens** (Menu, HUD, Inventory, Shop, Settings, Pause, Dialog, Map, Quests, Character, Results, Login, Loading, Character Select, Skill Tree, Defeat, Confirm, **Achievements, Crafting, Chat, Mobile HUD**) as HTML source + **4K PNG (3840×2160)** |
 | `tokens/` | `design-tokens.json` + `megaui.css` — every color in one place |
 | `fonts/` | Inter + Montserrat TTF with **OFL-1.1** licenses |
 | `docs/RECLOUR.md` | One-command recolor guide for designers |
 | `manifest.json` | Machine-readable inventory of every component |
-| `MegaUI-Unity-v1.0.0.unitypackage` *(one level up in `dist/`)* | Full Unity import: 2,496 sprites + UI Toolkit USS/UXML + runtime C# (popup animation, button juice, bar driver, one-click theme switcher) + editor helper |
+| `index.html` | **Offline interactive gallery** — browse themes, screens, components, all icons (double-click to open) |
+| `MegaUI-Unity-v1.0.0.unitypackage` *(one level up in `dist/`)* | Full Unity import: 2,672 sprites + UI Toolkit USS/UXML + runtime C# (popup animation, button juice, bar driver, one-click theme switcher) + editor helper |
 
 ## Themes
 
@@ -46,5 +47,5 @@ artwork.**
 ## Quality guarantees
 - Original artwork only — no traced/stock/AI-borrowed geometry.
 - Valid XML across all SVGs, verified by the automated test suite
-  (`tools/verify_kit.py`).
+  (`tools/verify_kit.py`, 34/34 checks).
 - Consistent 24px icon grid, shared stroke weights, one type scale.

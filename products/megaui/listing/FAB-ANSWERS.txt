@@ -9,13 +9,14 @@ Unity .unitypackage is included: 2392 PNGs import as Sprites with 9-slice
 borders, plus a UI Toolkit USS/UXML starter and an editor menu helper.
 
 Q: What file formats are included?
-A: SVG, PNG (3840x2160-class 4x exports), HTML, CSS, JSON, TTF (OFL-1.1
-fonts), .unitypackage.
+A: SVG, PNG (4x exports up to 3840x2160 screens), HTML (screen sources +
+offline gallery), CSS, JSON, TTF (OFL-1.1 fonts), .unitypackage (C# scripts
+included).
 
 Q: How is the content structured?
-A: /svg/<theme>/<group> mirrors /png4k/<theme>/<group> one-to-one (598 files
-per theme, 4 themes). /screens/<theme> holds 12 ready screens per theme as
-HTML source + 4K PNG. /tokens, /fonts, /docs and manifest.json complete the
+A: /svg/<theme>/<group> mirrors /png4k/<theme>/<group> one-to-one (668 files
+per theme, 4 themes). /screens/<theme> holds 21 ready screens per theme as
+HTML source + 4K PNG. index.html is the offline interactive gallery. /tokens, /fonts, /docs and manifest.json complete the
 kit.
 
 Q: Is any of the content AI-generated?

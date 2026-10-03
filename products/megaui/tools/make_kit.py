@@ -165,6 +165,24 @@ def build_theme(theme):
         put("hud", f"currency-{kn}-plus", K.currency(theme, kn, "12,450", with_plus=True))
         put("hud", f"currency-{kn}", K.currency(theme, kn, "386", h=44, with_plus=False))
 
+    # ---- touch controls + meta overlays (batch 3 widgets)
+    put("touch", "joystick-engaged", K.joystick(150, theme, engaged=True))
+    put("touch", "joystick-idle", K.joystick(150, theme, engaged=False))
+    put("touch", "buttons-abxy", K.touch_buttons(theme))
+    for ck in ("cross", "circle", "brackets"):
+        put("touch", f"crosshair-{ck}", K.crosshair(96, theme, ck))
+    put("overlays", "nameplate", K.nameplate(240, 64, theme, "ShadowKing", 42, "", 0.78, 0.55))
+    put("overlays", "nameplate-clan", K.nameplate(280, 64, theme, "Nova", 7, "[VOID]", 0.62))
+    put("overlays", "killfeed", K.killfeed(300, theme,
+        (("Nova", "Blade", "sword"), ("Raven", "Nova", "bolt"))))
+    put("overlays", "prompt-e", K.prompt(250, 56, theme, "E", "Open door"))
+    put("overlays", "prompt-f", K.prompt(230, 56, theme, "F", "Talk"))
+    put("overlays", "radial", K.radial(320, theme))
+    put("overlays", "party", K.party(300, 200, theme))
+    put("overlays", "ammo-bolt", K.ammo(270, 64, theme, "bolt", 24, 30))
+    put("overlays", "ammo-arrow", K.ammo(250, 60, theme, "arrow", 7, 12))
+    put("overlays", "subtitle", K.subtitle(560, theme))
+
     # ---- icons (theme-tinted)
     for name in K.ICON_NAMES:
         put("icons", name, K.icon(name, theme, 96))

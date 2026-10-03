@@ -1414,3 +1414,278 @@ def currency(theme_key, kind="gold", amount="12,450", h=52, with_plus=True):
 
 def state_ok(style):
     return True
+
+
+# ------------------------------------------------- touch & meta widgets ---
+def joystick(size, theme_key, knob=0.42, engaged=True):
+    """Virtual analog stick (mobile): base ring + knob + directional ticks."""
+    t = THEMES[theme_key]
+    style = t["style"]
+    u = _uid()
+    c = size / 2
+    r = size / 2 - 4
+    kr = r * knob
+    parts = [f'<circle cx="{c}" cy="{c}" r="{r}" fill="{t["panel"]}" fill-opacity="0.85" '
+             f'stroke="{t["stroke"]}" stroke-width="3"/>',
+             f'<circle cx="{c}" cy="{c}" r="{r*0.72:.1f}" fill="none" '
+             f'stroke="{t["muted"]}" stroke-width="1.5" stroke-dasharray="6 7" opacity="0.7"/>']
+    for ang, lbl in ((0, "E"), (90, "S"), (180, "W"), (270, "N")):
+        import math as _m
+        rx = c + (r * 0.86) * _m.cos(_m.radians(ang))
+        ry = c + (r * 0.86) * _m.sin(_m.radians(ang))
+        parts.append(f'<text x="{rx:.1f}" y="{ry:.1f}" fill="{t["muted"]}" font-family="{MONO}" '
+                     f'font-size="11" text-anchor="middle" dominant-baseline="central">{lbl}</text>')
+    kx, ky = c, c - (r * 0.20 if engaged else 0)
+    parts.append(f'<circle cx="{kx}" cy="{ky}" r="{kr:.1f}" fill="{t["accent"]}" '
+                 f'stroke="{t["accent2"]}" stroke-width="3"/>')
+    parts.append(f'<circle cx="{kx - kr*0.3:.1f}" cy="{ky - kr*0.35:.1f}" r="{kr*0.30:.1f}" '
+                 f'fill="#ffffff" opacity="0.35"/>')
+    return _svg(size, size, "".join(parts))
+
+
+def touch_buttons(theme_key, labels=("A", "B", "X", "Y"), size=88):
+    """Round touch action buttons in a diamond cluster (mobile layout)."""
+    t = THEMES[theme_key]
+    cols = {"A": t["good"], "B": t["danger"], "X": t["mana"],
+            "Y": t["accent2"]}
+    w = h = size * 3 + 24
+    c = w / 2
+    off = size * 0.82
+    parts = []
+    positions = [(0, -1), (1, 0), (0, 1), (-1, 0)]
+    for lbl, (dx, dy) in zip(labels, positions):
+        bx, by = c + dx * off, c + dy * off
+        col = cols.get(lbl, t["accent"])
+        parts.append(f'<circle cx="{bx:.1f}" cy="{by:.1f}" r="{size/2:.1f}" '
+                     f'fill="{t["panel"]}" fill-opacity="0.9" stroke="{col}" stroke-width="4"/>')
+        parts.append(f'<circle cx="{bx:.1f}" cy="{by:.1f}" r="{size/2-9:.1f}" fill="{col}" '
+                     f'opacity="0.18"/>')
+        fam = MONO if style_of(t) == "pixel" else FAM
+        parts.append(f'<text x="{bx:.1f}" y="{by:.1f}" fill="{col}" font-family="{fam}" '
+                     f'font-size="{int(size*0.40)}" font-weight="700" text-anchor="middle" '
+                     f'dominant-baseline="central">{lbl}</text>')
+    return _svg(w, h, "".join(parts))
+
+
+def style_of(t):
+    return t["style"]
+
+
+def crosshair(size, theme_key, kind="cross"):
+    """Aim reticle: cross / circle / brackets variants."""
+    t = THEMES[theme_key]
+    c = size / 2
+    col = t["accent2"]
+    parts = []
+    if kind == "cross":
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            x2 = c + dx * (size / 2 - 4)
+            y2 = c + dy * (size / 2 - 4)
+            x1 = c + dx * (size * 0.22)
+            y1 = c + dy * (size * 0.22)
+            parts.append(f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" '
+                         f'stroke="{col}" stroke-width="3" stroke-linecap="round"/>')
+        parts.append(f'<circle cx="{c}" cy="{c}" r="2.6" fill="{t["danger"]}"/>')
+    elif kind == "circle":
+        parts.append(f'<circle cx="{c}" cy="{c}" r="{size*0.36:.1f}" fill="none" '
+                     f'stroke="{col}" stroke-width="3"/>')
+        parts.append(f'<circle cx="{c}" cy="{c}" r="{size*0.16:.1f}" fill="none" '
+                     f'stroke="{col}" stroke-width="2" opacity="0.8"/>')
+        parts.append(f'<circle cx="{c}" cy="{c}" r="2.4" fill="{t["danger"]}"/>')
+        for ang in (0, 90, 180, 270):
+            import math as _m
+            x1 = c + (size * 0.36) * _m.cos(_m.radians(ang))
+            y1 = c + (size * 0.36) * _m.sin(_m.radians(ang))
+            x2 = c + (size * 0.48) * _m.cos(_m.radians(ang))
+            y2 = c + (size * 0.48) * _m.sin(_m.radians(ang))
+            parts.append(f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" '
+                         f'stroke="{col}" stroke-width="3"/>')
+    else:  # brackets
+        m, L = size * 0.12, size * 0.26
+        parts.append(f'<path d="M{m} {m+L} V{m} H{m+L} M{size-m-L} {m} H{size-m} V{m+L} '
+                     f'M{size-m} {size-m-L} V{size-m} H{size-m-L} M{m+L} {size-m} H{m} '
+                     f'V{size-m-L}" fill="none" stroke="{col}" stroke-width="3.5" '
+                     f'stroke-linecap="round"/>')
+        parts.append(f'<circle cx="{c}" cy="{c}" r="2.4" fill="{col}"/>')
+    return _svg(size, size, "".join(parts))
+
+
+def nameplate(w, h, theme_key, name="ShadowKing", level=42, clan="", hp=0.78, mp=None):
+    """Floating world nameplate: name + level + clan + compact hp/mp bars."""
+    t = THEMES[theme_key]
+    style = t["style"]
+    parts = []
+    parts.append(f'<rect x="0" y="0" width="{w}" height="{h}" rx="{6 if style!="pixel" else 0}" '
+                 f'fill="{t["bg"]}" fill-opacity="0.72"/>')
+    fam = MONO if style == "pixel" else FAM
+    lvl = f"[{level}] " if level else ""
+    tag = f' <span>{clan}</span>' if clan else ""
+    parts.append(f'<text x="{w/2}" y="{h*0.34}" fill="{t["ink"]}" font-family="{fam}" '
+                 f'font-size="{int(h*0.30)}" font-weight="700" text-anchor="middle" '
+                 f'dominant-baseline="central">{lvl}{name}</text>')
+    by = h * 0.62
+    bh = h * 0.16
+    pad = 8
+    bw = (w - pad * 3) / (2 if mp is not None else 1)
+    parts.append(f'<rect x="{pad}" y="{by}" width="{bw}" height="{bh}" fill="{t["panel2"]}"/>')
+    parts.append(f'<rect x="{pad}" y="{by}" width="{bw*hp:.1f}" height="{bh}" fill="{t["danger"]}"/>')
+    if mp is not None:
+        x2 = pad * 2 + bw
+        parts.append(f'<rect x="{x2}" y="{by}" width="{bw}" height="{bh}" fill="{t["panel2"]}"/>')
+        parts.append(f'<rect x="{x2}" y="{by}" width="{bw*mp:.1f}" height="{bh}" fill="{t["mana"]}"/>')
+    return _svg(w, h, "".join(parts))
+
+
+def killfeed(w, theme_key, rows=(("Nova", "Blade", "sword"), ("Raven", "Nova", "bolt"))):
+    """Kill feed stack: killer → victim rows with weapon icon."""
+    t = THEMES[theme_key]
+    style = t["style"]
+    rh = 34
+    h = rh * len(rows) + 8
+    parts = [f'<rect x="0" y="0" width="{w}" height="{h}" rx="6" fill="{t["bg"]}" '
+             f'fill-opacity="0.55"/>']
+    fam = MONO if style == "pixel" else FAM
+    for i, row in enumerate(rows):
+        a, b, ic = row
+        y = 6 + i * rh + rh / 2
+        parts.append(f'<text x="12" y="{y}" fill="{t["accent2"]}" font-family="{fam}" '
+                     f'font-size="14" font-weight="700" dominant-baseline="central">{a}</text>')
+        ax = 16 + len(a) * 8.6
+        parts.append(f'<g transform="translate({ax:.0f},{y-10:.0f}) scale(0.85)">'
+                     f'{icon_body(ic, t["ink"])}</g>')
+        bx = ax + 30
+        parts.append(f'<text x="{bx:.0f}" y="{y}" fill="{t["danger"]}" font-family="{fam}" '
+                     f'font-size="14" font-weight="700" dominant-baseline="central">{b}</text>')
+    return _svg(w, h, "".join(parts))
+
+
+def prompt(w, h, theme_key, key="E", text="Open door"):
+    """Interaction prompt: keycap + verb."""
+    t = THEMES[theme_key]
+    ks = h - 8
+    parts = []
+    kc = keycap(min(ks, 56), theme_key, key)
+    tw = w - ks - 24
+    parts.append(f'<rect x="0" y="0" width="{w}" height="{h}" rx="{h/2 if style_of(t)!="pixel" else 0}" '
+                 f'fill="{t["bg"]}" fill-opacity="0.7" stroke="{t["stroke"]}" stroke-width="2"/>')
+    parts.append(f'<g transform="translate(4,4)">{keycap_body(min(ks,56), theme_key, key)}</g>')
+    fam = MONO if style_of(t) == "pixel" else FAM
+    parts.append(f'<text x="{ks+16}" y="{h/2}" fill="{t["ink"]}" font-family="{fam}" '
+                 f'font-size="{int(h*0.40)}" font-weight="600" dominant-baseline="central">'
+                 f'{text}</text>')
+    return _svg(w, h, "".join(parts))
+
+
+def keycap_body(size, theme_key, label="E"):
+    """Keycap inner (no outer svg) — used by prompt()."""
+    full = keycap(size, theme_key, label)
+    inner = full[full.index(">", full.index("<svg")) + 1:full.rindex("</svg>")]
+    return inner
+
+
+def radial(size, theme_key, items=8, active=0):
+    """Radial / emote wheel: segmented pie with icons around center."""
+    import math as _m
+    t = THEMES[theme_key]
+    c = size / 2
+    R = size / 2 - 6
+    step = 360 / items
+    parts = []
+    ico_ring = ["sword", "shield", "potion", "bolt", "emote" if False else "star",
+                "fire", "flag", "gem"]
+    for i in range(items):
+        a0 = _m.radians(i * step - 90 + 3)
+        a1 = _m.radians((i + 1) * step - 90 - 3)
+        x0, y0 = c + R * _m.cos(a0), c + R * _m.sin(a0)
+        x1, y1 = c + R * _m.cos(a1), c + R * _m.sin(a1)
+        col = t["accent"] if i == active else t["panel"]
+        op = "0.95" if i == active else "0.8"
+        parts.append(f'<path d="M{c} {c} L{x0:.1f} {y0:.1f} A{R} {R} 0 0 1 {x1:.1f} {y1:.1f} Z" '
+                     f'fill="{col}" fill-opacity="{op}" stroke="{t["stroke"]}" stroke-width="2.5"/>')
+        amid = _m.radians((i + 0.5) * step - 90)
+        ix, iy = c + R * 0.64 * _m.cos(amid), c + R * 0.64 * _m.sin(amid)
+        tcol = t["bg"] if i == active else t["ink"]
+        parts.append(f'<g transform="translate({ix-16:.1f},{iy-16:.1f}) scale(1.33)">'
+                     f'{icon_body(ico_ring[i % len(ico_ring)], tcol)}</g>')
+    parts.append(f'<circle cx="{c}" cy="{c}" r="{R*0.34:.1f}" fill="{t["panel2"]}" '
+                 f'stroke="{t["accent2"]}" stroke-width="3"/>')
+    parts.append(f'<text x="{c}" y="{c}" fill="{t["accent2"]}" font-family="{FAM}" '
+                 f'font-size="16" font-weight="700" text-anchor="middle" '
+                 f'dominant-baseline="central">WHEEL</text>')
+    return _svg(size, size, "".join(parts))
+
+
+def party(w, h, theme_key, members=4):
+    """Party frames: stacked compact member rows (portrait dot + bars)."""
+    t = THEMES[theme_key]
+    rh = h / members
+    names = ("ShadowKing", "Nova", "Raven", "Blade")
+    vals = ((0.82, 0.55), (0.64, 0.9), (1.0, 0.3), (0.47, 0.72))
+    parts = []
+    fam = MONO if style_of(t) == "pixel" else FAM
+    for i in range(members):
+        y = i * rh
+        parts.append(f'<rect x="0" y="{y+2}" width="{w}" height="{rh-4}" rx="5" '
+                     f'fill="{t["bg"]}" fill-opacity="0.65" stroke="{t["stroke"]}" '
+                     f'stroke-width="1.5"/>')
+        dc = y + rh / 2
+        parts.append(f'<circle cx="{dc:.1f}" cy="{dc:.1f}" r="{rh*0.30:.1f}" fill="{t["panel2"]}" '
+                     f'stroke="{t["accent"]}" stroke-width="2"/>')
+        parts.append(f'<text x="{rh+6}" y="{y+rh*0.36:.1f}" fill="{t["ink"]}" font-family="{fam}" '
+                     f'font-size="{int(rh*0.30)}" font-weight="700" '
+                     f'dominant-baseline="central">{names[i]}</text>')
+        hp, mp = vals[i]
+        bw = w - rh - 14
+        parts.append(f'<rect x="{rh+6}" y="{y+rh*0.58:.1f}" width="{bw}" '
+                     f'height="{rh*0.14:.1f}" fill="{t["panel2"]}"/>')
+        parts.append(f'<rect x="{rh+6}" y="{y+rh*0.58:.1f}" width="{bw*hp:.1f}" '
+                     f'height="{rh*0.14:.1f}" fill="{t["danger"]}"/>')
+        parts.append(f'<rect x="{rh+6}" y="{y+rh*0.76:.1f}" width="{bw}" '
+                     f'height="{rh*0.14:.1f}" fill="{t["panel2"]}"/>')
+        parts.append(f'<rect x="{rh+6}" y="{y+rh*0.76:.1f}" width="{bw*mp:.1f}" '
+                     f'height="{rh*0.14:.1f}" fill="{t["mana"]}"/>')
+    return _svg(w, h, "".join(parts))
+
+
+def ammo(w, h, theme_key, kind="bolt", count=24, total=30):
+    """Ammo / charges readout: icon + big count + pip strip."""
+    t = THEMES[theme_key]
+    style = t["style"]
+    col = t["accent2"]
+    parts = [_shadow(style, w, h, h/2-1 if style!="pixel" else 8, dy=3, op=0.35)]
+    parts.append(f'<g fill="{t["panel"]}" fill-opacity="0.9" stroke="{col}" stroke-width="2.5">'
+                 f'{_path_for(style, w, h, h/2-1 if style!="pixel" else 8)}</g>')
+    parts.append(f'<g transform="translate({h*0.16},{h*0.16}) scale({h*0.64/24})">'
+                 f'{icon_body(kind, col)}</g>')
+    fam = MONO if style == "pixel" else FAM
+    parts.append(f'<text x="{h*1.15:.0f}" y="{h/2}" fill="{t["ink"]}" font-family="{fam}" '
+                 f'font-size="{int(h*0.52)}" font-weight="700" dominant-baseline="central">'
+                 f'{count}</text>')
+    # pip strip
+    px = h * 1.15 + len(str(count)) * h * 0.34 + 10
+    pw = w - px - 10
+    n = min(total, 15)
+    step = pw / n
+    lit = round(count / max(total, 1) * n)
+    for i in range(n):
+        c1 = col if i < lit else t["muted"]
+        parts.append(f'<rect x="{px + i*step:.1f}" y="{h*0.30:.1f}" '
+                     f'width="{max(2, step-3):.1f}" height="{h*0.40:.1f}" rx="1.5" '
+                     f'fill="{c1}" fill-opacity="{1 if i < lit else 0.35}"/>')
+    return _svg(w, h, "".join(parts))
+
+
+def subtitle(w, theme_key, speaker="ELDER", text="The dungeon shifts when the moon dies..."):
+    """Cinematic subtitle strip: speaker label + line."""
+    t = THEMES[theme_key]
+    style = t["style"]
+    h = 84
+    parts = [f'<rect x="0" y="0" width="{w}" height="{h}" rx="{8 if style!="pixel" else 0}" '
+             f'fill="{t["bg"]}" fill-opacity="0.78" stroke="{t["stroke"]}" stroke-width="2"/>']
+    fam = MONO if style == "pixel" else FAM
+    parts.append(f'<text x="{w/2}" y="{h*0.32:.0f}" fill="{t["accent2"]}" font-family="{fam}" '
+                 f'font-size="14" font-weight="700" letter-spacing="2.4" text-anchor="middle" '
+                 f'dominant-baseline="central">{speaker}</text>')
+    parts.append(f'<text x="{w/2}" y="{h*0.66:.0f}" fill="{t["ink"]}" font-family="{fam}" '
+                 f'font-size="19" text-anchor="middle" dominant-baseline="central">{text}</text>')
+    return _svg(w, h, "".join(parts))

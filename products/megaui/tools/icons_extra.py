@@ -411,4 +411,82 @@ ICONS_EXTRA.update({
              '<circle cx="12" cy="17.2" r="0.6" fill="HOLE"/>'),
 })
 
+# ---- batch 4: "build a whole game" gap-fill (2026-10-03 research) ----
+ICONS_EXTRA.update({
+    # status effects (buff/debuff)
+    "poison": ('<path d="M12 3.5 C8 9 6 12 6 14.5 a6 6 0 0 0 12 0 C18 12 16 9 12 3.5 Z"/>'
+               '<path d="M9.5 14.5 a2.5 2.5 0 0 0 2.5 2.5" stroke-opacity="0.6"/>'),
+    "burn": ('<path d="M12 3.5 c1.5 3.5 -1 4.5 0.5 7 c0.6 -1 1.6 -1.4 2.4 -1 c2 1.4 3.1 3.4 3.1 5.6'
+             ' a6 6 0 0 1 -12 0 c0 -3.6 3.4 -5.8 6 -11.6 Z"/>'),
+    "freeze": ('<path d="M12 3 V21 M4.2 7.5 L19.8 16.5 M19.8 7.5 L4.2 16.5"/>'
+               '<path d="M12 6.5 l-2 -2 M12 6.5 l2 -2 M12 17.5 l-2 2 M12 17.5 l2 2" stroke-opacity="0.7"/>'),
+    "stun": ('<path d="M13.5 3 L6 13 h4.5 L10 21 L18 10 h-4.8 Z"/>'),
+    "bleed": ('<path d="M12 3.5 C8 9 6 12 6 14.5 a6 6 0 0 0 12 0 C18 12 16 9 12 3.5 Z"/>'
+              '<path d="M12 11 v5" stroke-opacity="0.7"/>'),
+    "buff_up": ('<rect x="4.5" y="4.5" width="15" height="15" rx="3"/><path d="M12 16 V8"/>'
+                '<path d="M8.5 11.5 L12 8 l3.5 3.5"/>'),
+    "debuff_down": ('<rect x="4.5" y="4.5" width="15" height="15" rx="3"/><path d="M12 8 v8"/>'
+                    '<path d="M8.5 12.5 L12 16 l3.5 -3.5"/>'),
+    # crafting / workshop
+    "anvil": ('<path d="M4 9.5 h9 c3.5 0 5.5 1.6 6.5 3.5 H14 l-1.5 2.5 H9.5 L8 13 H4 Z"/>'
+              '<path d="M8 15.5 v3 h8 v-3" /><path d="M6 18.5 h12"/>'),
+    "planks": ('<rect x="3.5" y="6" width="17" height="3.6" rx="0.8"/>'
+               '<rect x="3.5" y="10.8" width="17" height="3.6" rx="0.8"/>'
+               '<rect x="3.5" y="15.6" width="17" height="3.6" rx="0.8"/>'),
+    "thread": ('<circle cx="9" cy="9" r="5"/><path d="M9 4.2 c2.4 1.6 2.4 7 0 9.6 M6.4 6 c2.4 3.4 2.4 5.6 0 7.2"/>'
+               '<path d="M13 12 c3 1 5.5 3.5 6.5 7"/>'),
+    "apple": ('<path d="M12 8.5 c-1.4 -2 -5.5 -2.4 -6.7 1 C4 13.5 6.5 19 9.5 19.8 '
+              'c1.4 0.4 1.9 -0.6 2.5 -0.6 s1.1 1 2.5 0.6 C17.5 19 20 13.5 18.7 9.5 '
+              'c-1.2 -3.4 -5.3 -3 -6.7 -1 Z"/><path d="M12 8.5 V5 c1.8 0 3.4 -1 4.2 -2.4"/>'),
+    "cheese": ('<path d="M3.5 16 L20.5 9.5 V19 H3.5 Z"/><path d="M3.5 16 a7.5 6 0 0 1 17 -6.5"/>'
+               '<circle cx="8" cy="16.5" r="1.3" fill="HOLE" stroke="none"/>'
+               '<circle cx="13.5" cy="17" r="1" fill="HOLE" stroke="none"/>'),
+    "acorn": ('<path d="M12 9 c-3.4 0 -5.5 2.6 -5.5 5.6 C6.5 17.8 9 20 12 20 s5.5 -2.2 5.5 -5.4 '
+              'C17.5 11.6 15.4 9 12 9 Z"/><path d="M6.8 9.5 a5.6 3.4 0 0 1 10.4 0 Z"/>'
+              '<path d="M12 6 V4"/>'),
+    "vine": ('<path d="M12 21 C12 14 15 10 20 8"/><path d="M12 15 c-2.6 -0.6 -4.4 -2.4 -5 -5 '
+             '2.6 0.4 4.4 2 5 5 Z"/><path d="M15.5 11 c-0.4 -2.6 0.8 -4.8 3 -6 -0.2 2.6 -1.2 4.7 -3 6 Z"/>'),
+    "butterfly": ('<path d="M12 8 v10"/><path d="M12 9 C10 4.5 4.5 4 4 8.5 c-0.4 3.6 4 5.5 8 4.5"/>'
+                  '<path d="M12 9 C14 4.5 19.5 4 20 8.5 c0.4 3.6 -4 5.5 -8 4.5"/>'
+                  '<path d="M12 13 C10.4 17 6 17.5 5.5 14.5 M12 13 c1.6 4 6 4.5 6.5 1.5"/>'),
+    # gear slots
+    "gloves": ('<path d="M7 20.5 V10 a1.6 1.6 0 0 1 3.2 0 V7.5 a1.6 1.6 0 0 1 3.2 0 V9 '
+               'a1.6 1.6 0 0 1 3.2 0 v1.5 a1.6 1.6 0 0 1 3.2 0 v6 c0 2.4 -1.8 4 -4.4 4 Z"/>'
+               '<path d="M7 14.5 H4.8 a1.6 1.6 0 0 0 0 3.2 H7"/>'),
+    "belt": ('<rect x="3" y="8.5" width="18" height="7" rx="2"/><rect x="9" y="7" width="6" height="10" rx="1.5"/>'
+             '<rect x="10.8" y="9.5" width="2.4" height="5" fill="HOLE" stroke="none"/>'),
+    "cloak": ('<path d="M12 3.5 L5 6.5 c-1 6.5 0.5 12 2.5 14.5 h9 c2 -2.5 3.5 -8 2.5 -14.5 Z"/>'
+              '<path d="M12 3.5 V21" stroke-opacity="0.6"/><circle cx="12" cy="5.5" r="1.6"/>'),
+    "quiver": ('<path d="M8.5 8.5 L11 21 h5 L13.5 8.5 Z"/><path d="M9 8.5 h6"/>'
+               '<path d="M10 8.5 L9 3 M13 8.5 L13 2.5 M12 8.5 L14.5 3.2"/>'),
+    "pouch": ('<path d="M8 8.5 h8 c3 1.8 4.5 4.6 4.5 7.5 0 3.2 -3.4 5.5 -8.5 5.5 s-8.5 -2.3 -8.5 -5.5 '
+              'c0 -2.9 1.5 -5.7 4.5 -7.5 Z"/><path d="M8.5 8.5 c1 -2.5 5.5 -2.5 7 0"/>'),
+    # social / meta
+    "guild": ('<path d="M12 3 L19.5 6 v6 c0 4.4 -3.2 7.6 -7.5 9 c-4.3 -1.4 -7.5 -4.6 -7.5 -9 V6 Z"/>'
+              '<path d="M12 8 v7 M9 11 h6" stroke-opacity="0.8"/>'),
+    "handshake": ('<path d="M3.5 12 L7 8.5 l3.5 2 4 -3 6 4.5 -3.5 4 -3 -1.5"/>'
+                  '<path d="M7.5 16.5 l3 2.5 M11 15.5 l3 2.5"/>'),
+    "keyboard": ('<rect x="2.5" y="7" width="19" height="10.5" rx="2"/>'
+                 '<path d="M6 10.5 h1 M9 10.5 h1 M12 10.5 h1 M15 10.5 h1 M18 10.5 h1 '
+                 'M6 13.5 h1 M9 13.5 h1 M12 13.5 h6 M18 13.5 h1"/>'),
+    "mouse_click": ('<rect x="7" y="3.5" width="10" height="17" rx="5"/><path d="M12 7 v3.5"/>'
+                    '<path d="M4 16.5 c-1.4 1.6 -1.4 4 0 5.5 M20 16.5 c1.4 1.6 1.4 4 0 5.5" stroke-opacity="0.6"/>'),
+    "rocket": ('<path d="M12 2.5 c3.5 2.6 5 6.4 5 10.5 l-2.5 4 h-5 L7 13 C7 8.9 8.5 5.1 12 2.5 Z"/>'
+               '<circle cx="12" cy="9.5" r="2"/><path d="M9.5 17 l-2.5 4 M14.5 17 l2.5 4 M12 17.5 V21.5"/>'),
+    # HUD extras
+    "crosshair": ('<circle cx="12" cy="12" r="7"/><path d="M12 2.5 V7 M12 17 v4.5 M2.5 12 H7 M17 12 h4.5"/>'
+                  '<circle cx="12" cy="12" r="1.4" fill="HOLE"/>'),
+    "joystick": ('<circle cx="12" cy="9" r="4.5"/><path d="M12 13.5 V17"/>'
+                 '<path d="M5 20.5 c1.5 -2.5 4 -3.5 7 -3.5 s5.5 1 7 3.5"/>'),
+    "wifi_off": ('<path d="M4 8.5 C7 5.8 10 4.5 13 4.8 M16 6.5 c1.5 0.8 2.9 2 4 3.4"/>'
+                 '<path d="M7.5 12.5 c1.7 -1.3 3.5 -1.9 5.4 -1.8 M15.6 12 c1 0.7 1.9 1.6 2.7 2.6"/>'
+                 '<path d="M10.5 16.4 c0.9 -0.6 1.8 -0.6 2.7 0"/><circle cx="12" cy="19.4" r="1.3"/>'
+                 '<path d="M3.5 3.5 L20.5 20.5" stroke-width="2.2"/>'),
+    "eye": None,  # placeholder removed below
+})
+ICONS_EXTRA.pop("eye", None) if ICONS_EXTRA.get("eye") is None else None
+# eye already existed in batch1/2 — keep original; ensure no None leaked
+if ICONS_EXTRA.get("eye", "skip") is None:
+    ICONS_EXTRA.pop("eye")
+
 EXTRA_NAMES = list(ICONS_EXTRA.keys())

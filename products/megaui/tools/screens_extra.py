@@ -154,3 +154,156 @@ def build(COPY, SHAPES_BY_THEME, E, wrap, K, THEMES):
         ("16-defeat", screen_defeat),
         ("17-confirm", screen_confirm),
     ]
+
+
+def build_batch3(COPY, SHAPES_BY_THEME, E, wrap, K, THEMES):
+    """Layouts 18-21: achievements, crafting, chat, mobile HUD."""
+
+    def screen_achievements(th):
+        c, sh = COPY[th], SHAPES_BY_THEME[th]
+        ach = [
+            ("crown", "FIRST BLOOD", "Win your first duel", 1, True, "rare"),
+            ("chest", "TREASURE HUNTER", "Open 50 chests", 38, False, "epic"),
+            ("skull", "BOSS SLAYER", "Defeat the Void Titan", 0, False, "legendary"),
+            ("map", "EXPLORER", "Reveal every zone", 7, False, "rare"),
+            ("sword", "ARMS MASTER", "Upgrade 25 weapons", 12, False, "epic"),
+            ("coin", "FILTHY RICH", "Hold 100,000 gold", 0, False, "legendary"),
+        ]
+        cards = ""
+        for i, (ic, nm, sub, have, done, rar) in enumerate(ach):
+            x = 120 + (i % 3) * 570
+            y = 270 + (i // 3) * 300
+            prog = 1.0 if done else (have / max(1, {"rare": 50, "epic": 50,
+                                                    "legendary": 1}[rar]))
+            cards += E(x, y, (
+                f'<div class="card" style="width:520px;{"border-color:"+THEMES[th]["accent"] if done else ""}">'
+                f'<div class="row" style="align-items:flex-start">'
+                f'<div>{K.slot(84, th, ic, rar if not done else "legendary")}</div>'
+                f'<div style="flex:1;margin-left:14px">'
+                f'<div style="font-size:19px;font-weight:700;letter-spacing:1px">{nm}'
+                f'{"  ✓" if done else ""}</div>'
+                f'<div style="font-size:13px;opacity:.6;margin-top:4px">{sub}</div>'
+                f'<div style="margin-top:12px">{K.bar(340, 22, th, "xp", prog, False)}</div>'
+                f'<div class="lbl" style="margin-top:6px">{have}/{int(prog*max(1,{"rare":50,"epic":50,"legendary":1}[rar]))}'
+                f' · {rar.upper()}</div>'
+                f'</div></div></div>'))
+        body = (
+            E(120, 90, K.button(200, 64, th, "normal", "ghost", label="< BACK", shape=sh))
+            + E(560, 90, '<h2>ACHIEVEMENTS</h2>')
+            + E(1420, 96, f'<div class="row">{K.chip(200, 48, th, "1,240", "gold")}'
+                          f'{K.chip(160, 48, th, "27/60", "gem")}</div>')
+            + cards
+            + E(120, 940, K.stars(320, 44, th, 3, 6))
+            + E(1560, 950, K.button(300, 66, th, "normal", "primary",
+                                    label="CLAIM ALL", shape=sh))
+        )
+        return wrap(th, body)
+
+    def screen_crafting(th):
+        c, sh = COPY[th], SHAPES_BY_THEME[th]
+        recipes = [("sword", "Iron Sword", "common", True),
+                   ("shield", "Oak Shield", "common", False),
+                   ("fire", "Fire Blade", "epic", False),
+                   ("potion", "Greater Flask", "rare", False)]
+        list_html = ""
+        for i, (ic, nm, rar, sel) in enumerate(recipes):
+            list_html += E(120, 260 + i * 130, (
+                f'<div class="card" style="width:480px;height:112px;'
+                f'{"border:2px solid "+THEMES[th]["accent"] if sel else ""}">'
+                f'<div class="row">{K.slot(64, th, ic, rar)}'
+                f'<div style="margin-left:14px">'
+                f'<div style="font-size:17px;font-weight:700">{nm}</div>'
+                f'<div class="lbl" style="margin-top:4px">{rar.upper()} · RECIPE</div>'
+                f'</div></div></div>'))
+        mats = [(f"ore x5", "ore"), ("planks x2", "planks"), ("key", None)]
+        mat_html = "".join(
+            f'<div style="text-align:center;margin:0 14px">'
+            f'{K.slot(72, th, ic if ic else mt.split()[0] if False else "ingot", "rare")}'
+            f'<div class="lbl" style="margin-top:6px">{mt}</div></div>'
+            for mt, ic in [("ORE x5", "ingot"), ("INGOT x2", "ingot"), ("COAL x1", "stone")])
+        craft_btn = K.button(420, 76, th, "normal", "primary",
+                             label="CRAFT · 2s", shape=sh)
+        craft_bar = K.bar(720, 34, th, "xp", 0.0, False, label="PROGRESS")
+        body = (
+            E(120, 90, K.button(200, 64, th, "normal", "ghost", label="< BACK", shape=sh))
+            + E(560, 90, '<h2>CRAFTING</h2>')
+            + list_html
+            + E(680, 250, (
+                f'<div class="card" style="width:1080px;height:640px;text-align:center">'
+                f'<div style="margin-top:10px">{K.slot(160, th, "sword", "epic")}</div>'
+                f'<div style="font-size:30px;font-weight:700;letter-spacing:2px;margin-top:16px">'
+                f'FIRE BLADE</div>'
+                f'<div class="lbl" style="margin-top:6px">EPIC · DMG 42-58 · CRIT +8%</div>'
+                f'<div style="display:flex;justify-content:center;margin-top:34px">{mat_html}</div>'
+                f'<div style="margin-top:34px">{craft_bar}</div>'
+                f'<div style="margin-top:28px">{craft_btn}</div>'
+                f'<div class="lbl" style="margin-top:14px">WORKBENCH LV 3 REQUIRED</div>'
+                f'</div>'))
+            + E(700, 930, K.chip(200, 48, th, "8,120", "gold"))
+            + E(940, 930, K.chip(170, 48, th, "46", "energy"))
+        )
+        return wrap(th, body)
+
+    def screen_chat(th):
+        c, sh = COPY[th], SHAPES_BY_THEME[th]
+        msgs = [
+            ("Nova", "raid at dusk — bring potions", True),
+            ("Raven", "got the crypt key, gg", False),
+            ("Blade", "selling epic axe, 2k gold", False),
+            ("ShadowKing", "party up? need 1 healer", True),
+            ("MoonRider", "map pinged at the shrine", False),
+        ]
+        rows = ""
+        for i, (nm, txt, mine) in enumerate(msgs):
+            rows += E(150, 300 + i * 108, (
+                f'<div class="card" style="width:1000px;min-height:88px;'
+                f'{"border-color:"+THEMES[th]["accent2"] if mine else ""}">'
+                f'<div class="row"><div style="font-weight:700;'
+                f'color:{THEMES[th]["accent2"] if mine else THEMES[th]["accent"]}">{nm}</div>'
+                f'<div class="lbl" style="margin-left:10px">{[19,20,21,22,23][i]}:0{i+1}</div></div>'
+                f'<div style="font-size:17px;margin-top:6px;opacity:.85">{txt}</div></div>'))
+        body = (
+            E(120, 90, K.button(200, 64, th, "normal", "ghost", label="< BACK", shape=sh))
+            + E(560, 90, '<h2>CHAT</h2>')
+            + E(1280, 96, K.tabs(520, 56, th, ["GLOBAL", "GUILD", "PARTY"], 1))
+            + rows
+            + E(150, 880, K.input(1000, 64, th, "Type a message...", True))
+            + E(1180, 880, K.button(240, 64, th, "normal", "primary", label="SEND", shape=sh))
+            + E(150, 980, f'<div class="lbl">ONLINE 4 · CHANNEL: GUILD</div>')
+            + E(1360, 980, K.badge(48, th, "3"))
+        )
+        return wrap(th, body)
+
+    def screen_mobile_hud(th):
+        c, sh = COPY[th], SHAPES_BY_THEME[th]
+        actionbar = "".join(
+            f'<div>{K.skillcard(104, 104, th, ic, cd, rar, str(i + 1))}</div>'
+            for i, (ic, cd, rar) in enumerate(
+                [("sword", 0, "common"), ("bolt", 0.4, "rare"), ("fire", 0, "epic"),
+                 ("potion", 0.7, "rare"), ("shield", 0, "legendary")]))
+        body = (
+            E(60, 40, f'<div class="row">{K.chip(170, 46, th, "12,450", "gold")}'
+                      f'{K.chip(140, 46, th, "386", "gem")}</div>')
+            + E(700, 40, K.compass(520, 56, th))
+            + E(1560, 40, K.minimap(300, th, "ZONE 4"))
+            + E(60, 180, K.party(300, 190, th))
+            + E(60, 420, K.nameplate(260, 60, th, c["hero"], 42, "[GUILD]", 0.82, 0.55))
+            + E(1560, 380, K.killfeed(300, th,
+                (("Nova", c["hero"], "sword"), ("Blade", "Raven", "bolt"))))
+            + E(60, 560, K.prompt(250, 56, th, "E", "Pick up"))
+            + E(1420, 560, K.ammo(270, 64, th, "bolt", 24, 30))
+            + E(60, 700, K.joystick(220, th, engaged=True))
+            + E(1560, 660, K.touch_buttons(th))
+            + E(640, 940, f'<div class="row">{actionbar}</div>')
+            + E(700, 700, f'<div class="row" style="gap:26px">'
+                          f'{K.bar(300, 30, th, "hp", 0.82, True)}'
+                          f'{K.bar(300, 30, th, "mana", 0.54, True)}</div>')
+        )
+        return wrap(th, body)
+
+    return [
+        ("18-achievements", screen_achievements),
+        ("19-crafting", screen_crafting),
+        ("20-chat", screen_chat),
+        ("21-mobile-hud", screen_mobile_hud),
+    ]
