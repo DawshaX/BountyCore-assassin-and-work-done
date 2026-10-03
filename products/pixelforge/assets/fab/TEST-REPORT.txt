@@ -1,0 +1,46 @@
+PixelForge — Fab evidence shoot (real-browser, real images)
+===========================================================
+== PIXELFORGE FAB EVIDENCE SHOOT ==
+date: 2026-10-01T02:23:18.112Z
+viewport: 1920x1080 (Fab min for media: 1920x1080)
+opened: file:///home/user/BountyCore-assassin-and-work-done/products/pixelforge/index.html
+  ok - runs from file:// (fully offline)
+  ok - first-open empty state visible
+  ok - screenshot s0-empty-state.png
+  ok - file input found
+  ok - 2 real frames imported (got "2")
+status: Imported 2 images.
+  ok - screenshot s1-imported-2-photos.png
+  ok - palette applied: DawnBringer 16
+  ok - Convert to pixel art enabled on real photo
+  ok - screenshot s2-pixelated-dawnbringer.png
+  ok - edge extrusion enabled
+  ok - screenshot s3-sheet-packed.png
+sheet: sheet 706×356 · 2 frames · 1×
+  ok - animation playing with real pixelated frames
+  ok - screenshot s4-animation-preview.png
+  ok - export PNG sheet: sprites.png
+  ok - export GIF: sprites.gif
+  ok - export atlas JSON: sprites.json
+  ok - export master ZIP: sprites_pixelforge.zip
+  ok - warning fires when frame exceeds texture (got: "⚠ Frame too wide for 1024px texture — reduce scale/padding.")
+at maxTex=1024: {"pages":2,"maxTex":1024}
+  ok - no false warning at maxTex=2048 (toast cleared)
+maxTex: 2048
+  ok - screenshot s5-multipage-split.png
+sheet before export: {"pages":2,"pagesCount":2,"dims":["1382x1388","1382x1388"],"allFramesFit":true,"dirty":false,"maxTex":2048}
+  ok - split into 2 pages
+  ok - every frame fits inside its page (no clipping)
+status after multipage export: "Exported 2 sheet PNGs (1382×1388)"
+download events: begin:sprites_p1.png | inProgress | inProgress | inProgress | inProgress | inProgress | completed | begin:sprites_p2.png | inProgress | inProgress | inProgress | inProgress | inProgress | completed
+  ok - export multi-page PNGs: sprites_p1.png, sprites_p2.png
+  ok - zero console/page errors (got 0: )
+  ok - gallery fab-gallery-01-first-open.png
+  ok - gallery fab-gallery-02-import-real-photos.png
+  ok - gallery fab-gallery-03-pixelated.png
+  ok - gallery fab-gallery-04-sheet-packed.png
+  ok - gallery fab-gallery-05-animation-preview.png
+  ok - gallery fab-gallery-06-multipage.png
+== SUMMARY: 30 ok, 0 FAIL, 241325ms ==
+
+Downloaded exports: sprites.gif, sprites.json, sprites.png, sprites_p1.png, sprites_p2.png, sprites_pixelforge.zip

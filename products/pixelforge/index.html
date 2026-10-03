@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PixelForge — Sprite Sheet Maker &amp; Pixel Art Studio</title>
+<meta name="description" content="Turn any images into pixel art, pack them into sprite sheets, preview animations and export atlas JSON — all in your browser." />
+<link rel="stylesheet" href="style.css" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230f1117'/%3E%3Crect x='2' y='2' width='4' height='4' fill='%23ffb545'/%3E%3Crect x='7' y='2' width='4' height='4' fill='%2341d6c3'/%3E%3Crect x='2' y='7' width='4' height='4' fill='%23ff6b6b'/%3E%3Crect x='7' y='7' width='4' height='4' fill='%237a5cff'/%3E%3C/svg%3E" />
+</head>
+<body>
+
+<header id="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <div class="brand-text">
+      <h1>PIXELFORGE</h1>
+      <p>Sprite Sheet Maker &amp; Pixel Art Studio</p>
+    </div>
+  </div>
+  <div class="topbar-actions">
+    <button id="btn-undo" class="btn btn-ghost" title="Undo (Ctrl+Z)" disabled>UNDO</button>
+    <button id="btn-redo" class="btn btn-ghost" title="Redo (Ctrl+Y)" disabled>REDO</button>
+    <button id="btn-import" class="btn btn-primary" title="Import images (you can also drag &amp; drop anywhere)">+ IMPORT</button>
+    <button id="btn-folder" class="btn" title="Import a whole folder of images">FOLDER</button>
+    <button id="btn-export-sheet" class="btn" title="Download the sprite sheet as PNG">↓ SHEET.PNG</button>
+    <button id="btn-export-json" class="btn" title="Download atlas data (JSON)">↓ ATLAS.JSON</button>
+    <button id="btn-export-zip" class="btn btn-accent" title="Download everything (sheet + atlas + GIF + CSS) as a ZIP">↓ ZIP</button>
+    <button id="btn-help" class="btn btn-ghost" title="Quick help">?</button>
+  </div>
+</header>
+
+<main id="workspace">
+
+  <!-- LEFT: frames -->
+  <aside id="panel-frames" class="panel">
+    <div class="panel-head">
+      <h2>FRAMES <span id="frames-count" class="pill">0</span></h2>
+      <div class="panel-head-actions">
+        <button id="btn-add" class="btn btn-mini" title="Add images">+</button>
+        <button id="btn-clear" class="btn btn-mini btn-danger" title="Remove all frames">✕</button>
+      </div>
+    </div>
+
+    <label class="drop-zone" id="drop-zone" for="file-input">
+      <span class="drop-zone-icon">⬓</span>
+      <span class="drop-zone-text">Drop images here<br/><small>png · jpg · webp · gif</small></span>
+    </label>
+    <input type="file" id="file-input" accept="image/*" multiple hidden />
+    <input type="file" id="folder-input" webkitdirectory directory multiple hidden />
+
+    <ul id="frames-list" class="frames-list" aria-label="Imported frames"></ul>
+
+    <div class="panel-foot">
+      <label class="row toggle-row">
+        <input type="checkbox" id="opt-trim" checked />
+        <span>Trim transparent edges</span>
+      </label>
+      <button id="btn-rename" class="btn btn-mini btn-block" title="Batch-rename frames (e.g. hero → hero_0001)">Rename frames…</button>
+    </div>
+  </aside>
+
+  <!-- CENTER: preview -->
+  <section id="stage">
+    <div class="stage-tabs">
+      <button class="tab active" data-tab="preview">ANIMATION PREVIEW</button>
+      <button class="tab" data-tab="sheet">SHEET VIEW</button>
+      <span class="spacer"></span>
+      <div id="page-nav" class="page-nav" hidden>
+        <button id="page-prev" class="btn btn-mini"><</button>
+        <span id="page-label" class="mono">page 1/1</span>
+        <button id="page-next" class="btn btn-mini">></button>
+      </div>
+    </div>
+
+    <div class="stage-body">
+      <canvas id="preview-canvas" width="640" height="400"></canvas>
+      <canvas id="sheet-canvas" width="640" height="400" hidden></canvas>
+      <div id="stage-empty">
+        <div class="empty-glyph">▦</div>
+        <p>Import frames to start forging</p>
+        <button id="btn-empty-import" class="btn btn-primary">+ IMPORT IMAGES</button>
+      </div>
+    </div>
+
+    <div class="transport" id="transport">
+      <button id="btn-play" class="btn btn-mini" title="Play / pause">II</button>
+      <label class="row">FPS
+        <input type="range" id="opt-fps" min="1" max="60" value="12" />
+        <span id="fps-val" class="mono">12</span>
+      </label>
+      <label class="row">Mode
+        <select id="opt-mode">
+          <option value="loop">Loop</option>
+          <option value="pingpong">Ping-pong</option>
+          <option value="once">Once</option>
+        </select>
+      </label>
+      <button id="btn-pivot" class="btn btn-mini" title="Click the preview to set the sprite's pivot (rotation) point">SET PIVOT</button>
+      <label class="row">Zoom
+        <select id="opt-zoom">
+          <option value="auto">Auto</option>
+          <option value="1">1×</option>
+          <option value="2">2×</option>
+          <option value="4">4×</option>
+          <option value="8">8×</option>
+        </select>
+      </label>
+      <span class="spacer"></span>
+      <span id="stage-info" class="mono dim"></span>
+    </div>
+  </section>
+
+  <!-- RIGHT: tools -->
+  <aside id="panel-tools" class="panel">
+
+    <div class="tool-section">
+      <div class="panel-head"><h2>PIXELATE</h2></div>
+      <label class="row toggle-row">
+        <input type="checkbox" id="px-on" />
+        <span>Convert to pixel art</span>
+      </label>
+      <div id="px-controls" class="disabled">
+        <label class="row">Pixel size
+          <input type="range" id="px-scale" min="1" max="16" value="4" />
+          <span id="px-scale-val" class="mono">4</span>
+        </label>
+        <label class="row">Palette
+          <select id="px-palette">
+            <option value="none">Original colors</option>
+            <option value="auto8">Auto · image 8</option>
+            <option value="auto16" selected>Auto · image 16</option>
+            <option value="auto32">Auto · image 32</option>
+            <option value="gray16">Grayscale 16</option>
+            <option value="gb">Game Boy (4)</option>
+            <option value="pico8">PICO-8 (16)</option>
+            <option value="sweetie16">Sweetie-16</option>
+            <option value="db16">DawnBringer 16</option>
+            <option value="db32">DawnBringer 32</option>
+            <option value="nes">NES (approx)</option>
+            <option value="c64">Commodore 64</option>
+            <option value="cga">CGA</option>
+          </select>
+        </label>
+        <label class="row">Dithering
+          <select id="px-dither">
+            <option value="none">None</option>
+            <option value="bayer">Bayer 4×4</option>
+            <option value="floyd">Floyd–Steinberg</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <div class="tool-section">
+      <div class="panel-head"><h2>SHEET LAYOUT</h2></div>
+      <label class="row">Layout
+        <select id="sh-layout">
+          <option value="grid" selected>Grid (uniform cells)</option>
+          <option value="shelf">Compact shelf (tight)</option>
+          <option value="hstrip">Horizontal strip</option>
+          <option value="vstrip">Vertical strip</option>
+        </select>
+      </label>
+      <label class="row" id="sh-cols-row">Columns
+        <input type="number" id="sh-columns" min="0" max="64" value="0" />
+        <span class="hint">0 = auto</span>
+      </label>
+      <label class="row">Padding
+        <input type="range" id="sh-padding" min="0" max="16" value="0" />
+        <span id="sh-padding-val" class="mono">0</span>
+      </label>
+      <label class="row toggle-row">
+        <input type="checkbox" id="sh-extrude" />
+        <span>Extrude edges (avoids bleeding)</span>
+      </label>
+      <label class="row">Max texture
+        <select id="sh-maxtex">
+          <option value="1024">1024</option>
+          <option value="2048" selected>2048</option>
+          <option value="4096">4096</option>
+          <option value="8192">8192</option>
+        </select>
+      </label>
+      <label class="row">Output scale
+        <select id="sh-scale">
+          <option value="1" selected>1× (nearest)</option>
+          <option value="2">2×</option>
+          <option value="4">4×</option>
+          <option value="8">8×</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="tool-section">
+      <div class="panel-head"><h2>EXPORT</h2></div>
+      <label class="row">Atlas format
+        <select id="ex-format">
+          <option value="generic" selected>Generic JSON</option>
+          <option value="phaser">Phaser 3</option>
+          <option value="aseprite">Aseprite</option>
+          <option value="css">CSS sprite</option>
+        </select>
+      </label>
+      <label class="row">File name
+        <input type="text" id="ex-name" value="sprites" spellcheck="false" />
+      </label>
+      <div class="export-grid">
+        <button id="btn-ex-sheet" class="btn btn-block">↓ PNG</button>
+        <button id="btn-ex-atlas" class="btn btn-block">↓ ATLAS</button>
+        <button id="btn-ex-frames" class="btn btn-block" title="Download every frame as its own PNG">↓ FRAMES</button>
+        <button id="btn-ex-gif" class="btn btn-block" title="Export the animation as an animated GIF">↓ GIF</button>
+        <button id="btn-ex-zip" class="btn btn-accent btn-block">↓ ALL (ZIP)</button>
+      </div>
+    </div>
+
+  </aside>
+</main>
+
+<footer id="statusbar">
+  <span id="status-msg" class="mono">Ready.</span>
+  <span class="spacer"></span>
+  <span id="status-sheet" class="mono dim"></span>
+</footer>
+
+<!-- HELP MODAL -->
+<div id="help-modal" class="modal" hidden>
+  <div class="modal-card">
+    <div class="modal-head">
+      <h2>HOW IT WORKS</h2>
+      <button id="btn-help-close" class="btn btn-mini btn-danger">✕</button>
+    </div>
+    <ol class="help-steps">
+      <li><b>Import</b> — drop images or a whole <b>folder</b> (PNG · JPG · WEBP · <b>animated GIF</b> = one frame per GIF frame). Drag list items to reorder.</li>
+      <li><b>Pixelate</b> — shrink + quantize to an auto palette from your art, or a retro palette, with optional dithering.</li>
+      <li><b>Pack</b> — grid / tight shelf / strips; trim, padding, extrusion, multi-page if it exceeds the texture size.</li>
+      <li><b>Preview</b> — play the animation, click <b>PIVOT</b> to set rotation points (exported to JSON).</li>
+      <li><b>Export</b> — PNG sheet(s) + atlas (Generic / Phaser / Aseprite / CSS) + <b>animated GIF</b>, or a ZIP with everything.</li>
+      <li><b>Undo/Redo</b> — Ctrl+Z / Ctrl+Y anywhere.</li>
+    </ol>
+    <p class="dim">Everything runs 100% offline in your browser. No uploads, no accounts, no watermarks.</p>
+  </div>
+</div>
+
+<div id="toast" class="toast" hidden></div>
+
+<script src="js/vendor/gif-tools.js"></script>
+<script src="js/palettes.js"></script>
+<script src="js/zip.js"></script>
+<script src="js/core.js"></script>
+<script src="js/exporters.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+Third-party software bundled in PixelForge
+===========================================
+
+1. gifenc — MIT License — https://github.com/mattdesl/gifenc
+   Copyright (c) 2022 Matt DesLauriers
+   See js/vendor/gifenc.LICENSE
+
+2. gifuct-js — MIT License — https://github.com/matt-way/gifuct-js
+   Copyright (c) 2018 Matt Way
+   See js/vendor/gifuct-js.LICENSE
+
+Both libraries are bundled (js/vendor/gif-tools.js) and used under their
+MIT terms. Full license texts are included in the js/vendor/ folder.

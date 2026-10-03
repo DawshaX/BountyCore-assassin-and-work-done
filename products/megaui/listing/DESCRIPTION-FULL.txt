@@ -1,0 +1,256 @@
+MEGAUI — GAME UI DESIGN SYSTEM
+================================
+
+STOP SHIPPING PLACEHOLDER UI.
+Your gameplay is good — your menus should not be the reason players quit.
+MegaUI is the complete UI kit that makes a game look expensive before you
+write a single line of game code: four hand-crafted themes, 2,672 editable
+components, 84 finished screens in 4K, a clean Unity package, and a
+one-command recolor system. Watch the trailer, then see everything below.
+
+
+QUICK FACTS
+-----------
+- 2,672 editable SVG components (668 designs x 4 themes) + 2,672 PNGs at 4x
+- 84 complete screens: 21 layouts x 4 themes, HTML source + 3840x2160 PNG
+- 244 original icons on one shared 24px grid
+- 4 themes: Dark Fantasy, Sci-Fi Neon, Clean Royal, Pixel Retro
+- Unity package: 9-slice sprites, UI Toolkit (USS/UXML), 5 runtime C# scripts
+- Offline interactive gallery: browse the whole kit with no internet
+- Design tokens (JSON + CSS) + one-command recolor tool
+- Fonts: Inter + Montserrat, SIL Open Font License (free for commercial use)
+- Automated QA: 34/34 checks passed; manifest.json inventory included
+- Delivery: MegaUI-Unity-v1.0.0.unitypackage (main) +
+  MegaUI-complete-v1.0.0.zip (all source files, ~81 MB / 5,534 files)
+
+
+WHY MEGAUI
+----------
+Most UI packs are a folder of PNGs that fall apart the moment your design
+changes color, resolution or screen size. MegaUI is a SYSTEM: every screen
+is built from the same components, the same strokes, one type scale and one
+24px grid — so anything mixes with anything else without visual drift. And
+because every color flows from one token file, retheming is a text edit, not
+an afternoon of Photoshop.
+
+- 100% original parametric vector artwork — nothing traced, nothing stock.
+- Consistent production grid across all four themes.
+- Ships with source (SVG + HTML/CSS), not just flat images.
+- Tested by an automated suite: XML validity, counts, renders, packaging.
+
+
+WHAT'S INSIDE
+-------------
+
+1) COMPONENTS — 2,672 SVG + 2,672 PNG (4x, transparent)
+   Buttons: 9 shapes x 4 states x 4 kinds, per theme.
+   Bars (health/mana/xp/progress, 3 widths), orbital rings, item slots
+   (4 sizes + rarity borders), panels, windows, dialogs, tooltips, chat,
+   toasts, tabs, toggles, checkboxes, radios, sliders, inputs, dropdowns,
+   keycaps, ribbons, portraits, skill cards with cooldown, item cards,
+   leaderboard rows, badges, chips, stars, scrollbars.
+   HUD kit: minimap frames, compass, currency readouts.
+   Touch controls: virtual joystick, ABXY cluster, 3 crosshair reticles.
+   Meta overlays: world nameplates, kill feed, interaction prompts, radial
+   action wheel, party frames, ammo/charges readout, cinematic subtitles.
+   Icons: 244 originals (resources, magic, status, UI symbols), tinted per
+   theme, shared 24px grid.
+
+2) SCREENS — 84 ready screens (21 layouts x 4 themes)
+   Every layout ships twice: editable HTML/CSS source AND a rendered
+   3840x2160 (4K) PNG you can drop straight into a pitch deck or store page.
+   Layouts: Main Menu, HUD, Inventory, Shop, Settings, Pause, Dialog,
+   World Map, Quest Log, Character, Results, Login, Loading, Character
+   Select, Skill Tree, Defeat, Confirm, Achievements, Crafting, Chat,
+   Mobile HUD (touch layout).
+
+3) FOUR COMPLETE THEMES
+   Dark Fantasy — obsidian panels, gold trim, rune accents. RPGs, souls-likes.
+   Sci-Fi Neon — chamfered edges, scanlines, cyan/magenta glow. Space, cyber.
+   Clean Royal — light surfaces, navy/gold, elegant strokes. Management,
+   casual, storefronts.
+   Pixel Retro — 8-bit hard shadows, crisp pixel borders. Indies, retro.
+   Same components in all four — switch theme, keep your layout.
+
+4) UNITY PACKAGE (.unitypackage, Unity 2021.3 LTS or newer)
+   - All 2,672 PNGs import as Sprites with 9-slice borders set — drag into
+     any Canvas and they scale without stretching.
+   - UI Toolkit: USS stylesheets + UXML for 5 screens, ready to open in
+     UI Builder.
+   - Runtime C# (5 scripts): MegaUIThemeSwitcher (one-click theme swap),
+     MegaUIPopup (animated popups), MegaUIButtonFx (button juice),
+     MegaUIBar (smooth status bars), MegaUIThemes (theme definitions).
+   - Works with Built-in, URP and HDRP (pure 2D sprites — no materials,
+     no render-pipeline dependency).
+   - No plugins, no external packages, no setup wizard.
+
+5) OFFLINE GALLERY (index.html)
+   Double-click and browse the entire kit in your browser — themes, all 84
+   screens, every component and icon. Zero internet required. This is also
+   your visual index: find the piece you need, then grab it from the tree.
+
+6) DESIGN TOKENS + RECOLOR
+   tokens/design-tokens.json + tokens/megaui.css hold every color of all
+   four themes. Edit one value, apply the included command from docs/
+   (RECLOUR.md), and an entire theme recolors — components, screens and
+   gallery included. Perfect for matching your game's existing palette.
+
+7) FONTS & DOCS
+   fonts/: Inter (400/600/700) + Montserrat (700) as TTF with full
+   SIL OFL-1.1 license files — use them in your game, no attribution needed.
+   docs/: README (structure), RECLOUR (how to retheme), TEST-REPORT
+   (QA results), CONTENTS (full file manifest), plus listing/ with store
+   copy. manifest.json lists every file for scripting.
+
+
+ARCHIVE CONTENTS — WHAT THE FILES HOLD
+--------------------------------------
+MegaUI-complete-v1.0.0.zip (additional file, ~81 MB / 5,534 files):
+  svg/<theme>/<group>/     2,672 master SVGs (668 designs x 4 themes)
+  png4k/<theme>/<group>/   2,672 PNGs at 4x resolution, transparent
+  screens/<theme>/         84 screens — HTML/CSS source + 4K PNG each
+  sheets/                  4 full component sheets (4K PNG, one per theme)
+  fonts/                   Inter + Montserrat TTF with SIL OFL-1.1 texts
+  tokens/                  design-tokens.json + megaui.css (all 4 palettes)
+  docs/                    README, RECLOUR guide, TEST-REPORT (34/34),
+                           CONTENTS manifest
+  listing/                 store copy: description, tags, answers
+  index.html               offline interactive gallery (double-click)
+  manifest.json            machine-readable inventory of every file
+MegaUI-Unity-v1.0.0.unitypackage (main file, ~23 MB):
+  all 2,672 sprites with 9-slice borders + UI Toolkit USS/UXML (5 screens)
+  + 5 runtime C# scripts + OFL fonts + token files.
+
+
+HOW TO USE IT
+-------------
+1) Open index.html (offline gallery) and pick a theme.
+2) Engine-agnostic path: copy SVGs into Figma/Illustrator/Inkscape, or drop
+   the 4x PNGs into your engine/UI of choice (Godot, Unreal, GameMaker,
+   Construct, web, Unity).
+3) Unity path: import the .unitypackage, drag sprites onto a Canvas
+   (9-slice already set), or open the UXML screens in UI Builder; attach
+   the C# scripts for theme switching, popups and animated bars.
+4) Want your own colors? Edit the token file, run the recolor command,
+   done — see docs/RECLOUR.md.
+
+
+WHO IS THIS FOR
+---------------
+- Solo devs who need shippable UI but hate drawing panels all day.
+- Teams standardizing on one grid, one type scale, one token file.
+- Studios prototyping fast: assemble screens from the gallery in minutes.
+- Anyone buying "some buttons" — this is not some buttons; it is the whole
+  interface layer of a game, in four art directions.
+
+
+FORMATS, SIZE & REQUIREMENTS
+----------------------------
+Formats: SVG (masters) - PNG 4x transparent - HTML/CSS screen source -
+4K screen PNGs - JSON/CSS tokens - offline HTML gallery - .unitypackage -
+TTF fonts (OFL).
+Size: complete archive ~81 MB (5,534 files); unitypackage ~23 MB.
+Prerequisites: none for SVG/PNG/HTML. Unity 2021.3+ only for the package.
+Platforms: PC, console, mobile, web — any 2D UI pipeline. Screenshots and
+trailer on this listing show the real files, rendered, unedited.
+
+
+LICENSE & AI DISCLOSURE (plain and honest)
+------------------------------------------
+- Sold under Fab's Standard License: choose Personal (non-commercial) or
+  Professional (commercial) at checkout — both tiers are listed on this page.
+- Fonts are SIL OFL-1.1 (their own license text is bundled in fonts/).
+- This product was created with AI assistance and is flagged "Created with
+  AI" on Fab, as required. The artwork itself is 100% original parametric
+  vector design — generated as vectors, not traced from anyone's work.
+- The "Do not allow this product to be used by Generative AI Programs" tag
+  IS active: you may not use MegaUI to train or generate with AI systems.
+- Use the art inside your games, videos and store pages freely under your
+  chosen license. Reselling the raw kit, or redistributing files as-is, is
+  not permitted.
+
+
+FAQ
+---
+Q: Which engines does it work with?
+A: All of them. The package is engine-agnostic (SVG/PNG/HTML/CSS); a full
+   .unitypackage is included for Unity. Works with Unreal, Godot, GameMaker,
+   Construct, LÖVE, web front-ends, and anything that draws an image.
+
+Q: What Unity version do I need?
+A: 2021.3 LTS or newer. Sprites + UI Toolkit tested; no other dependencies.
+
+Q: Does it work with URP/HDRP?
+A: Yes — it is pure 2D sprites/UI, so Built-in, URP and HDRP all work.
+   There are no materials or shaders to conflict with your pipeline.
+
+Q: How do I install it?
+A: Double-click the .unitypackage inside Unity and import everything (or
+   selectively). Sprites arrive with 9-slice borders preset.
+
+Q: Can I change the colors?
+A: Yes — that is the point of the token system. One JSON/CSS file holds
+   every color; the recolor command re-renders a whole theme. Full guide in
+   docs/RECLOUR.md.
+
+Q: Can I edit the artwork?
+A: Every component is a real SVG — open it in Figma, Illustrator,
+   Inkscape, Affinity or any vector editor. The HTML screens are plain
+   HTML/CSS you can hack freely.
+
+Q: Personal or Professional — which do I need?
+A: Personal is Fab's non-commercial tier; Professional covers commercial
+   games and client work. If the game will ever make money, take
+   Professional. Full terms: Fab's Standard License page.
+
+Q: Do I have to credit MegaUI?
+A: No attribution is required under Fab's Standard License — your game, your
+   UI.
+
+Q: Can I use it in client work / for a studio?
+A: Yes, under the Professional license.
+
+Q: Are the fonts really free for commercial use?
+A: Yes — Inter and Montserrat ship under SIL OFL-1.1 with the license files
+   included. No extra font license to buy.
+
+Q: Is this AI-generated?
+A: It was created with AI assistance, and the listing says so — Fab's
+   "Created with AI" flag is set honestly. The output is original parametric
+   vector art (our own generation pipeline, not scraped or traced stock).
+   Separately, the No-AI tag is active: you may not use MegaUI to train or
+   generate with AI systems.
+
+Q: Do I get the 84 screens' source files?
+A: Yes — HTML/CSS source AND 4K PNG for every screen, for every theme.
+
+Q: Does it include music, sounds, 3D models or game code?
+A: No — MegaUI is 100% user interface: components, screens, icons, fonts,
+   tokens and Unity UI scripts. The C# scripts are UI behavior only.
+
+Q: Does it work for mobile games?
+A: Yes — touch joystick, ABXY cluster, a dedicated Mobile HUD layout, and
+   every component is vector, so it scales to any DPI.
+
+Q: How do I know the files are complete?
+A: The kit passes an automated 34-check suite (validity, counts, renders,
+   packaging) and ships with TEST-REPORT.txt plus manifest.json.
+
+Q: What about updates and support?
+A: Fixes and improvements are published as new versions on this listing.
+   For questions or problems, message me through Fab — I answer.
+
+Q: Refunds?
+A: Handled under Fab's refund policy — see Fab's support pages for terms.
+
+
+A NOTE FROM THE MAKER
+---------------------
+MegaUI was built file by file with patience and honesty: every count in
+this description is real, every screenshot above is the actual product, and
+the test report is included so you can verify it yourself. It was made
+with care, and with a prayer for good — may it serve your projects well,
+may the games you build with it prosper, and may this be a small, useful
+goodness between us. شكر الله خيرًا.
+
+— The MegaUI Maker

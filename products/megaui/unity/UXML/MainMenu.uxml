@@ -1,0 +1,21 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="mega-root" class="mega-root" style="flex-direction:row;">
+        <!-- Left rail -->
+        <ui:VisualElement class="mega-panel" style="width:280px;padding:24px;margin-right:24px;">
+            <ui:Label text="MAIN MENU" class="mega-title"/>
+            <ui:Button text="NEW GAME" class="mega-btn" style="margin-top:16px;"/>
+            <ui:Button text="CONTINUE" class="mega-btn" style="margin-top:10px;"/>
+            <ui:Button text="OPTIONS" class="mega-btn mega-btn--ghost" style="margin-top:10px;"/>
+            <ui:Button text="QUIT" class="mega-btn mega-btn--ghost" style="margin-top:10px;"/>
+        </ui:VisualElement>
+        <!-- Hero area -->
+        <ui:VisualElement style="flex:1;justify-content:center;align-items:center;">
+            <ui:Label text="REALM OF SHADOWS" class="mega-title" style="font-size:44px;"/>
+            <ui:Label text="A MEGAUI DEMO BUILD" style="opacity:.6;letter-spacing:4px;margin-top:8px;"/>
+            <ui:VisualElement style="flex-direction:row;margin-top:26px;">
+                <ui:Label text="12,450" class="mega-chip" style="margin-right:12px;"/>
+                <ui:Label text="386" class="mega-chip"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

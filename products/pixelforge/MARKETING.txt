@@ -1,0 +1,220 @@
+================================================================
+ PIXELFORGE — MARKETING PACK (everything paste-ready)
+ Store: https://dawshax.itch.io/pixelforge
+ Updated: 2026-09-30 · v1.1.3 · price $5.99 (sale $2.99 active)
+ Arabic instructions · English copy blocks ready to post.
+================================================================
+
+----------------------------------------------------------------
+ 0) THE PITCHES
+----------------------------------------------------------------
+1-liner:
+  Stop paying SaaS for sprite sheets. PixelForge turns any images
+  into pixel art + packed, engine-ready sprite sheets — 100% offline
+  in your browser. $5.99, no subscriptions.
+
+2-liner:
+  Drop images → pixel art → packed sheet → animated preview →
+  Generic/Phaser/Aseprite JSON + GIF. Runs offline, zero install,
+  pay once.
+
+30-words:
+  PixelForge: a browser sprite-sheet studio. Import, pixelate with
+  retro palettes, pack with extrude/trim, preview animations, export
+  engine JSON + GIF. Offline, no install, one-time $5.99.
+
+----------------------------------------------------------------
+ 1) X / TWITTER THREAD (post with assets/promo/preview.gif on tweet 1)
+----------------------------------------------------------------
+Tweet 1 (attach preview.gif):
+  I made a sprite sheet maker that runs 100% offline in your
+  browser. No cloud, no install, no subscription.
+
+  Drop images → pixel art → packed sheet → engine-ready JSON.
+
+  That's PixelForge. $5.99, pay once 👇
+  https://dawshax.itch.io/pixelforge
+
+Tweet 2:
+  The workflow:
+  • Import PNG/JPG/WEBP/folder/animated GIF
+  • Pixelate to 13 retro palettes + dithering
+  • Pack: grid/shelf/strip, trim, extrude, multi-page
+  • Preview 1–60 FPS with pivot editor
+  • Export PNG / Generic / Phaser 3 / Aseprite / CSS / GIF
+
+Tweet 3:
+  Texture bleeding is the silent killer of pixel art sheets.
+  PixelForge extrudes edges for you — and splits oversized sheets
+  into multiple pages automatically (up to 8192px caps).
+
+Tweet 4:
+  "Just open index.html" is the whole install process.
+  Works from a USB stick. Your art never leaves your machine.
+  No telemetry, no watermark, no account.
+
+Tweet 5:
+  Built for indie devs who ship:
+  ✔ Undo/Redo everywhere
+  ✔ Batch rename + drag reorder
+  ✔ GIF in (frames + timing) and GIF out
+  ✔ Pay once, free 1.x updates
+
+Tweet 6:
+  Try it: https://dawshax.itch.io/pixelforge
+  — feedback welcome, I'll be in the replies. #gamedev #pixelart
+  #indiedev #websitedev
+
+----------------------------------------------------------------
+ 2) REDDIT (read each sub's rules before posting; no spam)
+----------------------------------------------------------------
+[r/gamedev] title:
+  I built PixelForge — a fully offline sprite sheet maker (web tool,
+  no install). Here's the whole workflow.
+
+body:
+  Hey r/gamedev — after seeing how many sprite sheet tools are either
+  SaaS or heavyweight editors, I built a tiny one that is literally
+  just files: you download a ZIP, double-click index.html, done.
+
+  It does: batch/folder/GIF import → optional pixelate (13 palettes,
+  Bayer/Floyd–Steinberg dither) → packing (grid/shelf/strip, trim,
+  extrude, multi-page, 1–8x scale) → animated preview with pivot
+  editor → exports: PNG sheets, Generic/Phaser 3/Aseprite JSON,
+  CSS sprite, animated GIF, one ZIP.
+
+  Everything runs locally — no cloud, no account, no telemetry.
+  $5.99 one-time (free updates in 1.x): https://dawshax.itch.io/pixelforge
+  Happy to answer questions / take feedback. Screenshot attached.
+
+  NOTE: check r/gamedev promo/self-promo rules and use the
+  Feedback Friday / Show-off Saturday thread if required.
+
+[r/SoloDevelopment] + r/indiedev: same body, shorter.
+[r/pixelart]: ONLY art-first framing — post the GIF of sprites,
+  mention tool in comments (their rules ban direct promo).
+
+----------------------------------------------------------------
+ 3) SHOW HN
+----------------------------------------------------------------
+Title:
+  PixelForge – offline sprite sheet maker that runs from a single
+  HTML file
+
+Comment (first comment, posted immediately):
+  Creator here. The whole app is a folder of static files — no build
+  step, no server, no dependencies you have to install. Open
+  index.html and it works (even from a USB stick).
+
+  What it does: import images/folders/GIFs → optional pixel-art
+  quantization (retro palettes + dithering) → pack sheets (trim,
+  edge extrude, multi-page) → preview animations with pivot points →
+  export PNG / JSON atlases (Generic, Phaser, Aseprite) / CSS / GIF.
+
+  Pricing is $5.99 on itch.io. I'd love to know what you'd cut or
+  add: https://dawshax.itch.io/pixelforge
+
+----------------------------------------------------------------
+ 4) ITCH DEVLOG (post on the product page → Devlog tab)
+----------------------------------------------------------------
+Title: Launch v1.1.3 — fully tested, ready for production use
+
+body:
+  PixelForge v1.1.3 is live.
+
+  This release went through a full automated buyer journey: the ZIP
+  was downloaded like a real customer would, extracted, opened via
+  double-click, and every single control was exercised in a real
+  browser — 60+ checks, zero console errors — including exports
+  (PNG/GIF/atlas/ZIP) validated file-by-file after the fact.
+
+  What's new in 1.1.x: hidden-overlay CSS fix, ASCII-only UI glyphs
+  (no broken characters on any OS), empty-palette and empty-rename
+  guards, and pivot mode now auto-pauses playback so you place the
+  pivot on exactly the frame you're seeing.
+
+  Thanks for checking it out — comments open.
+
+----------------------------------------------------------------
+ 5) DISCORD (dev communities — read #rules first)
+----------------------------------------------------------------
+Short version:
+  I shipped PixelForge — an offline sprite sheet maker that runs in
+  your browser from a single ZIP. Import → pixelate → pack → preview
+  → engine JSON/GIF. No install, no cloud, one-time $5.99:
+  https://dawshax.itch.io/pixelforge
+
+AUTONOMOUS OPTION: if you own a Discord server, create a webhook
+(Integration settings → New Webhook → copy URL) and send it to the
+agent — posts can then be made without your involvement.
+
+----------------------------------------------------------------
+ 6) BUILTBYBIT — FULL LISTING (paste-ready)
+----------------------------------------------------------------
+Steps (you only do the login/upload clicks; ~10 min):
+ 1. builtbybit.com → sign in → Creator → Submit a resource
+ 2. Category: Websites → Other websites   (fallback: Other)
+ 3. Fill the blocks below → upload
+    products/pixelforge/dist/PixelForge-v1.1.3.zip
+ 4. Media: assets/cover.png, features.png, screenshots 01–06
+ 5. Price: USD 5.99 (option: launch sale 3.99 via Sale/Coupon)
+ 6. Tags: pixel-art, sprite-sheet, tool, game-dev, editor, offline
+ 7. Submit → staff manual review (24–48h, sometimes longer)
+ 8. Payouts: Tebex Wallet → PayPal/bank (~3-day settlement)
+    Fees: 9.9% platform + gateway. Verified-buyer-only reviews.
+
+TITLE:
+  PixelForge — Sprite Sheet Maker & Pixel Art Studio
+
+SHORT DESCRIPTION:
+  Turn any images into pixel art, pack sprite sheets, preview
+  animations and export engine-ready JSON/GIF — 100% offline.
+
+DESCRIPTION:
+  WHAT IT IS
+  PixelForge is a complete sprite-sheet studio that runs entirely
+  in your browser. Download once, double-click index.html, done —
+  no install, no runtime, no account, no internet needed ever again.
+
+  THE WORKFLOW
+  1. IMPORT — drag & drop PNG/JPG/WEBP, whole folders, or animated
+     GIFs (every frame + timing). Reorder by drag, batch rename,
+     undo/redo anywhere.
+  2. PIXELATE — quantize to auto palettes or 12 retro ones
+     (Game Boy, PICO-8, DawnBringer, NES, C64…) with Bayer or
+     Floyd-Steinberg dithering.
+  3. PACK — grid/shelf/strip layouts, trim transparent edges,
+     extrude edges (no bleeding), multi-page split, 1x-8x
+     nearest-neighbour scale.
+  4. PREVIEW — 1-60 FPS loop/ping-pong/once, pivot point editor
+     exported into your JSON.
+  5. EXPORT — PNG sheet(s), Generic / Phaser 3 / Aseprite JSON,
+     CSS sprite classes, animated GIF, individual frames, or one
+     ZIP with everything.
+
+  LICENSE
+  One-time purchase, free 1.x updates. Use the outputs in
+  commercial games royalty-free (see EULA inside the ZIP).
+
+  SUPPORT
+  Reply here or open a ticket — I answer fast.
+
+----------------------------------------------------------------
+ 7) 14-DAY LAUNCH PLAN
+----------------------------------------------------------------
+Day 0 (today): itch fixes (description/tags!) + X thread + this file
+Day 1: r/gamedev thread (or Feedback Friday) + r/SoloDevelopment
+Day 2: Show HN + Discord posts (3-5 servers, rules first)
+Day 3: itch devlog post + BuiltByBit listing submitted
+Day 5: post the preview.gif alone on X/Reddit (image posts > text)
+Day 7: check Dashboard numbers → adjust price/copy in PLAN.md
+Day 10: follow-up tweet "what I learned launching a web tool"
+Day 14: review: price? page? product #2?
+
+WHAT THE AGENT CAN DO WITHOUT YOU: everything in this file,
+GitHub releases, verifying pages, generating promo assets.
+WHAT REQUIRES YOUR ACCOUNT: posting to Reddit/X/HN/Discord/itch
+devlog/BBB (or send a Discord webhook URL → fully autonomous).
+
+— END —
+================================================================

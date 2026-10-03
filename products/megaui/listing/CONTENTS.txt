@@ -1,0 +1,55 @@
+MegaUI - Game UI Design System  |  v1.0.0  |  COMPLETE ARCHIVE
+=================================================================
+This zip contains EVERYTHING in the kit. Two upload files exist:
+
+  1) MegaUI-complete-v1.0.0.zip   <- this file (all source content)
+  2) MegaUI-Unity-v1.0.0.unitypackage  <- engine-format main file
+
+Fab upload: #2 = Main Product File, #1 = Additional Files.
+
+
+CONTENTS OF THIS ARCHIVE
+------------------------
+svg/<theme>/<group>/          2,672 master SVGs (668 x 4 themes)
+                              buttons(9 shapes x 4 states x 4 kinds),
+                              bars, rings, slots+rarities, panels, windows,
+                              forms, decor, cards, leaderboard, hud
+                              (minimap/compass/currency), touch
+                              (joystick/ABXY/crosshairs), overlays
+                              (nameplate/killfeed/prompt/radial/party/
+                              ammo/subtitle), icons
+
+png4k/<theme>/<group>/        2,672 PNG exports at 4x resolution
+                              (same tree as svg/, transparent)
+
+screens/<theme>/              84 screens as HTML source (21 layouts x 4)
+                              + 84 rendered PNG at 4K 3840x2160
+                              layouts: main-menu, hud, inventory, shop,
+                              settings, pause, dialog, world-map, quests,
+                              character, results, login, loading,
+                              character-select, skill-tree, defeat,
+                              confirm, achievements, crafting, chat,
+                              mobile-hud
+
+sheets/                       4 full component sheets (one per theme,
+                              4K PNG) for quick browsing / store media
+
+fonts/                        Inter 400/600/700 + Montserrat 700 (TTF)
+                              with SIL OFL-1.1 license texts
+
+tokens/                       design-tokens.json + megaui.css
+                              (single-source colors, 4 themes)
+
+index.html                    OFFLINE interactive gallery - double-click
+                              to browse themes, screens, components, icons
+
+docs/                         README.md, RECLOUR.md, TEST-REPORT.txt
+listing/                      DESCRIPTION-plain.txt, TAGS.txt (15 Fab
+                              tags), FAB-ANSWERS.txt, PRICE-AND-MEDIA.md
+manifest.json                 machine-readable inventory (2,672 files)
+
+NOT INCLUDED HERE (uploaded separately)
+---------------------------------------
+MegaUI-Unity-v1.0.0.unitypackage - sprites (TextureImporter/9-slice) +
+UI Toolkit USS/UXML + runtime C# (theme switcher, popup, button fx, bar)
++ fonts + tokens + docs. Fab bundles both files into one buyer download.

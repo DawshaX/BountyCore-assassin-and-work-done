@@ -1,0 +1,113 @@
+===============================================================================
+PIXELFORGE — FAB TECHNICAL INFORMATION (Unity format, plugins & tools)
+Copy-paste the WHOLE block below into the Technical Information text field.
+===============================================================================
+
+Plugin Name: PixelForge Sprite Sheet Maker
+
+Description and Images:
+PixelForge is an offline sprite sheet maker and pixel art studio for game
+developers. It ships as a bundled HTML5 application (100% offline, no
+account, no telemetry) plus an optional Unity editor menu integration
+(Tools > PixelForge). The listing images show the actual application:
+import UI, one-click pixel-art conversion with palettes, packed sheet view,
+live animation preview, and the automatic multi-page split.
+
+Features:
+- Import PNG/JPG/WEBP/GIF by drag & drop or file picker; frame reorder,
+  batch rename, undo/redo
+- One-click pixel-art conversion: pixel size 1-16, 13 palettes (incl.
+  DawnBringer 16, PICO-8), Bayer / Floyd-Steinberg dithering, auto palette
+  extracted from the source image
+- Sheet layouts: tight shelf, horizontal strip, vertical strip, uniform
+  grid; padding, edge extrusion (prevents texture bleeding), transparent
+  edge trim; output scale 1x-8x
+- Max texture size 1024/2048/4096/8192 with automatic multi-page split and
+  an oversized-frame warning
+- Live animation preview: 1-60 FPS, loop / ping-pong / once, zoom,
+  click-to-set sprite pivot points (exported to JSON)
+- Exports: PNG sprite sheet (multi-page), animated GIF, atlas JSON
+  (Generic, Phaser 3, Aseprite), CSS sprite classes, frames ZIP,
+  all-in-one ZIP bundle
+- Unity menu: Tools > PixelForge > Open Sprite Sheet Maker / Open
+  Documentation / Reveal Web App Folder
+- Demo scene: Assets/PixelForge/Scenes/PixelForge-Demo.unity showing an
+  example sprite produced by PixelForge
+
+Code Modules (full list of each module and its module type):
+1. PixelForge.Editor - module type: Editor (Editor-only; no runtime code)
+   - Editor/PixelForgeLauncher.cs - menu commands that open the bundled
+     web app, the documentation and the package folder in the OS file
+     browser. It never modifies scenes, assets or build settings.
+2. PixelForge.WebApp - module type: standalone browser application
+   (JavaScript/HTML/CSS; NOT compiled by Unity; shipped as project files)
+   - WebApp/index.html, WebApp/style.css
+   - WebApp/js/core.js, ui.js, exporters.js, palettes.js, zip.js
+   - WebApp/js/vendor/gif-tools.js (+ bundled MIT license texts)
+
+Number of Unity Visual Scripts: 0
+
+Number of .cs Scripts: 1 (Editor/PixelForgeLauncher.cs)
+
+Supported Development Platforms: Windows 10/11, macOS 12+, desktop Linux -
+any OS that runs Unity 2021.3 LTS or newer together with a modern browser
+(Chrome, Edge, Firefox, Safari).
+
+Supported Target Build Platforms: Not applicable to builds - PixelForge is
+an editor/user-space tool that adds no runtime components and does not
+modify builds. Its outputs (PNG / GIF / JSON / CSS) are engine- and
+platform-agnostic and can be used in projects targeting Windows, macOS,
+Linux, Android (64-bit), iOS, console and Web.
+
+Supported Unity Pipelines: Built-In Render Pipeline, Universal Render
+Pipeline (URP) and High Definition Render Pipeline (HDRP) - all three are
+supported; the product contains no materials, shaders or pipeline
+dependencies.
+
+Dependencies on other Plugins and/or System Libraries: None. No Unity
+packages, plugins, DLLs or native libraries are required. The browser-side
+GIF libraries bundled inside the web app (gifenc and gifuct-js, MIT
+license) are listed in THIRD-PARTY.txt inside the package.
+
+Documentation Link and Installation Guide:
+- Install (Unity): Assets > Import Package > Custom Package... -> select
+  PixelForge-Unity-v1.1.3.unitypackage -> Import. Then use the menu
+  Tools > PixelForge > Open Sprite Sheet Maker. No other setup is needed.
+- Install (standalone): unzip PixelForge-v1.1.3.zip anywhere and
+  double-click index.html (works offline from file://).
+- Documentation on the Fab page: the listing description contains a full
+  "Documentation & Installation" section (install, quick start,
+  troubleshooting, file map).
+- In-package documentation: Assets/PixelForge/README.md (openable via
+  Tools > PixelForge > Open Documentation).
+- Source repository: https://github.com/DawshaX/BountyCore-assassin-and-work-done
+
+Example Project: https://github.com/DawshaX/BountyCore-assassin-and-work-done/raw/arena/01a0f080-bountycore-assassin-and-work-d/products/pixelforge/dist/PixelForge-Example-v1.1.3.zip
+(consumer example containing PixelForge output - a 4-frame sprite sheet
+plus its Generic atlas JSON; it does NOT distribute the plugin itself.)
+
+Versioning and Release Notes: Current version 1.1.3 (2026-09-30).
+v1.1.3: complete buyer-journey QA pass with zero errors, Fab-ready
+packaging (editor launcher, demo scene, example project, documentation).
+Full history: CHANGELOG.md inside the package and GitHub release tag
+"pixelforge-v1.1.3".
+
+Contact and Support Information: Contact the publisher through Fab
+messaging, or open an issue at
+https://github.com/DawshaX/BountyCore-assassin-and-work-done
+
+Important/Additional Notes:
+- Prerequisites: Unity 2021.3 LTS or newer for the Unity format; any
+  modern browser for the standalone web app. No internet connection,
+  account or telemetry at runtime. Zero plugin dependencies.
+- Third-party notices: gifenc and gifuct-js (MIT license) are bundled in
+  the web app - see THIRD-PARTY.txt in the package for details. This
+  third-party licensing notice is also stated in the Fab listing
+  description.
+- License: proprietary EULA (LICENSE.txt) - personal and commercial use
+  in your games and projects; no resale or redistribution of the source
+  itself.
+- The single .cs file carries a Copyright (c) 2026 DawshaX notice at the
+  top and declares namespace PixelForgeTools.
+- The "Created with AI" flag on this listing covers listing imagery only;
+  the application itself is deterministic code with no AI at runtime.
