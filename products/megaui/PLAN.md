@@ -60,6 +60,19 @@ sample review + user sign-off before mass production (PLAN.md §5 rule).
    → **QA: `verify_kit.py` 34/34 PASSED** → submission = user (phone)
 6. Post-live: tags/price fast edits, 14-day review
 
+## Standing procedure: GitHub auto-sync (2026-10-03, user order)
+
+Every finished unit of work is pushed immediately — nothing lives only
+locally (the sandbox wipes /tmp and generated outputs between turns).
+
+- `tools/sync_github.sh` — one-command push (handles HEAD resets via
+  detached worktree from origin; only session branch).
+- `tools/rebuild_all.sh` — full regeneration after any wipe (~15 min),
+  ends with an auto-sync.
+- Background watcher `autosync` loop (started each session): syncs every
+  10 minutes if anything changed → log at `.autosync.log`.
+- Final artifacts (zips/unitypackage) are always committed to the branch.
+
 **Downloadables (raw links) — FINAL upload pair:**
 - `dist/MegaUI-complete-v1.0.0.zip` (80.9 MB — EVERYTHING: 2672 SVG + 2672
   PNG@4x + 84 screens (HTML+4K PNG) + sheets + gallery + fonts + tokens +
