@@ -1,9 +1,3 @@
-===============================================================================
-PIXELFORGE — DOCUMENTATION SECTION
-Append this block at the END of the listing Description (the reviewer
-requires documentation on the Fab page + a demo scene).
-===============================================================================
-
 DOCUMENTATION & INSTALLATION
 ----------------------------
 INSTALL (Unity package)
@@ -47,6 +41,3 @@ FILES IN THE PACKAGE
 THIRD-PARTY SOFTWARE NOTICE
 The web app bundles gifenc and gifuct-js under the MIT license; see the
 THIRD-PARTY.txt file inside the package for details.
-
-EXAMPLE PROJECT
-https://github.com/DawshaX/BountyCore-assassin-and-work-done/raw/arena/01a0f080-bountycore-assassin-and-work-d/products/pixelforge/dist/PixelForge-Example-v1.1.3.zip
