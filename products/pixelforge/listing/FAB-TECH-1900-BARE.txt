@@ -1,0 +1,29 @@
+Plugin Name: PixelForge Sprite Sheet Maker
+
+Description and Images: Offline sprite sheet maker + pixel art studio; images show the real app UI.
+
+Features: drag&drop PNG/JPG/WEBP/GIF; pixel-art convert (13 palettes, dithering); shelf/strip/grid packing, padding, extrusion, trim, 1x-8x; max texture 1024-8192 multi-page split; preview FPS/loop/pivots; exports PNG, GIF, atlas JSON (Generic/Phaser3/Aseprite), CSS, ZIP; menu Tools > PixelForge; demo scene included.
+
+Code Modules: PixelForge.Editor (Editor) = Editor/PixelForgeLauncher.cs (menu launcher, no runtime code). PixelForge.WebApp (browser app, not Unity-compiled) = WebApp/ HTML+CSS+JS.
+
+Number of Unity Visual Scripts: 0
+
+Number of .cs Scripts: 1
+
+Supported Development Platforms: Windows 10/11, macOS, desktop Linux + Unity 2021.3+ + modern browser.
+
+Supported Target Build Platforms: Editor-only, no runtime in builds; outputs (PNG/GIF/JSON/CSS) work on any target: PC, Android 64-bit, iOS, console, Web.
+
+Supported Unity Pipelines: Built-In, URP, HDRP - no materials or shaders.
+
+Dependencies on other Plugins and/or System Libraries: None; MIT gifenc + gifuct-js bundled (THIRD-PARTY.txt).
+
+Documentation Link and Installation Guide: Fab Description (Documentation section) + Assets/PixelForge/README.md. Install: Assets > Import Package > Custom Package > Import, menu Tools > PixelForge. Repo: https://github.com/DawshaX/BountyCore-assassin-and-work-done
+
+Example Project: see Example Project field (samples only, no plugin).
+
+Versioning and Release Notes: v1.1.3 (2026-09-30), QA zero errors; CHANGELOG.md; tag pixelforge-v1.1.3.
+
+Contact and Support Information: Fab messaging; GitHub issues in repo above.
+
+Important/Additional Notes: offline, no account/telemetry/AI at runtime; EULA allows commercial use of outputs; .cs: Copyright (c) 2026 DawshaX, namespace PixelForgeTools; AI flag = listing images only.
