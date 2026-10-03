@@ -60,7 +60,10 @@ sample review + user sign-off before mass production (PLAN.md §5 rule).
    → **QA: `verify_kit.py` 34/34 PASSED** → submission = user (phone)
 6. Post-live: tags/price fast edits, 14-day review
 
-**Downloadables (raw links):**
-- `dist/MegaUI-review-v1.zip` (44.7 MB — 4 sheets + 68 screens + docs + tokens)
-- `dist/MegaUI-Unity-v1.0.0.unitypackage` (19.1 MB)
-- `dist/MegaUI-samples-v1.zip` (v1 sheets)
+**Downloadables (raw links) — FINAL upload pair:**
+- `dist/MegaUI-complete-v1.0.0.zip` (80.9 MB — EVERYTHING: 2672 SVG + 2672
+  PNG@4x + 84 screens (HTML+4K PNG) + sheets + gallery + fonts + tokens +
+  docs + listing; contents in `listing/CONTENTS.txt`)
+- `dist/MegaUI-Unity-v1.0.0.unitypackage` (23.4 MB — Fab MAIN file:
+  2672 sprites + USS/UXML + runtime C# + fonts + tokens + docs)
+- Superseded (removed from tree, kept in history): product/review/samples zips.
