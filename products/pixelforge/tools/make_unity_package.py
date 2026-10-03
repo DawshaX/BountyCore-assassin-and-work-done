@@ -2,7 +2,7 @@
 """Build PixelForge-Unity-*.unitypackage (tar.gz of GUID folders).
 
 Unity's .unitypackage format:
-  <guid>/pathinfo   original path (e.g. Assets/PixelForge/index.html)
+  <guid>/pathname   original path (first line = Assets/... path) (e.g. Assets/PixelForge/index.html)
   <guid>/asset.meta Unity importer metadata (YAML, carries the GUID)
   <guid>/asset      raw file bytes (files only; folders have no asset)
 
@@ -123,7 +123,7 @@ def main():
             g = guids[path]
             is_dir = path in folders
             meta = (FOLDER_META if is_dir else importer_for(path)).format(guid=g)
-            add_bytes(f"{g}/pathinfo", path.encode("utf-8"))
+            add_bytes(f"{g}/pathname", (path + "\n").encode("utf-8"))
             add_bytes(f"{g}/asset.meta", meta.encode("utf-8"))
             if not is_dir:
                 with open(os.path.join(ROOT, src_by_dest[path]), "rb") as f:
@@ -134,15 +134,15 @@ def main():
     with tarfile.open(OUT, "r:gz") as tar:
         for m in tar.getmembers():
             names.append(m.name)
-            if m.name.endswith("/pathinfo"):
-                p = tar.extractfile(m).read().decode("utf-8")
+            if m.name.endswith("/pathname"):
+                p = tar.extractfile(m).read().decode("utf-8").strip()
                 if p in paths_found:
                     dup = True
                 paths_found.add(p)
         guid_dirs = {n.split("/")[0] for n in names}
         for g in guid_dirs:
             have = {n.split("/")[1] for n in names if n.startswith(g + "/")}
-            if "pathinfo" not in have or "asset.meta" not in have:
+            if "pathname" not in have or "asset.meta" not in have:
                 sys.exit(f"incomplete entry {g}: {have}")
     missing_files = [d for _, d in FILES if d not in paths_found]
     missing_asset = []
